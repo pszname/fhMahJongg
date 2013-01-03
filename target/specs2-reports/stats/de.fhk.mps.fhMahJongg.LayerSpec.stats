@@ -1,0 +1,6 @@
+<de.fhk.mps.fhMahJongg.LayerSpec-stats timestamp="1357225849325"><stats expectations="1" examples="1" successes="1" time="16"></stats></de.fhk.mps.fhMahJongg.LayerSpec-stats>
+<de.fhk.mps.fhMahJongg.LayerSpec-stats timestamp="1357227096906"><stats expectations="1" examples="1" successes="1" time="10"></stats></de.fhk.mps.fhMahJongg.LayerSpec-stats>
+<de.fhk.mps.fhMahJongg.LayerSpec-results timestamp="1357227924738"><result location="de.fhk.mps.fhMahJongg.LayerSpec (LayerSpec.scala:15)" id="582759387"><stats expectations="1" examples="1" failures="1" time="20"></stats></result>
+</de.fhk.mps.fhMahJongg.LayerSpec-results>
+<de.fhk.mps.fhMahJongg.LayerSpec-stats timestamp="1357227924748"><stats expectations="3" successes="2" examples="3" failures="1" time="10"><trend><stats expectations="2" successes="1" examples="2" failures="1" time="10"></stats></trend></stats></de.fhk.mps.fhMahJongg.LayerSpec-stats>
+<de.fhk.mps.fhMahJongg.LayerSpec-stats timestamp="1357228529928"><stats expectations="3" examples="3" successes="3" time="10"><trend><stats failures="-1" successes="1" time="10"></stats></trend></stats></de.fhk.mps.fhMahJongg.LayerSpec-stats>
