@@ -36,7 +36,29 @@ class fhLayout(cbLayer: Int, private var m_iXmax: Int, private var m_iYmax: Int)
 	// Erzeugt ein neues Layout
 	def CreateLayout(eType: fhLayoutType):Boolean=
 	{
-		return true;
+		var fRet = false;
+	  
+		// Entscheide wie das Feld erzeugt wird
+		eType match
+		{
+		  // Erzeuge ein generiertes Feld -----------------------------------------------
+		  case fhLayoutType.LT_GENERATE =>
+		  {
+		    fRet = fhGenerator.Generate(this.m_lpLayer);
+		  }
+		  // Erzeuge eine Pyramide/Schildkroete -----------------------------------------
+		  case fhLayoutType.LT_TURTLE   =>
+		  {
+		    fRet = fhGenerator.LoadTurtle(this.m_lpLayer);
+		  }
+		  // Lade ein Nutzerdefiniertes Feld --------------------------------------------
+		  case fhLayoutType.LT_USER		=>
+		  {
+			fRet = fhGenerator.LoadUser(this.m_lpLayer);
+		  }
+		}
+		
+		return fRet;
 	}
 	
 	// ==================================================================================
@@ -61,4 +83,5 @@ class fhLayout(cbLayer: Int, private var m_iXmax: Int, private var m_iYmax: Int)
 	{
 		return -1;
 	}
+	// ==================================================================================
 }
