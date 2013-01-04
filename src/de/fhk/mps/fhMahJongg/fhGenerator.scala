@@ -1,11 +1,17 @@
 package de.fhk.mps.fhMahJongg
 
+import scala.util.Random
+
 /////////////////////////////////////////////////////////////////////////////////////////
-//
-// Der fhGenerator erzeugt das Layout und setzt die Bedingungen der einzelnen Tile's
+/**
+ *  Der fhGenerator erzeugt das Layout und setzt die Bedingungen der einzelnen Tile's
+ */
 object fhGenerator 
 {
-	val TILE_NAMES: Array[String] = Array(
+    /**
+     * Liste mit den Namen der Tiles
+     */
+	private val TILE_NAMES: Array[String] = Array(
 			"1B1", "2B1", "3B1", "4B1",	// Bambus 1
 			"1B2", "2B2", "3B2", "4B2",	// Bambus 2
 			"1B3", "2B3", "3B3", "4B3",	// Bambus 3
@@ -56,35 +62,52 @@ object fhGenerator
 			"1J4", "2J4", "3J4", "4J4" 	// Jahreszeiten 4
 	)
 	/////////////////////////////////////////////////////////////////////////////////////
-	// Generiert ein Layout per Zufall
+	val MAX_TILES :Int = 144;
+	/////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 *  Generiert ein Layout per Zufall
+	 */
 	def Generate(lstLayer: List[Layer]):Boolean=
 	{
 		return false;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
-	// Laedt einfaches Layout
-	def LoadTurtle(lstLayer: List[Layer]):Boolean=
+	/**
+	 *  Laedt einfaches Layout
+	 */
+	def LoadTurtle(lstLayer: fhMutableWrapper[List[Layer]], lpTiles: fhMutableWrapper[List[Tile]]):Boolean=
 	{
-		var lpTiles = CreateTiles();
+	    var pRand      = new Random(MAX_TILES);
+		var lpTmp      = CreateTiles();				// Erzeuge die nötigen Tiles
+		lstLayer.value = InitLayer(5, 15, 8);		// Erzeuge die Layer
+		lpTiles.value  = List();					// Loesche oder erzeuge die Tile-Liste
+		
+		// Generiere die Position der Tiles
+		// erste Reihe ------------------------------------------------------------------
+		
 		
 		return false;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
-	// Laedt ein Layout aus einer Textdatei
+	/**
+	 *  Laedt ein Layout aus einer Textdatei
+	 */
 	def LoadUser(lstLayer: List[Layer]):Boolean=
 	{
 		return false;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
-	// Erzeugt alle Kacheln der Laufindex ist hierbei die ID der Kacheln
+	/**
+	 *  Erzeugt alle Kacheln der Laufindex ist hierbei die ID der Kacheln
+	 */
 	private def CreateTiles():List[Tile] =
 	{
 	    var lpTiles: List[Tile] = List();
 	    
-	    for (i <- 0 until 144)
+	    for (i <- 1 to MAX_TILES)
 	    {
 	    	lpTiles ++= List(new Tile(TILE_NAMES(i), i, 0, 0, 0));
 	    }
@@ -92,5 +115,21 @@ object fhGenerator
 		return lpTiles;
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 *  Initialisiert den Layer
+	 *  Die Achsen Abschnitte werden dabei mal zwei genommen.
+	 */
+	private def InitLayer(cb: Int, iXmax: Int, iYmax: Int):List[Layer]=
+	{
+		var lpLayer: List[Layer] = List();
+		// Initialisiere die Layer
+			for (i <- 0 until cb)
+			{
+				lpLayer ++= List(new Layer(iXmax*2, iYmax*2));
+			}
+			
+			return lpLayer;
+	}
 	/////////////////////////////////////////////////////////////////////////////////////
 }
