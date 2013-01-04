@@ -2,28 +2,25 @@ package de.fhk.mps.fhMahJongg
 
 import Array._
 
-/*
- * Bildet eine Matrix.
+/**
+ * this class generates a new layer, that provides positions for a number of tiles
+ * in addition to the layers size.
+ * 
+ * @param width and heigth of the field
  */
-class Layer(private var m_iXmax: Int, private var m_iYmax: Int) {
+class Layer(private var width: Int, private var heigth: Int) {
   
-	private var Matrix = ofDim[Int](m_iXmax, m_iYmax)
+	/**
+	 * this is the matrix, that represents the field
+	 */
+	private var Matrix = ofDim[Int](width, heigth)
   
-	// Properties =======================================================================
-	//def X_Coord = m_iXmax
-	//def X_Coord_= (iNewX: Int) = m_iXmax = iNewX
-	
-	//def Y_Coord = m_iYmax
-	//def Y_Coord_= (iNewY: Int) = m_iYmax = iNewY
-	
-	// Defs =============================================================================
-	
 	/**
 	 * sets a tile id to a certain position
 	 * 
 	 * @param a unique ID and the position as x-intercept and y-intercept
 	 * @return <code>true</code>, if the position is available and set, otherwise <code>false</code>
-	*/
+	 */
 	def setTileIDToPosition(id: Int, x: Int, y: Int): Boolean	= {
 	  if (Matrix(x)(y) == 0)	{	
 	    Matrix(x)(y) = id
@@ -54,7 +51,7 @@ class Layer(private var m_iXmax: Int, private var m_iYmax: Int) {
 	 * @return xy-position as <code>Vector(Int, Int)</code>
 	 */
 	def getPositionFromID(id: Int): Vector[Int] =	{
-	  for (i <- 0 until m_iXmax; j <- 0 until m_iYmax)	{
+	  for (i <- 0 until width; j <- 0 until heigth)	{
 	    if (Matrix(i)(j) == id) return Vector(i, j)
 	  }
 	  return Vector(0, 0)
