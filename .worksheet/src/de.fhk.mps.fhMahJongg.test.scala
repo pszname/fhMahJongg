@@ -14,14 +14,15 @@ class TileTest extends SpecificationWithJUnit {
    
 
 import Array._
-object test {;import org.scalaide.worksheet.runtime.library.WorksheetSupport._; def main(args: Array[String])=$execute{;$skip(378); 
+object test {;import org.scalaide.worksheet.runtime.library.WorksheetSupport._; def main(args: Array[String])=$execute{;$skip(365); val res$0 = 
 
-   var layer = new Layer(100, 100);System.out.println("""layer  : de.fhk.mps.fhMahJongg.Layer = """ + $show(layer ));$skip(64); val res$0 = 
+	"hallo".substring(1);System.out.println("""res0: java.lang.String = """ + $show(res$0));$skip(35); 
+   var layer = new Layer(100, 100);System.out.println("""layer  : de.fhk.mps.fhMahJongg.Layer = """ + $show(layer ));$skip(64); val res$1 = 
    //layer.Matrix(1)(2)
-   layer.setTileIDToPosition(1, 45, 88);System.out.println("""res0: Boolean = """ + $show(res$0));$skip(38); val res$1 = 
-   layer.setTileIDToPosition(2, 4, 2);System.out.println("""res1: Boolean = """ + $show(res$1));$skip(30); val res$2 = 
-   layer.getPositionFromID(1);System.out.println("""res2: Vector[Int] = """ + $show(res$2));$skip(18); val res$3 = 
-   layer.getField;System.out.println("""res3: Array[Array[Int]] = """ + $show(res$3))}
+   layer.setTileIDToPosition(1, 45, 88);System.out.println("""res1: Boolean = """ + $show(res$1));$skip(38); val res$2 = 
+   layer.setTileIDToPosition(2, 4, 2);System.out.println("""res2: Boolean = """ + $show(res$2));$skip(30); val res$3 = 
+   layer.getPositionFromID(1);System.out.println("""res3: Vector[Int] = """ + $show(res$3))}
+   //layer.getField
    
    /*
 	var m = new map(30, 45)
