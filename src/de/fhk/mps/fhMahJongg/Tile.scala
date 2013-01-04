@@ -1,5 +1,7 @@
 package de.fhk.mps.fhMahJongg
 
+//TODO: scaladoc erzeugen --> download und in cmd ausführen
+
 /**
  * this class generates a new tile. A tile is a single element
  * of the mahjongg game. It provides different methods and properties
