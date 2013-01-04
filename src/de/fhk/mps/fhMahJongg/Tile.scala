@@ -16,7 +16,10 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
   var position         = Vector(X, Y, Z)		//muss die Position hier rein oder reicht es, dies über ein Grid zuzuordnen?
   var UpperTile        = List[Int]()
   
-   
+  def ==(otherTile: Tile): Boolean = {
+    sName.endsWith(otherTile.name.substring(1))
+    return false
+  }
 
   /**
    * with this method, it is possible to set an other tile by id as blocking neighbor.
