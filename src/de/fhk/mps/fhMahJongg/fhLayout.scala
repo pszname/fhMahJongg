@@ -79,7 +79,7 @@ class fhLayout(cbLayer: Int, private var m_iXmax: Int, private var m_iYmax: Int)
 	// Selektiert ein Tile an Position x, y. Ruft den Index der Ebene ab.
 	// Es wird < 0 zurückgegeben, falls nichts ausgewählt wurde bzw. es nicht möglich
 	// ist etwas auszuwählen.
-	def SelectPos(iXPos: Int, iYPos: Int):Int=
+	def SelectPos(iXPos: Int):Int=
 	{
 		return -1;
 	}
