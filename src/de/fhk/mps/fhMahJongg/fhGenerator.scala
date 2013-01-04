@@ -78,14 +78,67 @@ object fhGenerator
 	 */
 	def LoadTurtle(lstLayer: fhMutableWrapper[List[Layer]], lpTiles: fhMutableWrapper[List[Tile]]):Boolean=
 	{
-	    var pRand      = new Random(MAX_TILES);
+	    var iPos       = 0;
 		var lpTmp      = CreateTiles();				// Erzeuge die nötigen Tiles
 		lstLayer.value = InitLayer(5, 15, 8);		// Erzeuge die Layer
 		lpTiles.value  = List();					// Loesche oder erzeuge die Tile-Liste
 		
 		// Generiere die Position der Tiles
 		// erste Reihe ------------------------------------------------------------------
-		
+		for (i <- 3 to 25 by 2)
+		{
+			iPos = SelectTile(lpTiles.value);								// Selektiere eine Kachel
+			lpTmp(iPos).position = Vector(i, 1, 0);							// Schreibe Position in die Kachel
+			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 1);	// Speicher ID in den Layer an Position
+			lpTiles.value ++= List(lpTmp(iPos));							// Rette die Kachel in die Lookuptable
+			lpTmp.drop(iPos);												// Lösche aus der Alten heraus
+		}
+		// zweite Reihe erste ebene -----------------------------------------------------
+		for (i <- 7 to 21 by 2)
+		{
+			iPos = SelectTile(lpTiles.value);
+			lpTmp(iPos).position = Vector(i, 3, 0);							
+			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 3);
+			lpTiles.value ++= List(lpTmp(iPos));							
+			lpTmp.drop(iPos);
+		}
+		// zweite Reihe zweite ebene ----------------------------------------------------
+		for (i <- 9 to 19 by 2)
+		{
+			iPos = SelectTile(lpTiles.value);
+			lpTmp(iPos).position = Vector(i, 3, 1);							
+			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 3);
+			lpTiles.value ++= List(lpTmp(iPos));							
+			lpTmp.drop(iPos);
+		}
+		// dritte Reihe erste ebene -----------------------------------------------------
+		for (i <- 5 to 23 by 2)
+		{
+			iPos = SelectTile(lpTiles.value);
+			lpTmp(iPos).position = Vector(i, 5, 0);							
+			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 5);
+			lpTiles.value ++= List(lpTmp(iPos));							
+			lpTmp.drop(iPos);
+		}
+		// dritte Reihe zweite ebene ----------------------------------------------------
+		for (i <- 9 to 19 by 2)
+		{
+			iPos = SelectTile(lpTiles.value);
+			lpTmp(iPos).position = Vector(i, 5, 1);							
+			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 5);
+			lpTiles.value ++= List(lpTmp(iPos));							
+			lpTmp.drop(iPos);
+		}
+		// dritte Reihe dritte ebene ----------------------------------------------------
+		for (i <- 11 to 17 by 2)
+		{
+		  //TODO: while (um Anzahl der Doppelgänger testen
+			iPos = SelectTile(lpTiles.value);
+			lpTmp(iPos).position = Vector(i, 5, 3);							
+			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 3);
+			lpTiles.value ++= List(lpTmp(iPos));							
+			lpTmp.drop(iPos);
+		}
 		
 		return false;
 	}
@@ -132,4 +185,20 @@ object fhGenerator
 			return lpLayer;
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Entscheidet welches Tile in einer Position des Layers gesteckt werden soll.
+	 */
+	private def SelectTile(lpTiles: List[Tile]):Int=
+	{
+		return Random.nextInt(lpTiles.length);
+	}
+	/////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Prüft, ob eine ID schon Doppelt vorkommt, so wird verhindert, dass das Spiel
+	 * unlösbar wird.
+	 */
+	private def IsDouble(lpLayer: List[Layer], iID: Int):Boolean =
+	{
+		return false;
+	}
 }
