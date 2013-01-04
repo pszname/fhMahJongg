@@ -9,7 +9,7 @@ import de.fhk.mps.fhMahJongg._
 object Controller {
   
   def generateGameBoard(iLayerCount: Int, iWidth: Int, iHeight: Int)	{
-      var layout = new fhLayout(iLayerCount, iWidth, iHeight)
+      //var layout = new fhLayout(iLayerCount, iWidth, iHeight)
   }
   
   def checkTile(id: Int): Int =	{
