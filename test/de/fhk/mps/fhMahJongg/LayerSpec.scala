@@ -8,9 +8,9 @@ class LayerSpec extends SpecificationWithJUnit
 	// ----------------------------------------------------------------------------------
     // Layoutclass
 	// ----------------------------------------------------------------------------------
-	"A new Layout with 1 Layer, X_Max = 10 and Y_Max = 11" should 
+	/*"A new Layout with 1 Layer, X_Max = 10 and Y_Max = 11" should 
 	{
-	  val pLayout = new fhLayout(1,10,11)
+	  val pLayout = new fhLayout()
 	  // Layercount 
 	  "return a Layercount of 1" in 
 	  {
@@ -26,5 +26,5 @@ class LayerSpec extends SpecificationWithJUnit
 	  {
 	    pLayout.Y_Max must be_==(11)
 	  }
-	}
+	}*/
 }
