@@ -8,13 +8,19 @@ import de.fhk.mps.fhMahJongg._
  */
 object Controller {
   
-  def generateGameBoard(iLayerCount: Int, iWidth: Int, iHeight: Int)	{
-      //var layout = new fhLayout(iLayerCount, iWidth, iHeight)
+  var layout = new fhLayout
+  
+  def generateGameBoard(eType: fhLayoutType.fhLayoutType)	{
+      
+      layout.CreateLayout(eType)
   }
   
   def checkTile(id: Int): Int =	{
     
-    //if (layout.tiles(id).check == false) return -1 else if (layout.m_lpTiles(id))	
+    if (layout.tiles(id).check == false) return -1 
+//    else if (layout.tiles(id) == layout.tiles(layout.lastCheckedTileID))
+    
+    
     
     return 0
   }

@@ -14,14 +14,21 @@ class TileTest extends SpecificationWithJUnit {
    
 
 import Array._
-object test {;import org.scalaide.worksheet.runtime.library.WorksheetSupport._; def main(args: Array[String])=$execute{;$skip(365); val res$0 = 
+object test {;import org.scalaide.worksheet.runtime.library.WorksheetSupport._; def main(args: Array[String])=$execute{;$skip(387); 
+	
+	
+	var t1 = new Tile("dragon", 2, 1, 2, 3);System.out.println("""t1  : de.fhk.mps.fhMahJongg.Tile = """ + $show(t1 ));$skip(16); val res$0 = 
+	t1.position(0);System.out.println("""res0: Int = """ + $show(res$0));$skip(16); val res$1 = 
+	
+	t1.UpperTile;System.out.println("""res1: List[Int] = """ + $show(res$1));$skip(16); 
+	t1.popUpper(3);$skip(23); val res$2 = 
 
-	"hallo".substring(1);System.out.println("""res0: java.lang.String = """ + $show(res$0));$skip(35); 
-   var layer = new Layer(100, 100);System.out.println("""layer  : de.fhk.mps.fhMahJongg.Layer = """ + $show(layer ));$skip(64); val res$1 = 
+	"hallo".substring(1);System.out.println("""res2: java.lang.String = """ + $show(res$2));$skip(35); 
+   var layer = new Layer(100, 100);System.out.println("""layer  : de.fhk.mps.fhMahJongg.Layer = """ + $show(layer ));$skip(64); val res$3 = 
    //layer.Matrix(1)(2)
-   layer.setTileIDToPosition(1, 45, 88);System.out.println("""res1: Boolean = """ + $show(res$1));$skip(38); val res$2 = 
-   layer.setTileIDToPosition(2, 4, 2);System.out.println("""res2: Boolean = """ + $show(res$2));$skip(30); val res$3 = 
-   layer.getPositionFromID(1);System.out.println("""res3: Vector[Int] = """ + $show(res$3))}
+   layer.setTileIDToPosition(1, 45, 88);System.out.println("""res3: Boolean = """ + $show(res$3));$skip(38); val res$4 = 
+   layer.setTileIDToPosition(2, 4, 2);System.out.println("""res4: Boolean = """ + $show(res$4));$skip(30); val res$5 = 
+   layer.getPositionFromID(1);System.out.println("""res5: Vector[Int] = """ + $show(res$5))}
    //layer.getField
    
    /*

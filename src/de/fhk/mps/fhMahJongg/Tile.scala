@@ -15,10 +15,13 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
   var name:    String  = sName
   var position         = Vector(X, Y, Z)		//muss die Position hier rein oder reicht es, dies über ein Grid zuzuordnen?
   var UpperTile        = List[Int]()
+  var NeighborTile	   = List[Int]()
   
+  /**
+   * equals two tiles
+   */
   def ==(otherTile: Tile): Boolean = {
-    sName.endsWith(otherTile.name.substring(1))
-    return false
+    return sName.endsWith(otherTile.name.substring(1))    
   }
 
   /**
@@ -43,6 +46,24 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
   def popUpper(id: Int)	{
     UpperTile -= id
     if (UpperTile.length == 0) blocked = false
+  }
+  
+   /**
+    * this method adds a neighbor tile
+    * 
+    * @param id of the neighbor tile 
+    */
+  def pushNeighbor(id: Int)	{
+    if (id != this.id) NeighborTile ++= List(id)
+  }
+  
+  /**
+    * this method removes a neighbor tile
+    * 
+    * @param id of the neighbor tile 
+    */
+  def popNeighbor(id: Int)	{
+    if (id != this.id) NeighborTile -= id
   }
 	
   /**

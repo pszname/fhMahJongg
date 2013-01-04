@@ -11,12 +11,15 @@ class fhLayout
 	// Properties =======================================================================
   
 	def Layer = m_lpLayer;											/* Gibt die Layer Zurueck */
+	def tiles = m_lpTiles
+	def lastCheckedTileID = m_iLastCheckedTileID
   
 	// Defs ============================================================================= 
 
+	private var m_iLastCheckedTileID: Int = 0	
 	private var m_lpLayer: List[Layer] = List();					/* Hier werden die Layer gespeichert */
 	private var m_lpTiles: List[Tile]  = List();					/* Hier werden die Referenzen auf die Kacheln gespeichert */
-	
+		
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
 	 *  Erzeugt ein neues Layout
@@ -52,24 +55,6 @@ class fhLayout
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
-	 *  Selektiert ein Tile anhand der ID ab
-	 */
-	def SelectTile(iID: Int):Boolean=
-	{
-		return false;
-	}
-	
-	/////////////////////////////////////////////////////////////////////////////////////
-	/**
-	 *  Selektiert ein Tile anhand seines Namens ab
-	 */
-	def SelectTile(szName: String):Boolean=
-	{
-		return false;
-	}
-	
-	/////////////////////////////////////////////////////////////////////////////////////
-	/**
 	 *  Selektiert ein Tile an Position x, y. Ruft den Index der Ebene ab.
 	 *  Es wird < 0 zurückgegeben, falls nichts ausgewählt wurde bzw. es nicht möglich
 	 *  ist etwas auszuwählen.
@@ -79,4 +64,32 @@ class fhLayout
 		return -1;
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * this method deletes a tile from a layer and unlocks neighbor tiles
+	 * 
+	 * @param TileID
+	 * @return position of the deleted tile as <code>Vector[Int]</code>
+	 */
+	def deleteTile(id: Int): Vector[Int] = {
+	  
+	  var tile: Tile = m_lpTiles(id)
+	  
+	  var x: Int = tile.position(0)
+	  var y: Int = tile.position(1)
+	  var z: Int = tile.position(2)
+	  
+	  var layer: Layer = m_lpLayer(z)
+	  
+	  for(i <- 0 until tile.NeighborTile.length )	{
+	    m_lpTiles(tile.NeighborTile(i)).popNeighbor(id)
+	    m_lpTiles(tile.NeighborTile(i)).popUpper(id)
+	  }
+	  
+	  m_lpTiles = m_lpTiles.updated(id, new Tile("dummy", 0, x, y, z))
+	  
+	  layer.deleteTileIDFromPosition(x, y)
+	  
+	  Vector(x,y,z)
+	}
 }

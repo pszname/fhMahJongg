@@ -15,26 +15,21 @@ class TileTest extends SpecificationWithJUnit {
 
 import Array._
 object test {
+	
+	
+	var t1 = new Tile("dragon", 2, 1, 2, 3)   //> t1  : de.fhk.mps.fhMahJongg.Tile = de.fhk.mps.fhMahJongg.Tile@122be0b
+	t1.position(0)                            //> res0: Int = 1
+	
+	t1.UpperTile                              //> res1: List[Int] = List()
+	t1.popUpper(3)
 
-   var layer = new Layer(100, 100)                //> layer  : de.fhk.mps.fhMahJongg.Layer = de.fhk.mps.fhMahJongg.Layer@14920f8
+	"hallo".substring(1)                      //> res2: java.lang.String = allo
+   var layer = new Layer(100, 100)                //> layer  : de.fhk.mps.fhMahJongg.Layer = de.fhk.mps.fhMahJongg.Layer@11b16a7
    //layer.Matrix(1)(2)
-   layer.setTileIDToPosition(1, 45, 88)           //> res0: Boolean = true
-   layer.setTileIDToPosition(2, 4, 2)             //> res1: Boolean = true
-   layer.getPositionFromID(1)                     //> res2: Vector[Int] = Vector(45, 88)
-   layer.getField                                 //> res3: Array[Array[Int]] = Array(Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                                  //|  0, 0, 0, 0, 0, 0, 0, 0,
-                                                  //| Output exceeds cutoff limit.
+   layer.setTileIDToPosition(1, 45, 88)           //> res3: Boolean = true
+   layer.setTileIDToPosition(2, 4, 2)             //> res4: Boolean = true
+   layer.getPositionFromID(1)                     //> res5: Vector[Int] = Vector(45, 88)
+   //layer.getField
    
    /*
 	var m = new map(30, 45)

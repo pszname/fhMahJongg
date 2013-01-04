@@ -8,7 +8,7 @@ import Array._
  * 
  * @param width and height of the field
  */
-class Layer(private var width: Int, private var height: Int) {
+class Layer(var width: Int, var height: Int) {
   
 	/**
 	 * this is the matrix, that represents the field
