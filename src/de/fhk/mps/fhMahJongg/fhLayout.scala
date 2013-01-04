@@ -15,6 +15,7 @@ class fhLayout
 	// Defs ============================================================================= 
 
 	private var m_lpLayer: List[Layer] = List();					/* Hier werden die Layer gespeichert */
+	private var m_lpTiles: List[Tile]  = List();					/* Hier werden die Referenzen auf die Kacheln gespeichert */
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -36,7 +37,7 @@ class fhLayout
 		  case fhLayoutType.LT_TURTLE   =>
 		  {
 		    fRet = fhGenerator.LoadTurtle(fhMutableWrapper(this.m_lpLayer), 
-		    						      fhMutableWrapper(null)
+		    						      fhMutableWrapper(this.m_lpTiles)
 		    						      );
 		  }
 		  // Lade ein Nutzerdefiniertes Feld --------------------------------------------
