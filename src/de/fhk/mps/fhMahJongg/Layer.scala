@@ -6,14 +6,14 @@ import Array._
  * this class generates a new layer, that provides positions for a number of tiles
  * in addition to the layers size.
  * 
- * @param width and heigth of the field
+ * @param width and height of the field
  */
-class Layer(private var width: Int, private var heigth: Int) {
+class Layer(private var width: Int, private var height: Int) {
   
 	/**
 	 * this is the matrix, that represents the field
 	 */
-	private var Matrix = ofDim[Int](width, heigth)
+	private var Matrix = ofDim[Int](width, height)
   
 	/**
 	 * sets a tile id to a certain position
@@ -51,7 +51,7 @@ class Layer(private var width: Int, private var heigth: Int) {
 	 * @return xy-position as <code>Vector(Int, Int)</code>
 	 */
 	def getPositionFromID(id: Int): Vector[Int] =	{
-	  for (i <- 0 until width; j <- 0 until heigth)	{
+	  for (i <- 0 until width; j <- 0 until height)	{
 	    if (Matrix(i)(j) == id) return Vector(i, j)
 	  }
 	  return Vector(0, 0)
