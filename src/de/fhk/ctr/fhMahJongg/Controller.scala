@@ -14,7 +14,7 @@ object Controller {
   
   def checkTile(id: Int): Int =	{
     
-    if (layout.tiles(id).check == false) return -1 else if (layout.m_lpTiles(id))	
+    //if (layout.tiles(id).check == false) return -1 else if (layout.m_lpTiles(id))	
     
     return 0
   }
