@@ -12,7 +12,7 @@ class fhLayout
   
 	def Layer = m_lpLayer;											/* Gibt die Layer Zurueck */
 	def tiles = m_lpTiles
-	def lastCheckedTileID = m_iLastCheckedTileID
+	private def lastCheckedTileID = m_iLastCheckedTileID		// falls nötig, private entfernen!
   
 	// Defs ============================================================================= 
 
@@ -86,10 +86,28 @@ class fhLayout
 	    m_lpTiles(tile.NeighborTile(i)).popUpper(id)
 	  }
 	  
-	  m_lpTiles = m_lpTiles.updated(id, new Tile("dummy", 0, x, y, z))
+	  //m_lpTiles = m_lpTiles.updated(id, new Tile("dummy", 0, x, y, z))
 	  
 	  layer.deleteTileIDFromPosition(x, y)
 	  
 	  Vector(x,y,z)
+	}
+	
+	/**
+	 * This method provides an interface for checking tiles.
+	 * 
+	 * @param id of the tile, that should be checked
+	 * @return <code>Vector(0)</code>, if the tile was not checked or the tile is already checked; The position of the last checked tile, if the last checked tile and the new checked tile are not of the same type; The positions of the  last checked tile and the new checked tile, if they are of the same type, so they will be deleted 
+	 */
+	def checkTile(id: Int): Vector[Int] =	{    
+		if (id == lastCheckedTileID) Vector(0) 
+		else if (tiles(id).check == false) Vector(0) 
+		if (tiles(id) == tiles(lastCheckedTileID))
+			deleteTile(id) ++ deleteTile(lastCheckedTileID)                
+		else	{
+		  var oldlastCheckedTileID = lastCheckedTileID
+		  m_iLastCheckedTileID = id
+		  tiles(oldlastCheckedTileID).position
+		}
 	}
 }

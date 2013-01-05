@@ -15,13 +15,13 @@ object Controller {
       layout.CreateLayout(eType)
   }
   
-  def checkTile(id: Int): Int =	{
-    
-    if (layout.tiles(id).check == false) return -1 
-//    else if (layout.tiles(id) == layout.tiles(layout.lastCheckedTileID))
-    
-    
-    
-    return 0
+  /**
+   * This method provides an interface for checking tiles.
+   * 
+   * @param id of the tile, that should be checked
+   * @return <code>Vector(0)</code>, if the tile was not checked or the tile is already checked; The position of the last checked tile, if the last checked tile and the new checked tile are not of the same type; The positions of the  last checked tile and the new checked tile, if they are of the same type, so they will be deleted 
+   */
+  def checkTile(id: Int): Vector[Int] =	{    
+    layout.checkTile(id)
   }
 }

@@ -8,7 +8,6 @@ import org.specs2.mutable._
 class testTile extends SpecificationWithJUnit {
    	"A new Tile with X = 1, Y = 2, Z = 3, name = test and id = 0" should	{
    		val t = new Tile("test", 0, 1, 2, 3)
-   		val u = new Tile("test", 1, 1, 2, 4)
    		"return its position as vector" in	{
   	 	t.position must be_==(Vector(1,2,3))
   		}
