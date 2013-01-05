@@ -39,9 +39,12 @@ class fhLayout
 		  // Erzeuge eine Pyramide/Schildkroete -----------------------------------------
 		  case fhLayoutType.LT_TURTLE   =>
 		  {
-		    fRet = fhGenerator.LoadTurtle(fhMutableWrapper(this.m_lpLayer), 
-		    						      fhMutableWrapper(this.m_lpTiles)
-		    						      );
+		    var pMut1 = fhMutableWrapper(this.m_lpLayer);
+		    var pMut2 = fhMutableWrapper(this.m_lpTiles);
+		    fRet      = fhGenerator.LoadTurtle(pMut1, pMut2);
+		    
+		    m_lpLayer = pMut1.value;
+		    m_lpTiles = pMut2.value;
 		  }
 		  // Lade ein Nutzerdefiniertes Feld --------------------------------------------
 		  case fhLayoutType.LT_USER		=>
