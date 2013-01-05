@@ -23,7 +23,7 @@ class fhLayout
 
 	
 	/**
-	 *  Creates a new layout.
+	 * Creates a new layout.
 	 * 
 	 * @param layout-type as integer referring to the fhLayoutType enumeration
 	 * @return <code>true</code>, if layout was created faultless
@@ -61,7 +61,7 @@ class fhLayout
 	}
 		
 	/**
-	 * this method deletes a tile from a layer and unlocks neighbor tiles
+	 * This method deletes a tile from a layer and unlocks neighbor tiles.
 	 * 
 	 * @param TileID
 	 * @return position of the deleted tile as <code>Vector[Int]</code>
@@ -95,7 +95,7 @@ class fhLayout
 	 * @return <code>Vector(0)</code>, if the tile was not checked or the tile is already checked; The position of the last checked tile, if the last checked tile and the new checked tile are not of the same type; The positions of the  last checked tile and the new checked tile, if they are of the same type, so they will be deleted 
 	 */
 	def checkTile(id: Int): Vector[Int] =	{    
-		if (id == lastCheckedTileID) Vector(0) 
+		if (id == lastCheckedTileID || id == 0) Vector(0) 
 		else if (tiles(id).check == false) Vector(0) 
 		if (tiles(id) == tiles(lastCheckedTileID))
 			deleteTile(id) ++ deleteTile(lastCheckedTileID)                
@@ -111,14 +111,26 @@ class fhLayout
 	}
 	
 	/**
-   * This method provides checking tiles by position.
-   * 
-   * @param x-intercept and y-intercept of a position, that should be checked
-   * @return <code>Vector(0)</code>, if the tile was not checked or the tile is already checked; The position of the last checked tile, if the last checked tile and the new checked tile are not of the same type; The positions of the  last checked tile and the new checked tile, if they are of the same type, so they will be deleted 
-   */
-	def checkTile(x: Int, y: Int): Vector[Int] =	{
+	 * This method provides checking tiles by position.
+	 * 
+	 * @param x-intercept and y-intercept of a position, that should be checked
+	 * @return <code>Vector(0)</code>, if the tile was not checked or the tile is already checked; The position of the last checked tile, if the last checked tile and the new checked tile are not of the same type; The positions of the  last checked tile and the new checked tile, if they are of the same type, so they will be deleted 
+	 */
+	def checkTile(x: Int, y: Int): Vector[Int] = {
+	  checkTile(topTile(x, y))
+	}
+	
+	def topTiles: Array[Array[Int]] = {
+	  var layer = new Layer(Layer(0).width, Layer(0).height)
+	  for (i <- 0 until layer.width; j <- 0 until layer.height)	{
+	    layer.setTileIDToPosition(topTile(i, j), i, j)
+	  }
+	  layer.getField
+	}
+	
+	def topTile(x: Int, y: Int): Int = {
 	  var i = Layer.length - 1
-	  while (Layer(i).getIDFromPosition(x, y) == 0)	i -= 1	  
-	  checkTile(Layer(i).getIDFromPosition(x, y))
-  }
+	  while (Layer(i).getIDFromPosition(x, y) == 0 && i >= 0)	i -= 1
+	  if (i < 0) 0 else Layer(i).getIDFromPosition(x, y)
+	}
 }
