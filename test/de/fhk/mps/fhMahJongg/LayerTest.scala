@@ -15,7 +15,10 @@ class LayerTest extends SpecificationWithJUnit	{
     }
     "return false, if a tileID should be set to a position, that is already occupied" in	{
       l.setTileIDToPosition(2, 50, 75) must beFalse
-    }    
+    }  
+    "return false, if x or y is out of bound" in	{
+      l.setTileIDToPosition(3, 100, 200) must beFalse
+    }
     "return the position as vector of a specified tileID" in	{
       l.setTileIDToPosition(2, 50, 76)
       l.getPositionFromID(2) must be_==(Vector(50, 76))
