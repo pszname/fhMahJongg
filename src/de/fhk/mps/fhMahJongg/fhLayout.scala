@@ -87,6 +87,8 @@ class fhLayout
 	  else Vector(x,y,z)
 	}
 	
+	//TODO: in checkTile muss vor allem noch auf tile.checked geprüft werden, bevor tiles gelöscht werden
+	
 	/**
 	 * This method provides checking tiles by id.
 	 * 
