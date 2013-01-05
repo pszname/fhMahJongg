@@ -24,12 +24,12 @@ class fhLayout
 	/**
 	 *  Erzeugt ein neues Layout
 	 */
-	def CreateLayout(eType: fhLayoutType):Boolean=
+	def CreateLayout(iType: Int):Boolean=
 	{
 		var fRet = false;
 	  
 		// Entscheide wie das Feld erzeugt wird
-		eType match
+		fhLayoutType(iType) match
 		{
 		  // Erzeuge ein generiertes Feld -----------------------------------------------
 		  case fhLayoutType.LT_GENERATE =>
@@ -97,7 +97,7 @@ class fhLayout
 	}
 	
 	/**
-	 * This method provides an interface for checking tiles.
+	 * This method provides checking tiles by id.
 	 * 
 	 * @param id of the tile, that should be checked
 	 * @return <code>Vector(0)</code>, if the tile was not checked or the tile is already checked; The position of the last checked tile, if the last checked tile and the new checked tile are not of the same type; The positions of the  last checked tile and the new checked tile, if they are of the same type, so they will be deleted 
@@ -110,7 +110,23 @@ class fhLayout
 		else	{
 		  var oldlastCheckedTileID = lastCheckedTileID
 		  m_iLastCheckedTileID = id
-		  tiles(oldlastCheckedTileID).position
+		  if (oldlastCheckedTileID != 0)	{
+		    tiles(oldlastCheckedTileID).check
+		    tiles(oldlastCheckedTileID).position
+		  }
+		  else Vector(0, 0, 0)
 		}
 	}
+	
+	/**
+   * This method provides checking tiles by position.
+   * 
+   * @param x-intercept and y-intercept of a position, that should be checked
+   * @return <code>Vector(0)</code>, if the tile was not checked or the tile is already checked; The position of the last checked tile, if the last checked tile and the new checked tile are not of the same type; The positions of the  last checked tile and the new checked tile, if they are of the same type, so they will be deleted 
+   */
+	def checkTile(x: Int, y: Int): Vector[Int] =	{
+	  var i = Layer.length - 1
+	  while (Layer(i).getIDFromPosition(x, y) == 0)	i -= 1	  
+	  checkTile(Layer(i).getIDFromPosition(x, y))
+  }
 }
