@@ -46,7 +46,13 @@ class Layer(var width: Int, var height: Int) {
 	 * @param x-intercept, y-intercept
 	 * @return TileID as <code>Int</code>
 	 */
-	def getIDFromPosition(x: Int, y: Int): Int = Matrix(x)(y)
+	def getIDFromPosition(x: Int, y: Int): Int = 
+	{
+		if (x < this.width  || x > this.width ||
+		    y < this.height || y > this.height  ) 0
+		
+		Matrix(x)(y)
+	}
 	
 	/**
 	 * Returns the xy-position in addition to a TileID.
