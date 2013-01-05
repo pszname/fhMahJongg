@@ -62,6 +62,63 @@ object fhGenerator
 			"1J4", "2J4", "3J4", "4J4" 	// Jahreszeiten 4
 	)
 	/////////////////////////////////////////////////////////////////////////////////////
+	/*
+	 * Koordinaten fuer Turtle/Pyramid Layout.
+	 */
+	val TURTLE_COORD: Array[Vector[Int]] = Array(
+			// Reihe 1 ------------------------------------------------------------------
+			Vector( 3, 1, 0), Vector( 5, 1, 0), Vector( 7, 1, 0), Vector( 9, 1, 0), Vector(11, 1, 0), Vector(13, 1, 0),
+			Vector(15, 1, 0), Vector(17, 1, 0), Vector(19, 1, 0), Vector(21, 1, 0), Vector(23, 1, 0), Vector(25, 1, 0),
+			// Reihe 2, Ebene 1 ---------------------------------------------------------
+			Vector( 7, 3, 0), Vector( 9, 3, 0), Vector(11, 3, 0), Vector(13, 3, 0), Vector(15, 3, 0), Vector(17, 3, 0),
+			Vector(19, 3, 0), Vector(21, 3, 0),
+			// Reihe 2, Ebene 2 ---------------------------------------------------------
+			Vector( 9, 3, 1), Vector(11, 3, 1), Vector(13, 3, 1), Vector(15, 3, 1), Vector(17, 3, 1), Vector(19, 3, 1),
+			// Reihe 3, Ebene 1 ---------------------------------------------------------
+			Vector( 5, 5, 0), Vector( 7, 5, 0), Vector( 9, 5, 0), Vector(11, 5, 0), Vector(13, 5, 0),
+			Vector(15, 5, 0), Vector(17, 5, 0), Vector(19, 5, 0), Vector(21, 5, 0), Vector(23, 5, 0),
+			// Reihe 3, Ebene 2 ---------------------------------------------------------
+			Vector( 9, 5, 1), Vector(11, 5, 1), Vector(13, 5, 1), Vector(15, 5, 1), Vector(17, 5, 1), Vector(19, 5, 1),
+			// Reihe 3, Ebene 3 ---------------------------------------------------------
+			Vector(11, 5, 2), Vector(13, 5, 2), Vector(15, 5, 2), Vector(17, 5, 2),
+			// Reihe 4, Ebene 1 ---------------------------------------------------------
+			Vector( 3, 7, 0), Vector( 5, 7, 0), Vector( 7, 7, 0), Vector( 9, 7, 0), Vector(11, 7, 0), Vector(13, 7, 0),
+			Vector(15, 7, 0), Vector(17, 7, 0), Vector(19, 7, 0), Vector(21, 7, 0), Vector(23, 7, 0), Vector(25, 7, 0),
+			// Reihe 4, Ebene 2 ---------------------------------------------------------
+			Vector( 9, 7, 1), Vector(11, 7, 1), Vector(13, 7, 1), Vector(15, 7, 1), Vector(17, 7, 1), Vector(19, 7, 1),
+			// Reihe 4, Ebene 3 ---------------------------------------------------------
+			Vector(11, 7, 2), Vector(13, 7, 2), Vector(15, 7, 2), Vector(17, 7, 2),
+			// Reihe 4, Ebene 4 ---------------------------------------------------------
+			Vector(13, 7, 2), Vector(15, 7, 2),
+			// Reihe 5, Ebene 1 ---------------------------------------------------------
+			Vector( 3, 9, 0), Vector( 5, 9, 0), Vector( 7, 9, 0), Vector( 9, 9, 0), Vector(11, 9, 0), Vector(13, 9, 0),
+			Vector(15, 9, 0), Vector(17, 9, 0), Vector(19, 9, 0), Vector(21, 9, 0), Vector(23, 9, 0), Vector(25, 9, 0),
+			// Reihe 5, Ebene 2 ---------------------------------------------------------
+			Vector( 9, 9, 1), Vector(11, 9, 1), Vector(13, 9, 1), Vector(15, 9, 1), Vector(17, 9, 1), Vector(19, 9, 1),
+			// Reihe 5, Ebene 3 ---------------------------------------------------------
+			Vector(11, 9, 2), Vector(13, 9, 2), Vector(15, 9, 2), Vector(17, 9, 2),
+			// Reihe 5, Ebene 4 ---------------------------------------------------------
+			Vector(13, 9, 2), Vector(15, 9, 2),
+			// Zwischen Reihe 4 und Reihe 5 ---------------------------------------------
+			Vector(1, 8, 0), Vector(14, 8, 4), Vector(27, 8, 0),
+			// Reihe 6, Ebene 1 ---------------------------------------------------------
+			Vector( 5, 11, 0), Vector( 7, 11, 0), Vector( 9, 11, 0), Vector(11, 11, 0), Vector(13, 11, 0),
+			Vector(15, 11, 0), Vector(17, 11, 0), Vector(19, 11, 0), Vector(21, 11, 0), Vector(23, 11, 0),
+			// Reihe 6, Ebene 2 ---------------------------------------------------------
+			Vector( 9, 11, 1), Vector(11, 11, 1), Vector(13, 11, 1), Vector(15, 11, 1), Vector(17, 11, 1), Vector(19, 11, 1),
+			// Reihe 6, Ebene 3 ---------------------------------------------------------
+			Vector(11, 11, 2), Vector(13, 11, 2), Vector(15, 11, 2), Vector(17, 11, 2),
+			// Reihe 7, Ebene 1 ---------------------------------------------------------
+			Vector( 7, 13, 0), Vector( 9, 13, 0), Vector(11, 13, 0), Vector(13, 13, 0), Vector(15, 13, 0), Vector(17, 13, 0),
+			Vector(19, 13, 0), Vector(21, 13, 0),
+			// Reihe 7, Ebene 2 ---------------------------------------------------------
+			Vector( 9, 13, 1), Vector(11, 13, 1), Vector(13, 13, 1), Vector(15, 13, 1), Vector(17, 13, 1), Vector(19, 13, 1),
+			// Reihe 8 ------------------------------------------------------------------
+			Vector( 3, 15, 0), Vector( 5, 15, 0), Vector( 7, 15, 0), Vector( 9, 15, 0), Vector(11, 15, 0), Vector(13, 15, 0),
+			Vector(15, 15, 0), Vector(17, 15, 0), Vector(19, 15, 0), Vector(21, 15, 0), Vector(23, 15, 0), Vector(25, 15, 0)
+			
+	);
+	/////////////////////////////////////////////////////////////////////////////////////
 	val MAX_TILES :Int = 144;
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -74,73 +131,46 @@ object fhGenerator
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
-	 *  Laedt einfaches Layout
+	 *  Laedt Turtle Layout
 	 */
 	def LoadTurtle(lstLayer: fhMutableWrapper[List[Layer]], lpTiles: fhMutableWrapper[List[Tile]]):Boolean=
 	{
-	    var iPos       = 0;
-		var lpTmp      = CreateTiles();				// Erzeuge die nötigen Tiles
-		lstLayer.value = InitLayer(5, 15, 8);		// Erzeuge die Layer
-		lpTiles.value  = List();					// Loesche oder erzeuge die Tile-Liste
+	    var iTile      = 0;
+		var lpTmp      = CreateTiles();							// Erzeuge die benoetigten Tiles
+		lstLayer.value = InitLayer(5, 15, 8);					// Erzeuge die Layer
+		lpTiles.value  = List();								// Loesche oder erzeuge die Tile-Liste
 		
 		// Generiere die Position der Tiles
-		// erste Reihe ------------------------------------------------------------------
-		for (i <- 3 to 25 by 2)
+		for(i <- 0 until TURTLE_COORD.length)
 		{
-			iPos = SelectTile(lpTiles.value);								// Selektiere eine Kachel
-			lpTmp(iPos).position = Vector(i, 1, 0);							// Schreibe Position in die Kachel
-			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 1);	// Speicher ID in den Layer an Position
-			lpTiles.value ++= List(lpTmp(iPos));							// Rette die Kachel in die Lookuptable
-			lpTmp.drop(iPos);												// Lösche aus der Alten heraus
-		}
-		// zweite Reihe erste ebene -----------------------------------------------------
-		for (i <- 7 to 21 by 2)
-		{
-			iPos = SelectTile(lpTiles.value);
-			lpTmp(iPos).position = Vector(i, 3, 0);							
-			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 3);
-			lpTiles.value ++= List(lpTmp(iPos));							
-			lpTmp.drop(iPos);
-		}
-		// zweite Reihe zweite ebene ----------------------------------------------------
-		for (i <- 9 to 19 by 2)
-		{
-			iPos = SelectTile(lpTiles.value);
-			lpTmp(iPos).position = Vector(i, 3, 1);							
-			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 3);
-			lpTiles.value ++= List(lpTmp(iPos));							
-			lpTmp.drop(iPos);
-		}
-		// dritte Reihe erste ebene -----------------------------------------------------
-		for (i <- 5 to 23 by 2)
-		{
-			iPos = SelectTile(lpTiles.value);
-			lpTmp(iPos).position = Vector(i, 5, 0);							
-			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 5);
-			lpTiles.value ++= List(lpTmp(iPos));							
-			lpTmp.drop(iPos);
-		}
-		// dritte Reihe zweite ebene ----------------------------------------------------
-		for (i <- 9 to 19 by 2)
-		{
-			iPos = SelectTile(lpTiles.value);
-			lpTmp(iPos).position = Vector(i, 5, 1);							
-			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 5);
-			lpTiles.value ++= List(lpTmp(iPos));							
-			lpTmp.drop(iPos);
-		}
-		// dritte Reihe dritte ebene ----------------------------------------------------
-		for (i <- 11 to 17 by 2)
-		{
-		  //TODO: while (um Anzahl der Doppelgänger testen
-			iPos = SelectTile(lpTiles.value);
-			lpTmp(iPos).position = Vector(i, 5, 3);							
-			lstLayer.value(iPos).setTileIDToPosition(lpTmp(iPos).id, i, 3);
-			lpTiles.value ++= List(lpTmp(iPos));							
-			lpTmp.drop(iPos);
+		    var fOK = false;
+			
+		    // Prüfe, ob Tiles des selben Typs nicht 
+		    // mehr als doppelt vorkommen, da sonst unloesbar
+			while(!fOK)
+			{
+			    iTile = SelectTile(lpTmp);						// Hol per Zufall eine Kachel aus der Liste
+				fOK   = IsDouble(								// Prüft, ob schon doppelt vorhanden ist
+					lstLayer.value,								// Den Layer als Referenz zum Prüfen
+				    lpTmp(iTile).name, 							// Den Namen des gewählten Tiles
+				    TURTLE_COORD(i)								// Die Position des gewählten Tiles
+				    );
+			}
+			
+			// Setzt die gewaehlte Kachel ein
+			lpTmp(iTile).position 			   = TURTLE_COORD(i);
+			lpTiles.value       			 ++= List(lpTmp(iTile));
+			lstLayer.value(TURTLE_COORD(i)(2)).setTileIDToPosition(
+			    lpTmp(iTile).id,
+			    lpTmp(iTile).position(0), 
+			    lpTmp(iTile).position(1)
+			    );
+			lpTmp.drop(iTile);
 		}
 		
-		return false;
+		lpTiles.value.sortWith(_.id < _.id);					// Sortiere die Referenzliste
+		
+		return true;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -197,8 +227,26 @@ object fhGenerator
 	 * Prüft, ob eine ID schon Doppelt vorkommt, so wird verhindert, dass das Spiel
 	 * unlösbar wird.
 	 */
-	private def IsDouble(lpLayer: List[Layer], iID: Int):Boolean =
+	private def IsDouble(lpLayer: List[Layer], szName: String, pPos: Vector[Int]):Boolean =
 	{
-		return false;
+		var cb = 0;			// Zaehlvariabel
+		
+	    // Test noetig?
+		if (pPos(2) <= 1)	// bei maximal 2 Ebenen muss nicht getestet werden 
+		  return true;
+		
+		// Prüfe an der Position x/y den z Vektor durch
+		for (i <- 0 to pPos(2))
+		{
+			var szTmp = (TILE_NAMES(lpLayer(i).getIDFromPosition(pPos(0), pPos(1))))
+			if(szTmp(1) + szTmp(2) == szName(1) + szName(2))
+			  cb += 1;
+		}
+		
+		if (cb > 2)
+		  return false;
+		
+		return true;
 	}
+	/////////////////////////////////////////////////////////////////////////////////////
 }
