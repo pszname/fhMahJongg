@@ -131,19 +131,46 @@ object fhGenerator
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
-	 *  Laedt einfaches Layout
+	 *  Laedt Turtle Layout
 	 */
 	def LoadTurtle(lstLayer: fhMutableWrapper[List[Layer]], lpTiles: fhMutableWrapper[List[Tile]]):Boolean=
 	{
-	    var iPos       = 0;
-		var lpTmp      = CreateTiles();				// Erzeuge die nötigen Tiles
-		lstLayer.value = InitLayer(5, 15, 8);		// Erzeuge die Layer
-		lpTiles.value  = List();					// Loesche oder erzeuge die Tile-Liste
+	    var iTile      = 0;
+		var lpTmp      = CreateTiles();							// Erzeuge die benoetigten Tiles
+		lstLayer.value = InitLayer(5, 15, 8);					// Erzeuge die Layer
+		lpTiles.value  = List();								// Loesche oder erzeuge die Tile-Liste
 		
 		// Generiere die Position der Tiles
+		for(i <- 0 until TURTLE_COORD.length)
+		{
+		    var fOK = false;
+			
+		    // Prüfe, ob Tiles des selben Typs nicht 
+		    // mehr als doppelt vorkommen, da sonst unloesbar
+			while(!fOK)
+			{
+			    iTile = SelectTile(lpTmp);						// Hol per Zufall eine Kachel aus der Liste
+				fOK   = IsDouble(								// Prüft, ob schon doppelt vorhanden ist
+					lstLayer.value,								// Den Layer als Referenz zum Prüfen
+				    lpTmp(iTile).name, 							// Den Namen des gewählten Tiles
+				    TURTLE_COORD(i)								// Die Position des gewählten Tiles
+				    );
+			}
+			
+			// Setzt die gewaehlte Kachel ein
+			lpTmp(iTile).position 			   = TURTLE_COORD(i);
+			lpTiles.value       			 ++= List(lpTmp(iTile));
+			lstLayer.value(TURTLE_COORD(i)(2)).setTileIDToPosition(
+			    lpTmp(iTile).id,
+			    lpTmp(iTile).position(0), 
+			    lpTmp(iTile).position(1)
+			    );
+			lpTmp.drop(iTile);
+		}
 		
+		lpTiles.value.sortWith(_.id < _.id);					// Sortiere die Referenzliste
 		
-		return false;
+		return true;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -200,8 +227,8 @@ object fhGenerator
 	 * Prüft, ob eine ID schon Doppelt vorkommt, so wird verhindert, dass das Spiel
 	 * unlösbar wird.
 	 */
-	private def IsDouble(lpLayer: List[Layer], iID: Int):Boolean =
+	private def IsDouble(lpLayer: List[Layer], szTile: String, pPos: Vector[Int]):Boolean =
 	{
-		return false;
+		return true;
 	}
 }
