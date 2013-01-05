@@ -17,18 +17,20 @@ import Array._
 object test {
 	
 	
-	var t1 = new Tile("dragon", 2, 1, 2, 3)   //> t1  : de.fhk.mps.fhMahJongg.Tile = de.fhk.mps.fhMahJongg.Tile@122be0b
+	var t1 = new Tile("dragon", 2, 1, 2, 3)   //> t1  : de.fhk.mps.fhMahJongg.Tile = de.fhk.mps.fhMahJongg.Tile@e7cb66
 	t1.position(0)                            //> res0: Int = 1
 	
 	t1.UpperTile                              //> res1: List[Int] = List()
 	t1.popUpper(3)
+	t1.check                                  //> res2: Boolean = true
+	t1.checked                                //> res3: Boolean = true
 
-	"hallo".substring(1)                      //> res2: java.lang.String = allo
-   var layer = new Layer(100, 100)                //> layer  : de.fhk.mps.fhMahJongg.Layer = de.fhk.mps.fhMahJongg.Layer@11b16a7
+	"hallo".substring(1)                      //> res4: java.lang.String = allo
+   var layer = new Layer(100, 100)                //> layer  : de.fhk.mps.fhMahJongg.Layer = de.fhk.mps.fhMahJongg.Layer@e6e42e
    //layer.Matrix(1)(2)
-   layer.setTileIDToPosition(1, 45, 88)           //> res3: Boolean = true
-   layer.setTileIDToPosition(2, 4, 2)             //> res4: Boolean = true
-   layer.getPositionFromID(1)                     //> res5: Vector[Int] = Vector(45, 88)
+   layer.setTileIDToPosition(1, 45, 88)           //> res5: Boolean = true
+   layer.setTileIDToPosition(2, 4, 2)             //> res6: Boolean = true
+   layer.getPositionFromID(1)                     //> res7: Vector[Int] = Vector(45, 88)
    //layer.getField
    
    /*

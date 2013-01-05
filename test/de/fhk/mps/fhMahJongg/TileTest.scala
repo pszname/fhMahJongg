@@ -2,6 +2,9 @@ package de.fhk.mps.fhMahJongg
 
 import org.specs2.mutable._
 
+/**
+ * This class provides different test for the Tile.class.
+ */
 class testTile extends SpecificationWithJUnit {
    	"A new Tile with X = 1, Y = 2, Z = 3, name = test and id = 0" should	{
    		val t = new Tile("test", 0, 1, 2, 3)
@@ -21,6 +24,7 @@ class testTile extends SpecificationWithJUnit {
    		"be able to be checked" in	{
    	    t.check must be_==(true)
    	  }
+   		t.check
    	     	  "be checked after checking" in	{
    	    t.checked must be_==(true)
    	  }

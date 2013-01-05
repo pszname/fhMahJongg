@@ -21,14 +21,16 @@ object test {;import org.scalaide.worksheet.runtime.library.WorksheetSupport._; 
 	t1.position(0);System.out.println("""res0: Int = """ + $show(res$0));$skip(16); val res$1 = 
 	
 	t1.UpperTile;System.out.println("""res1: List[Int] = """ + $show(res$1));$skip(16); 
-	t1.popUpper(3);$skip(23); val res$2 = 
+	t1.popUpper(3);$skip(10); val res$2 = 
+	t1.check;System.out.println("""res2: Boolean = """ + $show(res$2));$skip(12); val res$3 = 
+	t1.checked;System.out.println("""res3: Boolean = """ + $show(res$3));$skip(23); val res$4 = 
 
-	"hallo".substring(1);System.out.println("""res2: java.lang.String = """ + $show(res$2));$skip(35); 
-   var layer = new Layer(100, 100);System.out.println("""layer  : de.fhk.mps.fhMahJongg.Layer = """ + $show(layer ));$skip(64); val res$3 = 
+	"hallo".substring(1);System.out.println("""res4: java.lang.String = """ + $show(res$4));$skip(35); 
+   var layer = new Layer(100, 100);System.out.println("""layer  : de.fhk.mps.fhMahJongg.Layer = """ + $show(layer ));$skip(64); val res$5 = 
    //layer.Matrix(1)(2)
-   layer.setTileIDToPosition(1, 45, 88);System.out.println("""res3: Boolean = """ + $show(res$3));$skip(38); val res$4 = 
-   layer.setTileIDToPosition(2, 4, 2);System.out.println("""res4: Boolean = """ + $show(res$4));$skip(30); val res$5 = 
-   layer.getPositionFromID(1);System.out.println("""res5: Vector[Int] = """ + $show(res$5))}
+   layer.setTileIDToPosition(1, 45, 88);System.out.println("""res5: Boolean = """ + $show(res$5));$skip(38); val res$6 = 
+   layer.setTileIDToPosition(2, 4, 2);System.out.println("""res6: Boolean = """ + $show(res$6));$skip(30); val res$7 = 
+   layer.getPositionFromID(1);System.out.println("""res7: Vector[Int] = """ + $show(res$7))}
    //layer.getField
    
    /*

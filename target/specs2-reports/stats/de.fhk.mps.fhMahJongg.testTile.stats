@@ -1,0 +1,4 @@
+<de.fhk.mps.fhMahJongg.testTile-results timestamp="1357388687548"><result location="de.fhk.mps.fhMahJongg.testTile (testTile.scala:24)" id="908148148"><stats expectations="1" examples="1" failures="1" time="80"></stats></result>
+</de.fhk.mps.fhMahJongg.testTile-results>
+<de.fhk.mps.fhMahJongg.testTile-stats timestamp="1357388687578"><stats expectations="11" successes="10" examples="11" failures="1" time="240"></stats></de.fhk.mps.fhMahJongg.testTile-stats>
+<de.fhk.mps.fhMahJongg.testTile-stats timestamp="1357388954347"><stats expectations="11" examples="11" successes="11" time="30"><trend><stats failures="-1" successes="1" time="30"></stats></trend></stats></de.fhk.mps.fhMahJongg.testTile-stats>
