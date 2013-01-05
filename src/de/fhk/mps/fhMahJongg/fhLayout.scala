@@ -2,9 +2,10 @@ package de.fhk.mps.fhMahJongg
 
 import fhLayoutType._
 
-/////////////////////////////////////////////////////////////////////////////////////////
 /**
- *  Diese Klasse definiert, erzeugt und Lädt ein Layout für ein Spiel
+ * This class provides a new layout. A layout contains multiple layers, that provides the position
+ * of each tile. Further it contains a list off all tiles.
+ * In addition the layout has methods for checking and deleting tiles.
  */
 class fhLayout 
 { 
@@ -19,10 +20,13 @@ class fhLayout
 	private var m_iLastCheckedTileID: Int = 0	
 	private var m_lpLayer: List[Layer] = List();					/* Hier werden die Layer gespeichert */
 	private var m_lpTiles: List[Tile]  = List();					/* Hier werden die Referenzen auf die Kacheln gespeichert */
-		
-	/////////////////////////////////////////////////////////////////////////////////////
+
+	
 	/**
-	 *  Erzeugt ein neues Layout
+	 *  Creates a new layout.
+	 * 
+	 * @param layout-type as integer referring to the fhLayoutType enumeration
+	 * @return <code>true</code>, if layout was created faultless
 	 */
 	def CreateLayout(iType: Int):Boolean=
 	{
@@ -55,19 +59,7 @@ class fhLayout
 		
 		return fRet;
 	}
-	
-	/////////////////////////////////////////////////////////////////////////////////////
-	/**
-	 *  Selektiert ein Tile an Position x, y. Ruft den Index der Ebene ab.
-	 *  Es wird < 0 zurückgegeben, falls nichts ausgewählt wurde bzw. es nicht möglich
-	 *  ist etwas auszuwählen.
-	 */
-	def SelectPos(iXPos: Int):Int=
-	{
-		return -1;
-	}
-	/////////////////////////////////////////////////////////////////////////////////////
-	
+		
 	/**
 	 * this method deletes a tile from a layer and unlocks neighbor tiles
 	 * 

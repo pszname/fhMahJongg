@@ -79,7 +79,7 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
   }
 	
   /**
-   * With this method, the tile gets checked or unchecked in addition to its state,
+   * With this method, the tile gets checked or unchecked depending on its state,
    * if the tile is not blocked.
    * 
    * @return <code>true</code>, if the tile was checked or unchecked. <code>false</code>, if the tile is blocked
