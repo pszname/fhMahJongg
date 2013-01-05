@@ -14,6 +14,8 @@ class Layer(var width: Int, var height: Int) {
 	 * This is the matrix, that represents the field of the layer.
 	 */
 	private var Matrix = ofDim[Int](width, height)
+	
+	def checkInBounds(x: Int, y: Int): Boolean = (x >= 0 && x < width && y >= 0 && y < height)
   
 	/**
 	 * Sets a tile id to a certain position.
@@ -21,10 +23,8 @@ class Layer(var width: Int, var height: Int) {
 	 * @param a unique ID and the position as x-intercept and y-intercept
 	 * @return <code>true</code>, if the position is available and set, otherwise <code>false</code>
 	 */
-	def setTileIDToPosition(id: Int, x: Int, y: Int): Boolean	= {
-	  if (Matrix(x)(y) == 0 &&
-	      !(x < this.width  || x > this.width || 
-	          y < this.height || y > this.height  ))	{	
+	def setTileIDToPosition(id: Int, x: Int, y: Int): Boolean = {
+	  if (checkInBounds(x, y) && Matrix(x)(y) == 0)	{	
 	    Matrix(x)(y) = id
 	    true
 	  }
@@ -38,7 +38,7 @@ class Layer(var width: Int, var height: Int) {
 	 * @return new content of the position. 0, if faultless
 	 */
 	def deleteTileIDFromPosition(x: Int, y: Int): Int =	{
-	  Matrix(x)(y) = 0
+	  if (checkInBounds(x, y)) Matrix(x)(y) = 0
 	  Matrix(x)(y)
 	  }
 		
@@ -48,11 +48,9 @@ class Layer(var width: Int, var height: Int) {
 	 * @param x-intercept, y-intercept
 	 * @return TileID as <code>Int</code>
 	 */
-	def getIDFromPosition(x: Int, y: Int): Int = 
-	{
-		if (x < this.width  || x > this.width ||
-		    y < this.height || y > this.height  ) 0
-		else Matrix(x)(y)
+	def getIDFromPosition(x: Int, y: Int): Int = {
+		if (checkInBounds(x, y)) Matrix(x)(y)
+		else 0
 	}
 	
 	/**
