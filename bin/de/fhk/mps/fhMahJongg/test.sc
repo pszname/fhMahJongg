@@ -17,7 +17,7 @@ import Array._
 object test {
 	
 	
-	var t1 = new Tile("dragon", 2, 1, 2, 3)   //> t1  : de.fhk.mps.fhMahJongg.Tile = de.fhk.mps.fhMahJongg.Tile@e7cb66
+	var t1 = new Tile("dragon", 2, 1, 2, 3)   //> t1  : de.fhk.mps.fhMahJongg.Tile = de.fhk.mps.fhMahJongg.Tile@6a54f9
 	t1.position(0)                            //> res0: Int = 1
 	
 	t1.UpperTile                              //> res1: List[Int] = List()
@@ -25,13 +25,28 @@ object test {
 	t1.check                                  //> res2: Boolean = true
 	t1.checked                                //> res3: Boolean = true
 
-	"hallo".substring(1)                      //> res4: java.lang.String = allo
-   var layer = new Layer(100, 100)                //> layer  : de.fhk.mps.fhMahJongg.Layer = de.fhk.mps.fhMahJongg.Layer@e6e42e
+	//"hallo".substring(1)
+   var layer = new Layer(100, 100)                //> layer  : de.fhk.mps.fhMahJongg.Layer = de.fhk.mps.fhMahJongg.Layer@a7b7ff
    //layer.Matrix(1)(2)
-   layer.setTileIDToPosition(1, 45, 88)           //> res5: Boolean = true
-   layer.setTileIDToPosition(2, 4, 2)             //> res6: Boolean = true
-   layer.getPositionFromID(1)                     //> res7: Vector[Int] = Vector(45, 88)
-   //layer.getField
+   layer.setTileIDToPosition(1, 45, 88)           //> res4: Boolean = true
+   layer.setTileIDToPosition(2, 4, 2)             //> res5: Boolean = true
+   layer.getPositionFromID(1)                     //> res6: Vector[Int] = Vector(45, 88)
+   layer.deleteTileIDFromPosition(4, 2)
+   var matrix = layer.getField                    //> matrix  : Array[Array[Int]] = Array(Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0
+                                                  //| Output exceeds cutoff limit.
+   matrix(4)(2)                                   //> res7: Int = 0
    
    /*
 	var m = new map(30, 45)
