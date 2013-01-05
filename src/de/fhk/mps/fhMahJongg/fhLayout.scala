@@ -83,9 +83,8 @@ class fhLayout
 	  
 	  //m_lpTiles = m_lpTiles.updated(id, new Tile("dummy", 0, x, y, z))
 	  
-	  layer.deleteTileIDFromPosition(x, y)
-	  
-	  Vector(x,y,z)
+	  if (layer.deleteTileIDFromPosition(x, y) != 0) Vector(0, 0, 0)
+	  else Vector(x,y,z)
 	}
 	
 	/**

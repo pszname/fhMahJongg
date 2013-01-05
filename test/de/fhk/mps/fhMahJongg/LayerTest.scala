@@ -16,8 +16,14 @@ class LayerTest extends SpecificationWithJUnit	{
     "return false, if a tileID should be set to a position, that is already occupied" in	{
       l.setTileIDToPosition(2, 50, 75) must beFalse
     }  
-    "return false, if x or y is out of bound" in	{
+    "return false, if x or y is out of bound while setting a tileID to position" in	{
       l.setTileIDToPosition(3, 100, 200) must beFalse
+    }
+    "return 0, if x or y is out of bound while requesting a tileID on position" in	{
+      l.getIDFromPosition(1, -1) must be_==(0)
+    }
+    "return 1, if x or y is out of bound while deleting a tileID from its position" in	{
+      l.deleteTileIDFromPosition(-1, 201) must be_!=(0)
     }
     "return the position as vector of a specified tileID" in	{
       l.setTileIDToPosition(2, 50, 76)
