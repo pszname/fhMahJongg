@@ -11,7 +11,7 @@ object fhGenerator
     /**
      * Liste mit den Namen der Tiles
      */
-	private val TILE_NAMES: Array[String] = Array(
+	val TILE_NAMES: Array[String] = Array(
 			"1B1", "2B1", "3B1", "4B1",	// Bambus 1
 			"1B2", "2B2", "3B2", "4B2",	// Bambus 2
 			"1B3", "2B3", "3B3", "4B3",	// Bambus 3
@@ -247,6 +247,68 @@ object fhGenerator
 		  return false;
 		
 		return true;
+	}
+	/////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Suche nach sperrenden Kacheln.
+	 * @Param: lpTiles Die Liste mit den referenzierten Kacheln.
+	 * @Param: lpLayer Die Liste mit den Layern.
+	 * @Param: iRow    Die Zeile die aktuell untersucht wird.
+	 */
+	private def CheckFoes(lpTiles: fhMutableWrapper[List[Tile]], lpLayer: List[Layer], iRow: Int)=
+	{
+		// Hoehe 
+		for (z <- 0 until lpLayer.length)
+		{
+			for (x <- 0 until lpLayer(z).width)
+			{
+			    var iID = lpLayer(z).getIDFromPosition(x, iRow);
+			    // besetzt?
+				if (iID != 0)
+				{
+					// befindet sich noch eine Kachel darueber?
+				    if (lpLayer.length < z+1 && lpLayer(z).getIDFromPosition(x, iRow) > 0)
+				    {
+				    	// Merke die den Darueberliegenden
+				        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow)); 
+				    }
+				    
+				    // kein Nachbar rechts ----------------------------------------------
+				    if (lpLayer(z).getIDFromPosition(x+2, iRow) <= 0)
+				    {
+				    	// Schraeg rechts oben?
+				    	if (lpLayer(z).getIDFromPosition(x+2, iRow-1) > 0)
+				    	{
+				    		lpTiles.value(iID).pushNeighbor(
+				    				lpLayer(z).getIDFromPosition(x+2, iRow-1));
+				    		
+				    		// sich selbst als linken Nachbarn eintragen
+				    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1)).pushNeighbor(iID);
+				    	}
+				    	// Schraeg rechts unten?
+					    if (lpLayer(z).getIDFromPosition(x+2, iRow+1) > 0)
+					    {
+					    	lpTiles.value(iID).pushNeighbor(
+				    				lpLayer(z).getIDFromPosition(x+2, iRow+1));
+					    	
+					    	// sich selbst als linken Nachbarn eintragen
+				    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1)).pushNeighbor(iID);
+					    }
+				    }
+				    // Nachbar rechts ---------------------------------------------------
+				    else
+				    {
+				      // Merke dir den rechten Nachbarn
+				      lpTiles.value(iID).pushNeighbor(
+				          lpLayer(z).getIDFromPosition(x+2, iRow));
+				      
+				      // sich selbst als linken Nachbarn eintragen
+				      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow)).pushNeighbor(iID);
+				    } // Out Nachbar rechts
+				    
+				} // out besetzt?
+			} // x
+		} // z
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
 }
