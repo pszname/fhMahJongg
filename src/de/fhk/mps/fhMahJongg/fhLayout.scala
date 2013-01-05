@@ -120,6 +120,11 @@ class fhLayout
 	  checkTile(topTile(x, y))
 	}
 	
+	/**
+	 * This method returns a field that contains all tiles on top.
+	 * 
+	 * @return <code>Array[Array[Int]]</code>
+	 */
 	def topTiles: Array[Array[Int]] = {
 	  var layer = new Layer(Layer(0).width, Layer(0).height)
 	  for (i <- 0 until layer.width; j <- 0 until layer.height)	{
@@ -128,8 +133,26 @@ class fhLayout
 	  layer.getField
 	}
 	
+	/**
+	 * This method returns the supreme tile on a position.
+	 * 
+	 * @param xy-position
+	 * @return tileID of the supreme tile. If there is no tile on the position, it provides 0
+	 */
 	def topTile(x: Int, y: Int): Int = {
 	  var i = Layer.length - 1
+	  while (Layer(i).getIDFromPosition(x, y) == 0 && i >= 0)	i -= 1
+	  if (i < 0) 0 else Layer(i).getIDFromPosition(x, y)
+	}
+	
+	/**
+	 * This method returns the supreme tile on a position.
+	 * 
+	 * @param xyz-position
+	 * @return tileID of the supreme tile. If there is no tile on the position, it provides 0
+	 */
+	def topTile(x: Int, y: Int, z: Int): Int = {
+	  var i = z
 	  while (Layer(i).getIDFromPosition(x, y) == 0 && i >= 0)	i -= 1
 	  if (i < 0) 0 else Layer(i).getIDFromPosition(x, y)
 	}
