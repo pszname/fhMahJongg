@@ -1,5 +1,9 @@
 package de.fhk.mps.fhMahJongg
 
+import de.fhk.ctr.fhMahJongg._
+
+
+
 /*import org.specs2.mutable._
 
 class TileTest extends SpecificationWithJUnit {
@@ -14,28 +18,40 @@ class TileTest extends SpecificationWithJUnit {
    
 
 import Array._
-object test {;import org.scalaide.worksheet.runtime.library.WorksheetSupport._; def main(args: Array[String])=$execute{;$skip(387); 
+object test {;import org.scalaide.worksheet.runtime.library.WorksheetSupport._; def main(args: Array[String])=$execute{;$skip(432); 
 	
+	Controller.generateGameBoard(fhLayoutType.LT_TURTLE);$skip(26); val res$0 = 
+	Controller.checkTile(70);System.out.println("""res0: Vector[Int] = """ + $show(res$0));$skip(38); val res$1 = 
+	Controller.layout.tiles(70).position;System.out.println("""res1: scala.collection.immutable.Vector[Int] = """ + $show(res$1));$skip(34); val res$2 = 
+	Controller.layout.tiles(70).name;System.out.println("""res2: String = """ + $show(res$2));$skip(37); val res$3 = 
+	Controller.layout.tiles(70).checked;System.out.println("""res3: Boolean = """ + $show(res$3));$skip(34); val res$4 = 
+	Controller.layout.tiles(78).name;System.out.println("""res4: String = """ + $show(res$4));$skip(26); val res$5 = 
+	Controller.checkTile(78);System.out.println("""res5: Vector[Int] = """ + $show(res$5));$skip(52); val res$6 = 
+	Controller.layout.Layer(0).getIDFromPosition(3, 9);System.out.println("""res6: Int = """ + $show(res$6));$skip(17); val res$7 = 
+	fhLayoutType(1);System.out.println("""res7: de.fhk.mps.fhMahJongg.fhLayoutType.Value = """ + $show(res$7))}
+	//Controller.layout.Layer(0).getField
 	
-	var t1 = new Tile("dragon", 2, 1, 2, 3);System.out.println("""t1  : de.fhk.mps.fhMahJongg.Tile = """ + $show(t1 ));$skip(16); val res$0 = 
-	t1.position(0);System.out.println("""res0: Int = """ + $show(res$0));$skip(16); val res$1 = 
+	/*var t1 = new Tile("dragon", 2, 1, 2, 3)
+	t1.position(0)
 	
-	t1.UpperTile;System.out.println("""res1: List[Int] = """ + $show(res$1));$skip(16); 
-	t1.popUpper(3);$skip(10); val res$2 = 
-	t1.check;System.out.println("""res2: Boolean = """ + $show(res$2));$skip(12); val res$3 = 
-	t1.checked;System.out.println("""res3: Boolean = """ + $show(res$3));$skip(60); 
+	t1.UpperTile
+	t1.popUpper(3)
+	t1.check
+	t1.checked
 
-	//"hallo".substring(1)
-   var layer = new Layer(100, 100);System.out.println("""layer  : de.fhk.mps.fhMahJongg.Layer = """ + $show(layer ));$skip(64); val res$4 = 
-   //layer.Matrix(1)(2)
-   layer.setTileIDToPosition(1, 45, 88);System.out.println("""res4: Boolean = """ + $show(res$4));$skip(38); val res$5 = 
-   layer.setTileIDToPosition(2, 4, 2);System.out.println("""res5: Boolean = """ + $show(res$5));$skip(30); val res$6 = 
-   layer.getPositionFromID(1);System.out.println("""res6: Vector[Int] = """ + $show(res$6));$skip(40); 
-   layer.deleteTileIDFromPosition(4, 2);$skip(31); 
-   var matrix = layer.getField;System.out.println("""matrix  : Array[Array[Int]] = """ + $show(matrix ));$skip(16); val res$7 = 
-   matrix(4)(2);System.out.println("""res7: Int = """ + $show(res$7))}
+
+
+	"hallo".substring(1)
+   var layer = new Layer(100, 100)
+   layer.Matrix(1)(2)
+   layer.setTileIDToPosition(1, 45, 88)
+   layer.setTileIDToPosition(2, 4, 2)
+   layer.getPositionFromID(1)
+   layer.deleteTileIDFromPosition(4, 2)
+   var matrix = layer.getField
+   matrix(4)(2)
    
-   /*
+   
 	var m = new map(30, 45)
 	m.field(1)(2) = 5
 	//m.field

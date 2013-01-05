@@ -1,5 +1,8 @@
 package de.fhk.mps.fhMahJongg
 
+/**
+ * This enumeration provides layout-types
+ */
 object fhLayoutType extends Enumeration 
 {
 	type fhLayoutType = Value;

@@ -2,9 +2,10 @@ package de.fhk.mps.fhMahJongg
 
 import fhLayoutType._
 
-/////////////////////////////////////////////////////////////////////////////////////////
 /**
- *  Diese Klasse definiert, erzeugt und Lädt ein Layout für ein Spiel
+ * This class provides a new layout. A layout contains multiple layers, that provides the position
+ * of each tile. Further it contains a list off all tiles.
+ * In addition the layout has methods for checking and deleting tiles.
  */
 class fhLayout 
 { 
@@ -19,17 +20,20 @@ class fhLayout
 	private var m_iLastCheckedTileID: Int = 0	
 	private var m_lpLayer: List[Layer] = List();					/* Hier werden die Layer gespeichert */
 	private var m_lpTiles: List[Tile]  = List();					/* Hier werden die Referenzen auf die Kacheln gespeichert */
-		
-	/////////////////////////////////////////////////////////////////////////////////////
+
+	
 	/**
-	 *  Erzeugt ein neues Layout
+	 * Creates a new layout.
+	 * 
+	 * @param layout-type as integer referring to the fhLayoutType enumeration
+	 * @return <code>true</code>, if layout was created faultless
 	 */
-	def CreateLayout(eType: fhLayoutType):Boolean=
+	def CreateLayout(iType: Int):Boolean=
 	{
 		var fRet = false;
 	  
 		// Entscheide wie das Feld erzeugt wird
-		eType match
+		fhLayoutType(iType) match
 		{
 		  // Erzeuge ein generiertes Feld -----------------------------------------------
 		  case fhLayoutType.LT_GENERATE =>
@@ -55,21 +59,9 @@ class fhLayout
 		
 		return fRet;
 	}
-	
-	/////////////////////////////////////////////////////////////////////////////////////
+		
 	/**
-	 *  Selektiert ein Tile an Position x, y. Ruft den Index der Ebene ab.
-	 *  Es wird < 0 zurückgegeben, falls nichts ausgewählt wurde bzw. es nicht möglich
-	 *  ist etwas auszuwählen.
-	 */
-	def SelectPos(iXPos: Int):Int=
-	{
-		return -1;
-	}
-	/////////////////////////////////////////////////////////////////////////////////////
-	
-	/**
-	 * this method deletes a tile from a layer and unlocks neighbor tiles
+	 * This method deletes a tile from a layer and unlocks neighbor tiles.
 	 * 
 	 * @param TileID
 	 * @return position of the deleted tile as <code>Vector[Int]</code>
@@ -97,20 +89,48 @@ class fhLayout
 	}
 	
 	/**
-	 * This method provides an interface for checking tiles.
+	 * This method provides checking tiles by id.
 	 * 
 	 * @param id of the tile, that should be checked
 	 * @return <code>Vector(0)</code>, if the tile was not checked or the tile is already checked; The position of the last checked tile, if the last checked tile and the new checked tile are not of the same type; The positions of the  last checked tile and the new checked tile, if they are of the same type, so they will be deleted 
 	 */
 	def checkTile(id: Int): Vector[Int] =	{    
-		if (id == lastCheckedTileID) Vector(0) 
+		if (id == lastCheckedTileID || id == 0) Vector(0) 
 		else if (tiles(id).check == false) Vector(0) 
 		if (tiles(id) == tiles(lastCheckedTileID))
 			deleteTile(id) ++ deleteTile(lastCheckedTileID)                
 		else	{
 		  var oldlastCheckedTileID = lastCheckedTileID
 		  m_iLastCheckedTileID = id
-		  tiles(oldlastCheckedTileID).position
+		  if (oldlastCheckedTileID != 0)	{
+		    tiles(oldlastCheckedTileID).check
+		    tiles(oldlastCheckedTileID).position
+		  }
+		  else Vector(0, 0, 0)
 		}
+	}
+	
+	/**
+	 * This method provides checking tiles by position.
+	 * 
+	 * @param x-intercept and y-intercept of a position, that should be checked
+	 * @return <code>Vector(0)</code>, if the tile was not checked or the tile is already checked; The position of the last checked tile, if the last checked tile and the new checked tile are not of the same type; The positions of the  last checked tile and the new checked tile, if they are of the same type, so they will be deleted 
+	 */
+	def checkTile(x: Int, y: Int): Vector[Int] = {
+	  checkTile(topTile(x, y))
+	}
+	
+	def topTiles: Array[Array[Int]] = {
+	  var layer = new Layer(Layer(0).width, Layer(0).height)
+	  for (i <- 0 until layer.width; j <- 0 until layer.height)	{
+	    layer.setTileIDToPosition(topTile(i, j), i, j)
+	  }
+	  layer.getField
+	}
+	
+	def topTile(x: Int, y: Int): Int = {
+	  var i = Layer.length - 1
+	  while (Layer(i).getIDFromPosition(x, y) == 0 && i >= 0)	i -= 1
+	  if (i < 0) 0 else Layer(i).getIDFromPosition(x, y)
 	}
 }

@@ -67,10 +67,10 @@ class Layer(var width: Int, var height: Int) {
 	  Vector(0, 0)
 	}
 	
-	/*/**
+	/**
 	 * Returns the the whole layer as field.
 	 * 
 	 * @return layer as <code>Array[Array[Int]]</code>
 	 */
-	def getField: Array[Array[Int]] = Matrix*/
+	def getField: Array[Array[Int]] = Matrix
 }
