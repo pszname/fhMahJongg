@@ -140,7 +140,7 @@ class fhLayout
 	 */
 	def topTile(x: Int, y: Int): Int = {
 	  var i = Layer.length - 1
-	  while (Layer(i).getIDFromPosition(x, y) == 0 && i >= 0)	i -= 1
+	  while (i >= 0 && Layer(i).getIDFromPosition(x, y) == 0)	i -= 1
 	  if (i < 0) 0 else Layer(i).getIDFromPosition(x, y)
 	}
 	

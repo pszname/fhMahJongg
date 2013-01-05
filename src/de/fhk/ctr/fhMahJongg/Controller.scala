@@ -8,12 +8,21 @@ import de.fhk.mps.fhMahJongg._
  */
 object Controller {
   
-  var layout = new fhLayout		//muss eigentlich private sein, nur zum testen public
+  private var layout = new fhLayout
   
-  def generateGameBoard(iType: Int)	{
-      
-      layout.CreateLayout(iType)
-  }
+  /**
+   * This method generates a virtual game board for the game play.
+   * 
+   * @param layout-type as integer referring to fhLayoutType
+   */
+  def generateGameBoard(iType: Int): Boolean = layout.CreateLayout(iType)  
+  
+  /**
+   * This method provides a layer that contains all supreme tiles.
+   * 
+   * @return <code>Array[Array[Int]]</code>
+   */
+  def generateTopLayer: Array[Array[Int]] = layout.topTiles
   
   /**
    * This method provides an interface for checking tiles.
