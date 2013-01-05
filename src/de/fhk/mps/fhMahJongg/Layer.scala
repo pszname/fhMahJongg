@@ -38,9 +38,12 @@ class Layer(var width: Int, var height: Int) {
 	 * @return new content of the position. 0, if faultless
 	 */
 	def deleteTileIDFromPosition(x: Int, y: Int): Int =	{
-	  if (checkInBounds(x, y)) Matrix(x)(y) = 0
+	  if (checkInBounds(x, y))	{
+	    Matrix(x)(y) = 0
 	  Matrix(x)(y)
 	  }
+	  else 1
+	 }
 		
 	/**
 	 * Returns a TileID from xy-position.
