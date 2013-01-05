@@ -2,3 +2,13 @@
 </de.fhk.mps.fhMahJongg.testTile-results>
 <de.fhk.mps.fhMahJongg.testTile-stats timestamp="1357388687578"><stats expectations="11" successes="10" examples="11" failures="1" time="240"></stats></de.fhk.mps.fhMahJongg.testTile-stats>
 <de.fhk.mps.fhMahJongg.testTile-stats timestamp="1357388954347"><stats expectations="11" examples="11" successes="11" time="30"><trend><stats failures="-1" successes="1" time="30"></stats></trend></stats></de.fhk.mps.fhMahJongg.testTile-stats>
+<de.fhk.mps.fhMahJongg.testTile-results timestamp="1357396559705"><result location="de.fhk.mps.fhMahJongg.testTile (TileTest.scala:27)" id="908148148"><stats expectations="1" examples="1" failures="1" time="10"></stats></result>
+</de.fhk.mps.fhMahJongg.testTile-results>
+<de.fhk.mps.fhMahJongg.testTile-stats timestamp="1357396559705"><stats expectations="12" successes="11" examples="12" failures="1" time="30"><trend><stats expectations="1" examples="1" failures="1" time="30"></stats></trend></stats></de.fhk.mps.fhMahJongg.testTile-stats>
+<de.fhk.mps.fhMahJongg.testTile-results timestamp="1357396699104"><result location="de.fhk.mps.fhMahJongg.testTile (TileTest.scala:27)" id="908148148"><stats failures="1" examples="1" expectations="1"></stats></result>
+</de.fhk.mps.fhMahJongg.testTile-results>
+<de.fhk.mps.fhMahJongg.testTile-stats timestamp="1357396699124"><stats expectations="12" successes="11" examples="12" failures="1" time="30"></stats></de.fhk.mps.fhMahJongg.testTile-stats>
+<de.fhk.mps.fhMahJongg.testTile-results timestamp="1357396746822"><result location="de.fhk.mps.fhMahJongg.testTile (TileTest.scala:27)" id="908148148"><stats failures="1" examples="1" expectations="1"></stats></result>
+</de.fhk.mps.fhMahJongg.testTile-results>
+<de.fhk.mps.fhMahJongg.testTile-stats timestamp="1357396746832"><stats expectations="13" successes="12" examples="13" failures="1" time="30"><trend><stats expectations="1" examples="1" successes="1" time="30"></stats></trend></stats></de.fhk.mps.fhMahJongg.testTile-stats>
+<de.fhk.mps.fhMahJongg.testTile-stats timestamp="1357396803711"><stats expectations="13" examples="13" successes="13" time="30"><trend><stats failures="-1" successes="1" time="30"></stats></trend></stats></de.fhk.mps.fhMahJongg.testTile-stats>
