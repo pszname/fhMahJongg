@@ -10,6 +10,8 @@ class fhTui
 {
 	/////////////////////////////////////////////////////////////////////////////////////
   
+	private val MAX_ROWS = 50;
+  
 	private var m_Settings: fhSettings = new fhSettings("config.inf");					/** Enthaelt die Einstellungen */;
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -18,9 +20,11 @@ class fhTui
 	 */
 	def PrintHead()=
 	{
-	  println("|+++++++++++++++++++++++++ fhMahJongg! +++++++++++++++++++++++++|")
+	  println("|------------------------- fhMahJongg! -------------------------|")
       println("|                                                               |")
       println("| Autoren: pszName & Doncanalie                                 |")
+      println("|                                                               |")
+      println("|---------------------------------------------------------------|")
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -28,8 +32,8 @@ class fhTui
 	 */
 	def Begin()=
 	{
-		// Einstellungen laden
-		m_Settings.LoadSettings();
+		m_Settings.LoadSettings();					/* Laedt die Einstellungen */
+		Controller.generateGameBoard(StartOption)	/* Laedt das Spielelayout  */
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -45,8 +49,44 @@ class fhTui
 	  
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
-	def StartOption():String=
+	/**
+	 * Legt das Spiel fest.
+	 * 
+	 * @returns Die Spielwahl.
+	 */
+	def StartOption():Int=
 	{
-		return "1";
+		var iRet = 0
+	  
+		println("|                                                               |")
+		println("| Spieloption:                                                  |")
+		println("| 1. Generiert                                                  |")
+		println("| 2. Pyramide                                                   |")
+		println("| 3. Nutzerdefiniert                                            |")
+		println("|                                                               |")
+		println("|---------------------------------------------------------------|")
+		
+		return 1;
 	}
+	/////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Zeigt die Eingabemaske an.
+	 * 
+	 * @Param cbRows Die Anzahl der bereits geschriebenen Zeilen
+	 * @returns Liefert die Eingabe als String zurueck
+	 */
+	def ShowInput(cbRows: Int): String=
+	{
+	  for(i <- cbRows until MAX_ROWS - 3)
+	  {
+		  println("|                                                               |")
+	  }
+	  
+	  println("|---------------------------------------------------------------|")
+	  println("| n: neues Spiel, l: Spiel laden, s: Spiel speichern            |")
+	  println("| c: Einstellungen, e: Ende                                     |")
+	  print("--> ")
+	  ""
+	}
+	/////////////////////////////////////////////////////////////////////////////////////
 }
