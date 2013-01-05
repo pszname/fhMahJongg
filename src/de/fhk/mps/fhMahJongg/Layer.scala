@@ -22,7 +22,9 @@ class Layer(var width: Int, var height: Int) {
 	 * @return <code>true</code>, if the position is available and set, otherwise <code>false</code>
 	 */
 	def setTileIDToPosition(id: Int, x: Int, y: Int): Boolean	= {
-	  if (Matrix(x)(y) == 0)	{	
+	  if (Matrix(x)(y) == 0 &&
+	      !(x < this.width  || x > this.width || 
+	          y < this.height || y > this.height  ))	{	
 	    Matrix(x)(y) = id
 	    true
 	  }
@@ -50,8 +52,7 @@ class Layer(var width: Int, var height: Int) {
 	{
 		if (x < this.width  || x > this.width ||
 		    y < this.height || y > this.height  ) 0
-		
-		Matrix(x)(y)
+		else Matrix(x)(y)
 	}
 	
 	/**
