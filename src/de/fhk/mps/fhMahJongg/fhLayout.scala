@@ -1,6 +1,7 @@
 package de.fhk.mps.fhMahJongg
 
 import fhLayoutType._
+import Array._
 
 /**
  * This class provides a new layout. A layout contains multiple layers, that provides the position
@@ -68,7 +69,7 @@ class fhLayout
 	 */
 	def deleteTile(id: Int): Vector[Int] = {
 	  
-	  var tile: Tile = m_lpTiles(id)
+	  var tile: Tile = tiles(id)
 	  
 	  var x: Int = tile.position(0)
 	  var y: Int = tile.position(1)
@@ -77,8 +78,8 @@ class fhLayout
 	  var layer: Layer = m_lpLayer(z)
 	  
 	  for(i <- 0 until tile.NeighborTile.length )	{
-	    m_lpTiles(tile.NeighborTile(i)).popNeighbor(id)
-	    m_lpTiles(tile.NeighborTile(i)).popUpper(id)
+	    tiles(tile.NeighborTile(i)).popNeighbor(id)
+	    tiles(tile.NeighborTile(i)).popUpper(id)
 	  }
 	  
 	  //m_lpTiles = m_lpTiles.updated(id, new Tile("dummy", 0, x, y, z))
@@ -98,7 +99,7 @@ class fhLayout
 	def checkTile(id: Int): Vector[Int] =	{    
 		if (id == lastCheckedTileID || id == 0) Vector(0) 
 		else if (tiles(id).check == false) Vector(0) 
-		if (tiles(id) == tiles(lastCheckedTileID))
+		if (tiles(id) == tiles(lastCheckedTileID) && tiles(id).checked && tiles(lastCheckedTileID).checked)
 			deleteTile(id) ++ deleteTile(lastCheckedTileID)                
 		else	{
 		  var oldlastCheckedTileID = lastCheckedTileID
@@ -132,6 +133,15 @@ class fhLayout
 	    layer.setTileIDToPosition(topTile(i, j), i, j)
 	  }
 	  layer.getField
+	}
+	
+	def topTilesWithNames: Array[Array[String]] = {
+	  var layer = ofDim[String](Layer(0).width, Layer(0).height)
+	  for (i <- 0 until Layer(0).width; j <- 0 until Layer(0).height)	{
+	    if (topTiles(i)(j) > 0) layer(i)(j) = tiles(topTiles(i)(j)-1).name
+	    else layer(i)(j) = "___"
+	  }
+	  layer
 	}
 	
 	/**
