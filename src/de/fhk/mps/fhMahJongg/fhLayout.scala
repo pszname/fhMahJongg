@@ -39,7 +39,12 @@ class fhLayout
 		  // Erzeuge ein generiertes Feld -----------------------------------------------
 		  case fhLayoutType.LT_GENERATE =>
 		  {
-		    fRet = fhGenerator.Generate(this.m_lpLayer)
+		    var pMut1 = fhMutableWrapper(this.m_lpLayer)
+		    var pMut2 = fhMutableWrapper(this.m_lpTiles)
+		    fRet 	  = fhGenerator.Generate(pMut1, pMut2, fhGenerator.MAX_TILES)
+		    
+		    m_lpLayer = pMut1.value
+		    m_lpTiles = pMut2.value
 		  }
 		  // Erzeuge eine Pyramide/Schildkroete -----------------------------------------
 		  case fhLayoutType.LT_TURTLE   =>

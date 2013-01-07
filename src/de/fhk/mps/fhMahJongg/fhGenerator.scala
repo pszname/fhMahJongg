@@ -128,9 +128,20 @@ object fhGenerator
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
 	 *  Generiert ein Layout per Zufall
+	 *  
+	 *  @param lstLayer Referenz auf die Layer
+	 *  @param lstTiles Referenz auf die Kacheln
+	 *  @param cbTiles Anzahl der Kacheln, falls ungerade wird die Anzahl + 1 genommen
+	 *  
+	 *  @return Liefert true, falls die Layer erzeugt werden konnten und false, falls
+	 *  		das Feld nicht gebaut werden konnte.
 	 */
-	def Generate(lstLayer: List[Layer]):Boolean=
+	def Generate(lstLayer: fhMutableWrapper[List[Layer]], lstTiles: fhMutableWrapper[List[Tile]], cbTiles: Int):Boolean=
 	{
+		if (cbTiles > MAX_TILES)
+			return false
+			
+		
 		false
 	}
 	
