@@ -343,8 +343,7 @@ object fhGenerator
 			if (iID >= 0)
 			{
 				// befindet sich noch eine Kachel darueber?
-				// Hendrik: Habe hier  && lpLayer(z+1).getIDFromPosition(x, iRow) > 0 eingefügt, da ansonsten auch eine 0 als UpperTile hinzugefügt wird
-			    if (lpLayer.length > z+1 && lpLayer(z).getIDFromPosition(x, iRow) > 0 && lpLayer(z+1).getIDFromPosition(x, iRow) > 0)
+			    if (lpLayer.length > z+1 && lpLayer(z+1).getIDFromPosition(x, iRow) > 0)
 			    {
 			    	// Merke den Darueberliegenden
 			        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow))
