@@ -57,7 +57,7 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
    * */
   def popUpper(id: Int)	{
     UpperTile -= id
-    if (UpperTile.length == 0) blocked = false
+    if (UpperTile.length == 0 && NeighborTile.length < 2) blocked = false
   }
   
    /**
@@ -67,7 +67,7 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
     */
   def pushNeighbor(id: Int)	{
     if (id != this.id) NeighborTile ++= List(id)
-    blocked = (NeighborTile.length >= 2) 
+    if (NeighborTile.length > 1) blocked = true
   }
   
   /**
@@ -77,6 +77,7 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
     */
   def popNeighbor(id: Int)	{
     if (id != this.id) NeighborTile -= id
+    if (UpperTile.length == 0 && NeighborTile.length < 2) blocked = false
   }
 	
   /**
