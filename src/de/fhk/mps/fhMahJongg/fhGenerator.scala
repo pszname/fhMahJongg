@@ -327,9 +327,9 @@ object fhGenerator
 			if (iID >= 0)
 			{
 				// befindet sich noch eine Kachel darueber?
-			    if (lpLayer.length < z+1 && lpLayer(z).getIDFromPosition(x, iRow) > 0)
+			    if (lpLayer.length > z+1 && lpLayer(z).getIDFromPosition(x, iRow) > 0)
 			    {
-			    	// Merke die den Darueberliegenden
+			    	// Merke den Darueberliegenden
 			        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow))
 			    }
 			    

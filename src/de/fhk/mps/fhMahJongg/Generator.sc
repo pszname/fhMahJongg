@@ -7,7 +7,7 @@ object Generator
 {
   println("Worksheet for the Generator")          //> Worksheet for the Generator
   
-  var r = new Random(144)                         //> r  : scala.util.Random = scala.util.Random@2ed4e99c
+  var r = new Random(144)                         //> r  : scala.util.Random = scala.util.Random@7a5fe968
   r.nextInt(144)                                  //> res0: Int = 16
   r.nextInt(95)                                   //> res1: Int = 3
   
@@ -24,14 +24,30 @@ object Generator
 	var fRet                 = fhGenerator.LoadTurtle(
 	    pMut1,
 	    pMut2
-	    );                                    //> fRet  : Boolean = true
+	    );                                    //> java.lang.IndexOutOfBoundsException: -2
+                                                  //| 	at scala.collection.LinearSeqOptimized$class.apply(LinearSeqOptimized.sc
+                                                  //| ala:51)
+                                                  //| 	at scala.collection.immutable.List.apply(List.scala:76)
+                                                  //| 	at de.fhk.mps.fhMahJongg.fhGenerator$$anonfun$de$fhk$mps$fhMahJongg$fhGe
+                                                  //| nerator$$CheckFoes$1$$anonfun$apply$mcVI$sp$1.apply$mcVI$sp(fhGenerator.scal
+                                                  //| a:357)
+                                                  //| 	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:78)
+                                                  //| 	at de.fhk.mps.fhMahJongg.fhGenerator$$anonfun$de$fhk$mps$fhMahJongg$fhGe
+                                                  //| nerator$$CheckFoes$1.apply$mcVI$sp(fhGenerator.scala:329)
+                                                  //| 	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:78)
+                                                  //| 	at de.fhk.mps.fhMahJongg.fhGenerator$.de$fhk$mps$fhMahJongg$fhGenerator$
+                                                  //| $CheckFoes(fhGenerator.scala:327)
+                                                  //| 	at de.fhk.mps.fhMahJongg.fhGenerator$$anonfun$LoadTurtle$2.apply$mcVI$sp
+                                                  //| (fhGenerator.scala:182)
+                                                  //| 	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:78)
+                                                  //| 	at de.fhk.mps.fhMahJongg.fhGenerator$.Load
+                                                  //| Output exceeds cutoff limit.
 	    
 	lpLayer = pMut1.value
 	lpTiles = pMut2.value
 	    
-	println(lpLayer.length)                   //> 5
+	println(lpLayer.length)
 	var frm = new java.text.DecimalFormat("000");
-                                                  //> frm  : java.text.DecimalFormat = java.text.DecimalFormat@674dc
 	    
 	// Ersten Layer Ausgeben
 	for(y <- 0 until lpLayer(0).width)
@@ -42,27 +58,5 @@ object Generator
 			print(String.format("|%s|", frm.format(lpLayer(0).getIDFromPosition(x, y))))
 		}
 		println
-	}                                         //> |000||000||000||000||000||000||000||000||000||000||000||000||000||000||000||
-                                                  //| 000|
-                                                  //| |000||000||000||022||000||003||000||085||000||031||000||049||000||005||000||
-                                                  //| 040|
-                                                  //| |000||000||000||000||000||000||000||000||000||000||000||000||000||000||000||
-                                                  //| 000|
-                                                  //| |000||000||000||000||000||000||000||033||000||125||000||116||000||053||000||
-                                                  //| 058|
-                                                  //| |000||000||000||000||000||000||000||000||000||000||000||000||000||000||000||
-                                                  //| 000|
-                                                  //| |000||000||000||000||000||018||000||025||000||048||000||128||000||103||000||
-                                                  //| 056|
-                                                  //| |000||000||000||000||000||000||000||000||000||000||000||000||000||000||000||
-                                                  //| 000|
-                                                  //| |000||000||000||133||000||012||000||007||000||132||000||092||000||039||000||
-                                                  //| 003|
-                                                  //| |000||050||000||000||000||000||000||000||000||000||000||000||000||000||000||
-                                                  //| 000|
-                                                  //| |000||000||000||092||000||095||000||070||000||109||000||045||000||139||000||
-                                                  //| 065|
-                                                  //| |000||000||000||000||000||000||000||000||000||000||000||000||000||000||000||
-                                                  //| 000|
-                                                  //| Output exceeds cutoff limit.
+	}
 }
