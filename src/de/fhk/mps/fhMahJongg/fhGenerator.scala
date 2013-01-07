@@ -131,7 +131,7 @@ object fhGenerator
 	 */
 	def Generate(lstLayer: List[Layer]):Boolean=
 	{
-		return false;
+		false
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -140,15 +140,15 @@ object fhGenerator
 	 */
 	def LoadTurtle(lstLayer: fhMutableWrapper[List[Layer]], lpTiles: fhMutableWrapper[List[Tile]]):Boolean=
 	{
-	    var iTile      = 0;
-		var lpTmp      = CreateTiles();							// Erzeuge die benoetigten Tiles
-		lstLayer.value = InitLayer(5, 15, 8);					// Erzeuge die Layer
-		lpTiles.value  = List();								// Loesche oder erzeuge die Tile-Liste
+	    var iTile      = 0 
+		var lpTmp      = CreateTiles() 							// Erzeuge die benoetigten Tiles
+		lstLayer.value = InitLayer(5, 15, 8) 					// Erzeuge die Layer
+		lpTiles.value  = List() 								// Loesche oder erzeuge die Tile-Liste
 		
 		// Generiere die Position der Tiles
 		for(i <- 0 until TURTLE_COORD.length)
 		{
-		    var fOK = false;
+		    var fOK = false
 			
 		    // Prüfe, ob Tiles des selben Typs nicht 
 		    // mehr als doppelt vorkommen, da sonst unloesbar
@@ -159,7 +159,7 @@ object fhGenerator
 					lstLayer.value,								// Den Layer als Referenz zum Prüfen
 				    lpTmp(iTile).name, 							// Den Namen des gewählten Tiles
 				    TURTLE_COORD(i)								// Die Position des gewählten Tiles
-				    );
+				    )
 			}
 			
 			// Setzt die gewaehlte Kachel ein
@@ -169,12 +169,12 @@ object fhGenerator
 			    lpTmp(iTile).id,
 			    lpTmp(iTile).position(0), 
 			    lpTmp(iTile).position(1)
-			    );
+			    )
 			//lpTmp.drop(iTile);
 			lpTmp -= lpTmp(iTile)
 		}
 		
-		lpTiles.value = lpTiles.value.sortWith(_.id < _.id);					// Sortiere die Referenzliste
+		lpTiles.value = lpTiles.value.sortWith(_.id < _.id) 					// Sortiere die Referenzliste
 		
 		// Nachbarn prüfen
 		for (i <- 0 until lstLayer.value(0).height)
@@ -182,7 +182,7 @@ object fhGenerator
 			CheckFoes(lpTiles, lstLayer.value, i)
 		}
 		
-		return true;
+		true
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -192,15 +192,15 @@ object fhGenerator
 	 */
 	def LoadTest(lstLayer: fhMutableWrapper[List[Layer]], lpTiles: fhMutableWrapper[List[Tile]]):Boolean=
 	{
-	    var iTile      = 0;
-		var lpTmp      = CreateTiles();							// Erzeuge die benoetigten Tiles
-		lstLayer.value = InitLayer(5, 15, 8);					// Erzeuge die Layer
-		lpTiles.value  = List();								// Loesche oder erzeuge die Tile-Liste
+	    var iTile      = 0 
+		var lpTmp      = CreateTiles() 							// Erzeuge die benoetigten Tiles
+		lstLayer.value = InitLayer(5, 15, 8) 					// Erzeuge die Layer
+		lpTiles.value  = List() 								// Loesche oder erzeuge die Tile-Liste
 		
 		// Generiere die Position der Tiles
 		for(i <- 0 until TEST_COORD.length)
 		{
-		    var fOK = false;
+		    var fOK = false
 			
 		    // Prüfe, ob Tiles des selben Typs nicht 
 		    // mehr als doppelt vorkommen, da sonst unloesbar
@@ -211,17 +211,17 @@ object fhGenerator
 					lstLayer.value,								// Den Layer als Referenz zum Prüfen
 				    lpTmp(iTile).name, 							// Den Namen des gewählten Tiles
 				    TEST_COORD(i)								// Die Position des gewählten Tiles
-				    );
+				    )
 			}
 			
 			// Setzt die gewaehlte Kachel ein
 			lpTmp(iTile).position 			   = TEST_COORD(i);
-			lpTiles.value       			 ++= List(lpTmp(iTile));
+			lpTiles.value       			 ++= List(lpTmp(iTile))
 			lstLayer.value(TEST_COORD(i)(2)).setTileIDToPosition(
 			    lpTmp(iTile).id,
 			    lpTmp(iTile).position(0), 
 			    lpTmp(iTile).position(1)
-			    );
+			    )
 			//lpTmp.drop(iTile);
 			lpTmp -= lpTmp(iTile)
 		}
@@ -229,14 +229,14 @@ object fhGenerator
 		// Rest auffüllen
 		for (i <- 0 until lpTmp.length)
 		{
-			lpTiles.value ++= List(lpTmp(i));
+			lpTiles.value ++= List(lpTmp(i))
 		}
 		
-		lpTiles.value = lpTiles.value.sortWith(_.id < _.id);					// Sortiere die Referenzliste
-		CheckFoes(lpTiles, lstLayer.value, 0);
-		CheckFoes(lpTiles, lstLayer.value, 2);
+		lpTiles.value = lpTiles.value.sortWith(_.id < _.id) 					// Sortiere die Referenzliste
+		CheckFoes(lpTiles, lstLayer.value, 0)
+		CheckFoes(lpTiles, lstLayer.value, 2)
 		
-		return true;
+		true
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -245,7 +245,7 @@ object fhGenerator
 	 */
 	def LoadUser(lstLayer: List[Layer]):Boolean=
 	{
-		return false;
+		false
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -254,14 +254,12 @@ object fhGenerator
 	 */
 	private def CreateTiles():List[Tile] =
 	{
-	    var lpTiles: List[Tile] = List();
+	    var lpTiles: List[Tile] = List()
 	    
 	    for (i <- 1 to MAX_TILES)
-	    {
-	    	lpTiles ++= List(new Tile(TILE_NAMES(i), i, 0, 0, 0));
-	    }
+	    	lpTiles ++= List(new Tile(TILE_NAMES(i), i, 0, 0, 0))
 	    
-		return lpTiles;
+		return lpTiles
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -271,14 +269,12 @@ object fhGenerator
 	 */
 	private def InitLayer(cb: Int, iXmax: Int, iYmax: Int):List[Layer]=
 	{
-		var lpLayer: List[Layer] = List();
+		var lpLayer: List[Layer] = List()
 		// Initialisiere die Layer
-			for (i <- 0 until cb)
-			{
-				lpLayer ++= List(new Layer(iXmax*2, iYmax*2));
-			}
+		for (i <- 0 until cb)
+			lpLayer ++= List(new Layer(iXmax*2, iYmax*2))
 			
-			return lpLayer;
+	    lpLayer
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -286,7 +282,7 @@ object fhGenerator
 	 */
 	private def SelectTile(lpTiles: List[Tile]):Int=
 	{
-		return Random.nextInt(lpTiles.length);
+		return Random.nextInt(lpTiles.length)
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -295,24 +291,24 @@ object fhGenerator
 	 */
 	private def IsDouble(lpLayer: List[Layer], szName: String, pPos: Vector[Int]):Boolean =
 	{
-		var cb = 0;			// Zaehlvariabel
+		var cb = 0			// Zaehlvariabel
 		
 	    // Test noetig?
 		if (pPos(2) <= 1)	// bei maximal 2 Ebenen muss nicht getestet werden 
-		  return true;
+		  return true
 		
 		// Prüfe an der Position x/y den z Vektor durch
 		for (i <- 0 to pPos(2))
 		{
 			var szTmp = (TILE_NAMES(lpLayer(i).getIDFromPosition(pPos(0), pPos(1))))
 			if(szTmp(1) + szTmp(2) == szName(1) + szName(2))
-			  cb += 1;
+			  cb += 1
 		}
 		
 		if (cb > 2)
-		  return false;
-		
-		return true;
+			false
+		else
+			true
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -324,56 +320,52 @@ object fhGenerator
 	private def CheckFoes(lpTiles: fhMutableWrapper[List[Tile]], lpLayer: List[Layer], iRow: Int)=
 	{
 		// Hoehe 
-		for (z <- 0 until lpLayer.length)
+		for (z <- 0 until lpLayer.length; x <- 0 until lpLayer(z).width)
 		{
-			for (x <- 0 until lpLayer(z).width)
+		    var iID = lpLayer(z).getIDFromPosition(x, iRow) - 1
+		    // besetzt?
+			if (iID >= 0)
 			{
-			    var iID = lpLayer(z).getIDFromPosition(x, iRow) - 1;
-			    // besetzt?
-				if (iID >= 0)
-				{
-					// befindet sich noch eine Kachel darueber?
-				    if (lpLayer.length < z+1 && lpLayer(z).getIDFromPosition(x, iRow) > 0)
+				// befindet sich noch eine Kachel darueber?
+			    if (lpLayer.length < z+1 && lpLayer(z).getIDFromPosition(x, iRow) > 0)
+			    {
+			    	// Merke die den Darueberliegenden
+			        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow))
+			    }
+			    
+			    // kein Nachbar rechts ----------------------------------------------
+			    if (lpLayer(z).getIDFromPosition(x+2, iRow) <= 0)
+			    {
+			    	// Schraeg rechts oben?
+			    	if (lpLayer(z).getIDFromPosition(x+2, iRow-1) > 0)
+			    	{
+			    		lpTiles.value(iID).pushNeighbor(
+			    				lpLayer(z).getIDFromPosition(x+2, iRow-1))
+			    		
+			    		// sich selbst als linken Nachbarn eintragen
+			    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushNeighbor(iID)
+			    	}
+			    	// Schraeg rechts unten?
+				    if (lpLayer(z).getIDFromPosition(x+2, iRow+1) > 0)
 				    {
-				    	// Merke die den Darueberliegenden
-				        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow)); 
+				    	lpTiles.value(iID - 1).pushNeighbor(
+			    				lpLayer(z).getIDFromPosition(x+2, iRow+1))
+				    	
+				    	// sich selbst als linken Nachbarn eintragen
+			    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushNeighbor(iID)
 				    }
-				    
-				    // kein Nachbar rechts ----------------------------------------------
-				    if (lpLayer(z).getIDFromPosition(x+2, iRow) <= 0)
-				    {
-				    	// Schraeg rechts oben?
-				    	if (lpLayer(z).getIDFromPosition(x+2, iRow-1) > 0)
-				    	{
-				    		lpTiles.value(iID).pushNeighbor(
-				    				lpLayer(z).getIDFromPosition(x+2, iRow-1));
-				    		
-				    		// sich selbst als linken Nachbarn eintragen
-				    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushNeighbor(iID);
-				    	}
-				    	// Schraeg rechts unten?
-					    if (lpLayer(z).getIDFromPosition(x+2, iRow+1) > 0)
-					    {
-					    	lpTiles.value(iID - 1).pushNeighbor(
-				    				lpLayer(z).getIDFromPosition(x+2, iRow+1));
-					    	
-					    	// sich selbst als linken Nachbarn eintragen
-				    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushNeighbor(iID);
-					    }
-				    }
-				    // Nachbar rechts ---------------------------------------------------
-				    else
-				    {
-				      // Merke dir den rechten Nachbarn
-				      lpTiles.value(iID).pushNeighbor(
-				          lpLayer(z).getIDFromPosition(x+2, iRow));
-				      
-				      // sich selbst als linken Nachbarn eintragen
-				      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow) - 1).pushNeighbor(iID);
-				    } // Out Nachbar rechts
-				    
-				} // out besetzt?
-			} // x
+			    }
+			    // Nachbar rechts ---------------------------------------------------
+			    else
+			    {
+			      // Merke dir den rechten Nachbarn
+			      lpTiles.value(iID).pushNeighbor(
+			          lpLayer(z).getIDFromPosition(x+2, iRow))
+			      
+			      // sich selbst als linken Nachbarn eintragen
+			      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow) - 1).pushNeighbor(iID)
+			    } // Out Nachbar rechts
+			} // out besetzt?
 		} // z
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
