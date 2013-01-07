@@ -165,7 +165,8 @@ object fhGenerator
 			    lpTmp(iTile).position(0), 
 			    lpTmp(iTile).position(1)
 			    );
-			lpTmp.drop(iTile);
+			//lpTmp.drop(iTile);
+			lpTmp -= lpTmp(iTile)
 		}
 		
 		lpTiles.value.sortWith(_.id < _.id);					// Sortiere die Referenzliste

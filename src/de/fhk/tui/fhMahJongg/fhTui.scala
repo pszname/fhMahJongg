@@ -32,8 +32,8 @@ class fhTui
 	 */
 	def Begin()=
 	{
-		m_Settings.LoadSettings();					/* Laedt die Einstellungen */
-		Controller.generateGameBoard(StartOption)	/* Laedt das Spielelayout  */
+		m_Settings.LoadSettings();					    /* Laedt die Einstellungen */
+		Controller.generateGameBoard(StartOption)	    /* Laedt das Spielelayout  */
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -66,6 +66,14 @@ class fhTui
 		println("|                                                               |")
 		println("|---------------------------------------------------------------|")
 		
+		/*ShowInput match
+		{
+		  case '1' => iRet = 1
+		  case '2' => iRet = 2
+		  case '3' => iRet = 3
+		  case _   => iRet = 2
+		}*/
+		
 		return 1;
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +83,7 @@ class fhTui
 	 * @Param cbRows Die Anzahl der bereits geschriebenen Zeilen
 	 * @returns Liefert die Eingabe als String zurueck
 	 */
-	def ShowInput(cbRows: Int): String=
+	def ShowInput(cbRows: Int): Char=
 	{
 	  for(i <- cbRows until MAX_ROWS - 3)
 	  {
@@ -86,7 +94,8 @@ class fhTui
 	  println("| n: neues Spiel, l: Spiel laden, s: Spiel speichern            |")
 	  println("| c: Einstellungen, e: Ende                                     |")
 	  print("--> ")
-	  ""
+	  
+	  Console.readChar
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
 }
