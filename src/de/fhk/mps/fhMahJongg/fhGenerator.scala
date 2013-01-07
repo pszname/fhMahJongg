@@ -169,7 +169,7 @@ object fhGenerator
 			lpTmp -= lpTmp(iTile)
 		}
 		
-		lpTiles.value.sortWith(_.id < _.id);					// Sortiere die Referenzliste
+		lpTiles.value = lpTiles.value.sortWith(_.id < _.id);					// Sortiere die Referenzliste
 		
 		return true;
 	}
