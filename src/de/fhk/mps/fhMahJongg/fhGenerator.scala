@@ -330,7 +330,7 @@ object fhGenerator
 			{
 			    var iID = lpLayer(z).getIDFromPosition(x, iRow) - 1;
 			    // besetzt?
-				if (iID != 0)
+				if (iID >= 0)
 				{
 					// befindet sich noch eine Kachel darueber?
 				    if (lpLayer.length < z+1 && lpLayer(z).getIDFromPosition(x, iRow) > 0)
