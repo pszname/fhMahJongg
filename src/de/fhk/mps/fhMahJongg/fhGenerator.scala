@@ -176,6 +176,12 @@ object fhGenerator
 		
 		lpTiles.value = lpTiles.value.sortWith(_.id < _.id);					// Sortiere die Referenzliste
 		
+		// Nachbarn prüfen
+		for (i <- 0 until lstLayer.value(0).height)
+		{
+			CheckFoes(lpTiles, lstLayer.value, i)
+		}
+		
 		return true;
 	}
 	
@@ -220,7 +226,15 @@ object fhGenerator
 			lpTmp -= lpTmp(iTile)
 		}
 		
+		// Rest auffüllen
+		for (i <- 0 until lpTmp.length)
+		{
+			lpTiles.value ++= List(lpTmp(i));
+		}
+		
 		lpTiles.value = lpTiles.value.sortWith(_.id < _.id);					// Sortiere die Referenzliste
+		CheckFoes(lpTiles, lstLayer.value, 0);
+		CheckFoes(lpTiles, lstLayer.value, 2);
 		
 		return true;
 	}
@@ -314,7 +328,7 @@ object fhGenerator
 		{
 			for (x <- 0 until lpLayer(z).width)
 			{
-			    var iID = lpLayer(z).getIDFromPosition(x, iRow);
+			    var iID = lpLayer(z).getIDFromPosition(x, iRow) - 1;
 			    // besetzt?
 				if (iID != 0)
 				{
@@ -335,16 +349,16 @@ object fhGenerator
 				    				lpLayer(z).getIDFromPosition(x+2, iRow-1));
 				    		
 				    		// sich selbst als linken Nachbarn eintragen
-				    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1)).pushNeighbor(iID);
+				    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushNeighbor(iID);
 				    	}
 				    	// Schraeg rechts unten?
 					    if (lpLayer(z).getIDFromPosition(x+2, iRow+1) > 0)
 					    {
-					    	lpTiles.value(iID).pushNeighbor(
+					    	lpTiles.value(iID - 1).pushNeighbor(
 				    				lpLayer(z).getIDFromPosition(x+2, iRow+1));
 					    	
 					    	// sich selbst als linken Nachbarn eintragen
-				    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1)).pushNeighbor(iID);
+				    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushNeighbor(iID);
 					    }
 				    }
 				    // Nachbar rechts ---------------------------------------------------
@@ -355,7 +369,7 @@ object fhGenerator
 				          lpLayer(z).getIDFromPosition(x+2, iRow));
 				      
 				      // sich selbst als linken Nachbarn eintragen
-				      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow)).pushNeighbor(iID);
+				      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow) - 1).pushNeighbor(iID);
 				    } // Out Nachbar rechts
 				    
 				} // out besetzt?

@@ -67,6 +67,7 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
     */
   def pushNeighbor(id: Int)	{
     if (id != this.id) NeighborTile ++= List(id)
+    blocked = (NeighborTile.length >= 2) 
   }
   
   /**
