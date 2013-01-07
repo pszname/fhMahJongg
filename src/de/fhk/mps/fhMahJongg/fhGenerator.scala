@@ -353,7 +353,8 @@ object fhGenerator
 			    if (lpLayer(z).getIDFromPosition(x+2, iRow) <= 0)
 			    {
 			    	// Schraeg rechts oben?
-			    	// Hendrik: Brauchen wir das denn? Gehört das zu den Regeln, dass blockiert wird, wenn rechts, bzw. links oben ein Nachbar ist?
+			    	// Hendrik: Brauchen wir das denn? Gehört das zu den Regeln, dass blockiert wird, wenn rechts, bzw. links oben ein Nachbar ist? Was wir hier benötigen ist außerdem
+			    	// 			dass die Unterliegenden Nachbarn hinzugefügt werden, um später beim unterliegenden Nachbarn den popUpperTile auszuführen
 			    	if (lpLayer(z).getIDFromPosition(x+2, iRow-1) > 0)
 			    	{
 			    		lpTiles.value(iID).pushNeighbor(

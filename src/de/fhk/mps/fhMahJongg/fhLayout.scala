@@ -83,8 +83,10 @@ class fhLayout
 	  var layer: Layer = m_lpLayer(z)
 	  
 	  for(i <- 0 until tile.NeighborTile.length )	{
-	    tiles(tile.NeighborTile(i)).popNeighbor(id)
-	    tiles(tile.NeighborTile(i)).popUpper(id)
+	    if (tile.NeighborTile(i) > 0)	{
+	      tiles(tile.NeighborTile(i)-1).popNeighbor(id)
+	      tiles(tile.NeighborTile(i)-1).popUpper(id)
+	    }
 	  }
 	  
 	  //m_lpTiles = m_lpTiles.updated(id, new Tile("dummy", 0, x, y, z))
@@ -101,15 +103,15 @@ class fhLayout
 	 */
 	def checkTile(id: Int): Vector[Int] =	{    
 		if (id == lastCheckedTileID || id == 0) Vector(0) 
-		else if (tiles(id).check == false) Vector(0) 
-		else if (tiles(id) == tiles(lastCheckedTileID) && tiles(id).checked && tiles(lastCheckedTileID).checked)
-			deleteTile(id) ++ deleteTile(lastCheckedTileID)                
+		else if (tiles(id-1).check == false) Vector(0) 
+		else if (lastCheckedTileID > 0 && tiles(id-1) == tiles(lastCheckedTileID-1) && tiles(id-1).checked && tiles(lastCheckedTileID-1).checked)
+			deleteTile(id-1) ++ deleteTile(lastCheckedTileID-1)                
 		else	{
 		  var oldlastCheckedTileID = lastCheckedTileID
 		  m_iLastCheckedTileID = id
-		  if (oldlastCheckedTileID != 0)	{
-		    tiles(oldlastCheckedTileID).check
-		    tiles(oldlastCheckedTileID).position
+		  if (oldlastCheckedTileID > 0)	{
+		    tiles(oldlastCheckedTileID-1).check
+		    tiles(oldlastCheckedTileID-1).position
 		  }
 		  else Vector(0, 0, 0)
 		}

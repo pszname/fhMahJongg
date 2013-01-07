@@ -28,7 +28,7 @@ object Mahjongg	{
 
 	  println
 	  println("Geben Sie den Namen einer Kachel ein, die ausgewählt werden soll: ")
-	  
+	  4
 	  var in = Console.readLine
 	  var x = 0
 	  var y = 0
@@ -41,25 +41,25 @@ object Mahjongg	{
 	  }
 	  
 	  var id = ttT(x)(y)
+	  println(id)
 	  var str = ""
 	    
-  	  if (id > 0) id -= 1
+  	  //if (id > 0) id -= 1
   	  
   	  var erg = Controller.checkTile(id)
   	  
   	  if (erg.length > 1) str = tT(x)(y) + " wurde ausgewählt"
-  	  else str = tT(x)(y) + " ist geblockt"
+  	  else str = tT(x)(y) + " ist geblockt oder nicht vorhanden"
   	  if (erg.length > 3) str += " und wurde zusammen mit der letzten Kachel entfernt"
 
   	  //System.out.printf("\033[31m" + str + "\033[0m\n")
   	  println(str)
   	      	  
   	  /*println(id)
-	  println(Controller.checkTile(id))
-	  println(Controller.layout.tiles(id).checked)
-	  println(Controller.layout.tiles(id).position)
-	  println(Controller.layout.tiles(id).id)
-	  println(Controller.layout.tiles(id).name)*/
+	  println(Controller.layout.tiles(id-1).checked)
+	  println(Controller.layout.tiles(id-1).position)
+	  println(Controller.layout.tiles(id-1).id)
+	  println(Controller.layout.tiles(id-1).name)*/
 	}
   }
 }
