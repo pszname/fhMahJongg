@@ -14,7 +14,7 @@ class fhMahJonggUI extends JFrame
   
 	private var m_Container 			  = getContentPane
 	private var m_menuBar   			  = new JMenuBar
-	private var m_menu					  = new JMenu
+	private var m_menu					  = new JMenu("Game")
 	private var m_menuItem  			  = new JMenuItem
 	private var m_lstImages: List[JLabel] = List() 
 	private val m_menuListener            = new MenuListener
