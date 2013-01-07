@@ -102,7 +102,7 @@ class fhLayout
 	def checkTile(id: Int): Vector[Int] =	{    
 		if (id == lastCheckedTileID || id == 0) Vector(0) 
 		else if (tiles(id).check == false) Vector(0) 
-		if (tiles(id) == tiles(lastCheckedTileID) && tiles(id).checked && tiles(lastCheckedTileID).checked)
+		else if (tiles(id) == tiles(lastCheckedTileID) && tiles(id).checked && tiles(lastCheckedTileID).checked)
 			deleteTile(id) ++ deleteTile(lastCheckedTileID)                
 		else	{
 		  var oldlastCheckedTileID = lastCheckedTileID

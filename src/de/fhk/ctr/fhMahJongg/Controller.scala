@@ -18,11 +18,18 @@ object Controller {
   def generateGameBoard(iType: Int): Boolean = layout.CreateLayout(iType)  
   
   /**
-   * This method provides a layer that contains all supreme tiles.
+   * This method provides a layer that contains all supreme tiles by id.
    * 
    * @return <code>Array[Array[Int]]</code>
    */
   def generateTopLayer: Array[Array[Int]] = layout.topTiles
+  
+    /**
+   * This method provides a layer that contains all supreme tiles by name.
+   * 
+   * @return <code>Array[Array[String]]</code>
+   */
+  def generateTopLayerWithNames: Array[Array[String]] = layout.topTilesWithNames
   
   /**
    * This method provides an interface for checking tiles.
@@ -39,4 +46,12 @@ object Controller {
    * @return <code>Vector(0)</code>, if the tile was not checked or the tile is already checked; The position of the last checked tile, if the last checked tile and the new checked tile are not of the same type; The positions of the  last checked tile and the new checked tile, if they are of the same type, so they will be deleted 
    */
   def checkTile(x: Int, y: Int): Vector[Int] = layout.checkTile(x, y)
-}
+  
+  /**
+   * This method returns a specified tile by id.
+   * 
+   * @param id
+   * @return <code>Tile</code> with specified id
+   */
+  def getTile(id: Int): Tile = (if (id > 0) layout.tiles(id-1) else null)
+}  
