@@ -171,4 +171,6 @@ class fhLayout
 	  while (Layer(i).getIDFromPosition(x, y) == 0 && i >= 0)	i -= 1
 	  if (i < 0) 0 else Layer(i).getIDFromPosition(x, y)
 	}
+	
+	def getTileCount() = m_lpTiles.length
 }
