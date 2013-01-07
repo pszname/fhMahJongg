@@ -67,56 +67,61 @@ object fhGenerator
 	 */
 	val TURTLE_COORD: Array[Vector[Int]] = Array(
 			// Reihe 1 ------------------------------------------------------------------
-			Vector( 3, 1, 0), Vector( 5, 1, 0), Vector( 7, 1, 0), Vector( 9, 1, 0), Vector(11, 1, 0), Vector(13, 1, 0),
-			Vector(15, 1, 0), Vector(17, 1, 0), Vector(19, 1, 0), Vector(21, 1, 0), Vector(23, 1, 0), Vector(25, 1, 0),
+			Vector( 3, 1, 0), Vector( 5, 1, 0), Vector( 7, 1, 0), Vector( 9, 1, 0), Vector(11, 1, 0), Vector(13, 1, 0),			// 6
+			Vector(15, 1, 0), Vector(17, 1, 0), Vector(19, 1, 0), Vector(21, 1, 0), Vector(23, 1, 0), Vector(25, 1, 0),			// 12
 			// Reihe 2, Ebene 1 ---------------------------------------------------------
-			Vector( 7, 3, 0), Vector( 9, 3, 0), Vector(11, 3, 0), Vector(13, 3, 0), Vector(15, 3, 0), Vector(17, 3, 0),
-			Vector(19, 3, 0), Vector(21, 3, 0),
+			Vector( 7, 3, 0), Vector( 9, 3, 0), Vector(11, 3, 0), Vector(13, 3, 0), Vector(15, 3, 0), Vector(17, 3, 0),			// 18
+			Vector(19, 3, 0), Vector(21, 3, 0),																					// 20
 			// Reihe 2, Ebene 2 ---------------------------------------------------------
-			Vector( 9, 3, 1), Vector(11, 3, 1), Vector(13, 3, 1), Vector(15, 3, 1), Vector(17, 3, 1), Vector(19, 3, 1),
+			Vector( 9, 3, 1), Vector(11, 3, 1), Vector(13, 3, 1), Vector(15, 3, 1), Vector(17, 3, 1), Vector(19, 3, 1),			// 26
 			// Reihe 3, Ebene 1 ---------------------------------------------------------
-			Vector( 5, 5, 0), Vector( 7, 5, 0), Vector( 9, 5, 0), Vector(11, 5, 0), Vector(13, 5, 0),
-			Vector(15, 5, 0), Vector(17, 5, 0), Vector(19, 5, 0), Vector(21, 5, 0), Vector(23, 5, 0),
+			Vector( 5, 5, 0), Vector( 7, 5, 0), Vector( 9, 5, 0), Vector(11, 5, 0), Vector(13, 5, 0),							// 31
+			Vector(15, 5, 0), Vector(17, 5, 0), Vector(19, 5, 0), Vector(21, 5, 0), Vector(23, 5, 0),							// 36
 			// Reihe 3, Ebene 2 ---------------------------------------------------------
-			Vector( 9, 5, 1), Vector(11, 5, 1), Vector(13, 5, 1), Vector(15, 5, 1), Vector(17, 5, 1), Vector(19, 5, 1),
+			Vector( 9, 5, 1), Vector(11, 5, 1), Vector(13, 5, 1), Vector(15, 5, 1), Vector(17, 5, 1), Vector(19, 5, 1),			// 42
 			// Reihe 3, Ebene 3 ---------------------------------------------------------
-			Vector(11, 5, 2), Vector(13, 5, 2), Vector(15, 5, 2), Vector(17, 5, 2),
+			Vector(11, 5, 2), Vector(13, 5, 2), Vector(15, 5, 2), Vector(17, 5, 2),												// 46
 			// Reihe 4, Ebene 1 ---------------------------------------------------------
-			Vector( 3, 7, 0), Vector( 5, 7, 0), Vector( 7, 7, 0), Vector( 9, 7, 0), Vector(11, 7, 0), Vector(13, 7, 0),
-			Vector(15, 7, 0), Vector(17, 7, 0), Vector(19, 7, 0), Vector(21, 7, 0), Vector(23, 7, 0), Vector(25, 7, 0),
+			Vector( 3, 7, 0), Vector( 5, 7, 0), Vector( 7, 7, 0), Vector( 9, 7, 0), Vector(11, 7, 0), Vector(13, 7, 0),			// 52
+			Vector(15, 7, 0), Vector(17, 7, 0), Vector(19, 7, 0), Vector(21, 7, 0), Vector(23, 7, 0), Vector(25, 7, 0),			// 58
 			// Reihe 4, Ebene 2 ---------------------------------------------------------
-			Vector( 9, 7, 1), Vector(11, 7, 1), Vector(13, 7, 1), Vector(15, 7, 1), Vector(17, 7, 1), Vector(19, 7, 1),
+			Vector( 9, 7, 1), Vector(11, 7, 1), Vector(13, 7, 1), Vector(15, 7, 1), Vector(17, 7, 1), Vector(19, 7, 1),			// 64	
 			// Reihe 4, Ebene 3 ---------------------------------------------------------
-			Vector(11, 7, 2), Vector(13, 7, 2), Vector(15, 7, 2), Vector(17, 7, 2),
+			Vector(11, 7, 2), Vector(13, 7, 2), Vector(15, 7, 2), Vector(17, 7, 2),												// 68
 			// Reihe 4, Ebene 4 ---------------------------------------------------------
-			Vector(13, 7, 2), Vector(15, 7, 2),
+			Vector(13, 7, 2), Vector(15, 7, 2),																					// 70
 			// Reihe 5, Ebene 1 ---------------------------------------------------------
-			Vector( 3, 9, 0), Vector( 5, 9, 0), Vector( 7, 9, 0), Vector( 9, 9, 0), Vector(11, 9, 0), Vector(13, 9, 0),
-			Vector(15, 9, 0), Vector(17, 9, 0), Vector(19, 9, 0), Vector(21, 9, 0), Vector(23, 9, 0), Vector(25, 9, 0),
+			Vector( 3, 9, 0), Vector( 5, 9, 0), Vector( 7, 9, 0), Vector( 9, 9, 0), Vector(11, 9, 0), Vector(13, 9, 0),			// 76
+			Vector(15, 9, 0), Vector(17, 9, 0), Vector(19, 9, 0), Vector(21, 9, 0), Vector(23, 9, 0), Vector(25, 9, 0),			// 82
 			// Reihe 5, Ebene 2 ---------------------------------------------------------
-			Vector( 9, 9, 1), Vector(11, 9, 1), Vector(13, 9, 1), Vector(15, 9, 1), Vector(17, 9, 1), Vector(19, 9, 1),
+			Vector( 9, 9, 1), Vector(11, 9, 1), Vector(13, 9, 1), Vector(15, 9, 1), Vector(17, 9, 1), Vector(19, 9, 1),			// 88
 			// Reihe 5, Ebene 3 ---------------------------------------------------------
-			Vector(11, 9, 2), Vector(13, 9, 2), Vector(15, 9, 2), Vector(17, 9, 2),
+			Vector(11, 9, 2), Vector(13, 9, 2), Vector(15, 9, 2), Vector(17, 9, 2),												// 92
 			// Reihe 5, Ebene 4 ---------------------------------------------------------
-			Vector(13, 9, 2), Vector(15, 9, 2),
+			Vector(13, 9, 2), Vector(15, 9, 2),																					// 94
 			// Zwischen Reihe 4 und Reihe 5 ---------------------------------------------
-			Vector(1, 8, 0), Vector(14, 8, 4), Vector(27, 8, 0),
+			Vector(1, 8, 0), Vector(14, 8, 4), Vector(27, 8, 0), Vector(29, 8, 0),												// 97
 			// Reihe 6, Ebene 1 ---------------------------------------------------------
-			Vector( 5, 11, 0), Vector( 7, 11, 0), Vector( 9, 11, 0), Vector(11, 11, 0), Vector(13, 11, 0),
-			Vector(15, 11, 0), Vector(17, 11, 0), Vector(19, 11, 0), Vector(21, 11, 0), Vector(23, 11, 0),
+			Vector( 5, 11, 0), Vector( 7, 11, 0), Vector( 9, 11, 0), Vector(11, 11, 0), Vector(13, 11, 0),						// 102
+			Vector(15, 11, 0), Vector(17, 11, 0), Vector(19, 11, 0), Vector(21, 11, 0), Vector(23, 11, 0),						// 107
 			// Reihe 6, Ebene 2 ---------------------------------------------------------
-			Vector( 9, 11, 1), Vector(11, 11, 1), Vector(13, 11, 1), Vector(15, 11, 1), Vector(17, 11, 1), Vector(19, 11, 1),
+			Vector( 9, 11, 1), Vector(11, 11, 1), Vector(13, 11, 1), Vector(15, 11, 1), Vector(17, 11, 1), Vector(19, 11, 1),	// 113
 			// Reihe 6, Ebene 3 ---------------------------------------------------------
-			Vector(11, 11, 2), Vector(13, 11, 2), Vector(15, 11, 2), Vector(17, 11, 2),
+			Vector(11, 11, 2), Vector(13, 11, 2), Vector(15, 11, 2), Vector(17, 11, 2),											// 117
 			// Reihe 7, Ebene 1 ---------------------------------------------------------
-			Vector( 7, 13, 0), Vector( 9, 13, 0), Vector(11, 13, 0), Vector(13, 13, 0), Vector(15, 13, 0), Vector(17, 13, 0),
-			Vector(19, 13, 0), Vector(21, 13, 0),
+			Vector( 7, 13, 0), Vector( 9, 13, 0), Vector(11, 13, 0), Vector(13, 13, 0), Vector(15, 13, 0), Vector(17, 13, 0),	// 123
+			Vector(19, 13, 0), Vector(21, 13, 0),																				// 125
 			// Reihe 7, Ebene 2 ---------------------------------------------------------
-			Vector( 9, 13, 1), Vector(11, 13, 1), Vector(13, 13, 1), Vector(15, 13, 1), Vector(17, 13, 1), Vector(19, 13, 1),
+			Vector( 9, 13, 1), Vector(11, 13, 1), Vector(13, 13, 1), Vector(15, 13, 1), Vector(17, 13, 1), Vector(19, 13, 1),	// 131
 			// Reihe 8 ------------------------------------------------------------------
-			Vector( 3, 15, 0), Vector( 5, 15, 0), Vector( 7, 15, 0), Vector( 9, 15, 0), Vector(11, 15, 0), Vector(13, 15, 0),
-			Vector(15, 15, 0), Vector(17, 15, 0), Vector(19, 15, 0), Vector(21, 15, 0), Vector(23, 15, 0), Vector(25, 15, 0)
+			Vector( 3, 15, 0), Vector( 5, 15, 0), Vector( 7, 15, 0), Vector( 9, 15, 0), Vector(11, 15, 0), Vector(13, 15, 0),	// 137
+			Vector(15, 15, 0), Vector(17, 15, 0), Vector(19, 15, 0), Vector(21, 15, 0), Vector(23, 15, 0), Vector(25, 15, 0)	// 143
 			
+	);
+	/////////////////////////////////////////////////////////////////////////////////////
+	val TEST_COORD: Array[Vector[Int]] = Array(
+			Vector(0, 0, 0), Vector(2, 0, 0), Vector(4, 0, 0),
+			Vector(0, 2, 0), Vector(2, 2, 0), Vector(4, 2, 0)
 	);
 	/////////////////////////////////////////////////////////////////////////////////////
 	val MAX_TILES :Int = 144;
@@ -161,6 +166,52 @@ object fhGenerator
 			lpTmp(iTile).position 			   = TURTLE_COORD(i);
 			lpTiles.value       			 ++= List(lpTmp(iTile));
 			lstLayer.value(TURTLE_COORD(i)(2)).setTileIDToPosition(
+			    lpTmp(iTile).id,
+			    lpTmp(iTile).position(0), 
+			    lpTmp(iTile).position(1)
+			    );
+			//lpTmp.drop(iTile);
+			lpTmp -= lpTmp(iTile)
+		}
+		
+		lpTiles.value = lpTiles.value.sortWith(_.id < _.id);					// Sortiere die Referenzliste
+		
+		return true;
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 *  Laedt Turtle Layout
+	 */
+	def LoadTest(lstLayer: fhMutableWrapper[List[Layer]], lpTiles: fhMutableWrapper[List[Tile]]):Boolean=
+	{
+	    var iTile      = 0;
+		var lpTmp      = CreateTiles();							// Erzeuge die benoetigten Tiles
+		lstLayer.value = InitLayer(5, 15, 8);					// Erzeuge die Layer
+		lpTiles.value  = List();								// Loesche oder erzeuge die Tile-Liste
+		
+		// Generiere die Position der Tiles
+		for(i <- 0 until TEST_COORD.length)
+		{
+		    var fOK = false;
+			
+		    // Prüfe, ob Tiles des selben Typs nicht 
+		    // mehr als doppelt vorkommen, da sonst unloesbar
+			while(!fOK)
+			{
+			    iTile = SelectTile(lpTmp);						// Hol per Zufall eine Kachel aus der Liste
+				fOK   = IsDouble(								// Prüft, ob schon doppelt vorhanden ist
+					lstLayer.value,								// Den Layer als Referenz zum Prüfen
+				    lpTmp(iTile).name, 							// Den Namen des gewählten Tiles
+				    TEST_COORD(i)								// Die Position des gewählten Tiles
+				    );
+			}
+			
+			// Setzt die gewaehlte Kachel ein
+			lpTmp(iTile).position 			   = TEST_COORD(i);
+			lpTiles.value       			 ++= List(lpTmp(iTile));
+			lstLayer.value(TEST_COORD(i)(2)).setTileIDToPosition(
 			    lpTmp(iTile).id,
 			    lpTmp(iTile).position(0), 
 			    lpTmp(iTile).position(1)
