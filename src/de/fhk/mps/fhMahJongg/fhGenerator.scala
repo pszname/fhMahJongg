@@ -343,7 +343,8 @@ object fhGenerator
 			if (iID >= 0)
 			{
 				// befindet sich noch eine Kachel darueber?
-			    if (lpLayer.length > z+1 && lpLayer(z).getIDFromPosition(x, iRow) > 0)
+				// Hendrik: Habe hier  && lpLayer(z+1).getIDFromPosition(x, iRow) > 0 eingefügt, da ansonsten auch eine 0 als UpperTile hinzugefügt wird
+			    if (lpLayer.length > z+1 && lpLayer(z).getIDFromPosition(x, iRow) > 0 && lpLayer(z+1).getIDFromPosition(x, iRow) > 0)
 			    {
 			    	// Merke den Darueberliegenden
 			        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow))
@@ -353,6 +354,7 @@ object fhGenerator
 			    if (lpLayer(z).getIDFromPosition(x+2, iRow) <= 0)
 			    {
 			    	// Schraeg rechts oben?
+			    	// Hendrik: Brauchen wir das denn? Gehört das zu den Regeln, dass blockiert wird, wenn rechts, bzw. links oben ein Nachbar ist?
 			    	if (lpLayer(z).getIDFromPosition(x+2, iRow-1) > 0)
 			    	{
 			    		lpTiles.value(iID).pushNeighbor(
