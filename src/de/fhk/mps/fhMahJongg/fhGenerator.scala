@@ -289,18 +289,23 @@ object fhGenerator
 	 * Prüft, ob eine ID schon Doppelt vorkommt, so wird verhindert, dass das Spiel
 	 * unlösbar wird.
 	 */
-	private def IsDouble(lpLayer: List[Layer], szName: String, pPos: Vector[Int]):Boolean =
+	/*private*/ def IsDouble(lpLayer: List[Layer], szName: String, pPos: Vector[Int]):Boolean =
 	{
 		var cb = 0			// Zaehlvariabel
 		
 	    // Test noetig?
-		if (pPos(2) <= 1)	// bei maximal 2 Ebenen muss nicht getestet werden 
+		if (lpLayer.length < 4 || pPos(2) < 3)	 // bei maximal 3 Ebenen muss nicht getestet werden 
 		  return true
 		
 		// Prüfe an der Position x/y den z Vektor durch
 		for (i <- 0 to pPos(2))
 		{
-			var szTmp = (TILE_NAMES(lpLayer(i).getIDFromPosition(pPos(0), pPos(1))))
+			var iID   = lpLayer(i).getIDFromPosition(pPos(0), pPos(1))
+			var szTmp = "   "
+			  
+			if (iID > 0)
+				szTmp = TILE_NAMES(iID - 1)
+				
 			if(szTmp(1) + szTmp(2) == szName(1) + szName(2))
 			  cb += 1
 		}

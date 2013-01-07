@@ -4,6 +4,28 @@ import org.specs2.mutable._
 
 class GeneratorSpec extends SpecificationWithJUnit
 {
+	"A IsDouble Check" should
+	{
+		var lpLayer: List[Layer] = List()
+		var szName:  String      = "4B1"
+		var lpPosit: Vector[Int] = Vector[Int](0, 0, 3)
+		
+		lpLayer ++= List(new Layer(1,1));
+		lpLayer ++= List(new Layer(1,1));
+		lpLayer ++= List(new Layer(1,1));
+		lpLayer ++= List(new Layer(1,1));
+		
+		lpLayer(0).setTileIDToPosition(1, 0, 0)
+		lpLayer(1).setTileIDToPosition(2, 0, 0)
+		lpLayer(2).setTileIDToPosition(3, 0, 0)
+		lpLayer(3).setTileIDToPosition(4, 0, 0)
+		
+		"Get a false with 4 times tile type" in
+		{
+			fhGenerator.IsDouble(lpLayer, szName, lpPosit) must be_==(false)
+		}
+	}
+	
 	// TURTLE-LAYOUT
 	"A Turtle layout" should 
 	{
@@ -88,10 +110,5 @@ class GeneratorSpec extends SpecificationWithJUnit
 		{
 			lpTiles(posEl2-1).NeighborTile.length must be_==(2)
 		}
-	}
-	
-	"A Double Check" should
-	{
-		
 	}
 }
