@@ -74,7 +74,7 @@ class fhLayout
 	 */
 	def deleteTile(id: Int): Vector[Int] = {
 	  
-	  var tile: Tile = tiles(id)
+	  var tile: Tile = tiles(id-1)
 	  
 	  var x: Int = tile.position(0)
 	  var y: Int = tile.position(1)
@@ -85,7 +85,14 @@ class fhLayout
 	  for(i <- 0 until tile.NeighborTile.length )	{
 	    if (tile.NeighborTile(i) > 0)	{
 	      tiles(tile.NeighborTile(i)-1).popNeighbor(id)
-	      tiles(tile.NeighborTile(i)-1).popUpper(id)
+	    }
+	  }
+	  
+	  if (z > 0)	{
+	    for (i <- -1 to 1; j <- -1 to 1) if (x+i >= 0 && x+i < Layer(z).width && y+j >= 0 && y+j < Layer(z).height &&
+	        Layer(z).getIDFromPosition(x+i, y+j) > 0)	{
+	    	println(tiles(Layer(z).getIDFromPosition(x+i, y+j)-1).name)
+	    	tiles(Layer(z).getIDFromPosition(x+i, y+j)-1).popUpper(id)
 	    }
 	  }
 	  
@@ -105,7 +112,7 @@ class fhLayout
 		if (id == lastCheckedTileID || id == 0) Vector(0) 
 		else if (tiles(id-1).check == false) Vector(0) 
 		else if (lastCheckedTileID > 0 && tiles(id-1) == tiles(lastCheckedTileID-1) && tiles(id-1).checked && tiles(lastCheckedTileID-1).checked)
-			deleteTile(id-1) ++ deleteTile(lastCheckedTileID-1)                
+			deleteTile(id) ++ deleteTile(lastCheckedTileID)                
 		else	{
 		  var oldlastCheckedTileID = lastCheckedTileID
 		  m_iLastCheckedTileID = id
