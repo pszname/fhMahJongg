@@ -1,5 +1,7 @@
+package de.fhk.testtui.fhMahjongg
+
 import de.fhk.ctr.fhMahJongg._
-import org.specs2.internal.scalaz.Length
+import org.specs2.text.AnsiColors._
 
 object Mahjongg	{
   def main(args: Array[String]) {
@@ -13,7 +15,7 @@ object Mahjongg	{
 	    var id = ttT(i)(j)-1
 	    //if (id > 0 && !Controller.layout.tiles(id).blocked) Console.BLUE
 	    Console.BLUE
-	    Console.out.print(tT(i)(j) + " ")
+	    print(tT(i)(j) + " ")
 	    if (i == tT.length-1) println
 	  }
 	  //for (i <- 0 until tT.length) println((i+1).toString + " " + tT(i).toList)
