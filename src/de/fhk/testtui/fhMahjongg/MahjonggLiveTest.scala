@@ -1,5 +1,7 @@
+package de.fhk.testtui.fhMahjongg
+
 import de.fhk.ctr.fhMahJongg._
-import org.specs2.internal.scalaz.Length
+import org.specs2.text.AnsiColors._
 
 object Mahjongg	{
   def main(args: Array[String]) {
@@ -9,11 +11,8 @@ object Mahjongg	{
 	  //for (i <- 0 until 30) println((i+1).toString + " " + Controller.generateTopLayer(i).toList)
 	  var tT: Array[Array[String]] = Controller.layout.topTilesWithNames
 	  var ttT: Array[Array[Int]] = Controller.generateTopLayer
-	  for (j <- 0 until tT(0).length; i <- 0 until tT.length)	{
-	    var id = ttT(i)(j)-1
-	    //if (id > 0 && !Controller.layout.tiles(id).blocked) Console.BLUE
-	    Console.BLUE
-	    Console.out.print(tT(i)(j) + " ")
+	  for (j <- 0 until tT(0).length; i <- 0 until tT.length)	{		
+	    print(tT(i)(j) + " ")
 	    if (i == tT.length-1) println
 	  }
 	  //for (i <- 0 until tT.length) println((i+1).toString + " " + tT(i).toList)
@@ -22,6 +21,7 @@ object Mahjongg	{
 	  var x = Console.readInt
 	  println("Geben Sie eine Zeile ein: ")
 	  var y = Console.readInt*/
+	  println
 	  println("Geben Sie den Namen einer Kachel ein, die ausgewählt werden soll: ")
 	  var in = Console.readLine
 	  var x = 0

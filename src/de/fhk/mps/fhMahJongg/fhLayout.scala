@@ -136,7 +136,7 @@ class fhLayout
 	  var tT = topTiles
 	  for (i <- 0 until Layer(0).width; j <- 0 until Layer(0).height)	{
 	    if (tT(i)(j) > 0) layer(i)(j) = tiles(tT(i)(j)-1).name
-	    else layer(i)(j) = "___"
+	    else layer(i)(j) = "   "
 	  }
 	  layer
 	}

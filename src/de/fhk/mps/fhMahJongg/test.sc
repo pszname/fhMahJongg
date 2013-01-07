@@ -1,12 +1,16 @@
 package de.fhk.mps.fhMahJongg
 
+import de.fhk.ctr.fhMahJongg._
+
+
+
 /*import org.specs2.mutable._
 
 class TileTest extends SpecificationWithJUnit {
    	"A new Tile with X = 1, Y = 2, Z = 3" should	{
    			val t = new Tile("test", 0, 1, 2, 3)
   	 	"return its position as vector" in	{
-  	 	t.position must be(Vector(1,2,3))
+  	 	t.position must be(Vector(1,2,3)
   		 }
   	 }
    }*/
@@ -15,40 +19,56 @@ class TileTest extends SpecificationWithJUnit {
 
 import Array._
 object test {
-	
-	
-	var t1 = new Tile("dragon", 2, 1, 2, 3)   //> t1  : de.fhk.mps.fhMahJongg.Tile = de.fhk.mps.fhMahJongg.Tile@6a54f9
-	t1.position(0)                            //> res0: Int = 1
-	
-	t1.UpperTile                              //> res1: List[Int] = List()
-	t1.popUpper(3)
-	t1.check                                  //> res2: Boolean = true
-	t1.checked                                //> res3: Boolean = true
-
-	//"hallo".substring(1)
-   var layer = new Layer(100, 100)                //> layer  : de.fhk.mps.fhMahJongg.Layer = de.fhk.mps.fhMahJongg.Layer@a7b7ff
-   //layer.Matrix(1)(2)
-   layer.setTileIDToPosition(1, 45, 88)           //> res4: Boolean = true
-   layer.setTileIDToPosition(2, 4, 2)             //> res5: Boolean = true
-   layer.getPositionFromID(1)                     //> res6: Vector[Int] = Vector(45, 88)
-   layer.deleteTileIDFromPosition(4, 2)
-   var matrix = layer.getField                    //> matrix  : Array[Array[Int]] = Array(Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                                  //|  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                                                  //| , 0, 0, 0, 0, 0, 0, 0, 0
+	Controller.generateGameBoard(1)           //> res0: Boolean = true
+	Controller.checkTile(70)                  //> res1: Vector[Int] = Vector(0, 0, 0)
+	Controller.generateTopLayer               //> res2: Array[Array[Int]] = Array(Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                                  //|  0, 0, 0), Array(0, 0, 0, 0, 0, 0, 0, 0, 36, 0, 0, 0, 0, 0, 0, 0), Array(0, 
+                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 56, 0, 0, 0, 0, 0, 81
+                                                  //| , 0, 43, 0, 0, 0, 0, 0, 70), Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                                  //|  0, 0), Array(0, 40, 0, 0, 0, 70, 0, 139, 0, 51, 0, 96, 0, 0, 0, 25), Array(
+                                                  //| 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 30, 0, 75, 0, 51, 
+                                                  //| 0, 60, 0, 12, 0, 59, 0, 27, 0, 55), Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                                                  //| , 0, 0, 0, 0), Array(0, 87, 0, 28, 0, 88, 0, 37, 0, 45, 0, 77, 0, 49, 0, 53)
+                                                  //| , Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 48, 0, 49,
+                                                  //|  0, 48, 0, 19, 0, 41, 0, 141, 0, 43, 0, 112), Array(0, 0, 0, 0, 0, 0, 0, 0, 
+                                                  //| 0, 0, 0, 0, 0, 0, 0, 0), Array(0, 47, 0, 51, 0, 56, 0, 44, 0, 60, 0, 78, 0, 
+                                                  //| 134, 0, 131), Array(0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0), Array(0
+                                                  //| , 58, 0, 103, 0, 134, 0,
                                                   //| Output exceeds cutoff limit.
-   matrix(4)(2)                                   //> res7: Int = 0
+                         
+	Controller.checkTile(71)                  //> res3: Vector[Int] = Vector(11, 13, 1)
+		
+	
+	/*Controller.layout.tiles(70).position
+	Controller.layout.tiles(70).name
+	Controller.layout.tiles(70).checked
+	Controller.layout.tiles(78).name
+	Controller.checkTile(78)
+	Controller.layout.Layer(0).getIDFromPosition(3, 9)
+	fhLayoutType(1)
+	//Controller.layout.Layer(0).getField
+	
+	var t1 = new Tile("dragon", 2, 1, 2, 3)
+	t1.position(0)
+	
+	t1.UpperTile
+	t1.popUpper(3)
+	t1.check
+	t1.checked
+
+
+
+	"hallo".substring(1)
+   var layer = new Layer(100, 100)
+   layer.Matrix(1)(2)
+   layer.setTileIDToPosition(1, 45, 88)
+   layer.setTileIDToPosition(2, 4, 2)
+   layer.getPositionFromID(1)
+   layer.deleteTileIDFromPosition(4, 2)
+   var matrix = layer.getField
+   matrix(4)(2)
    
-   /*
+   
 	var m = new map(30, 45)
 	m.field(1)(2) = 5
 	//m.field
