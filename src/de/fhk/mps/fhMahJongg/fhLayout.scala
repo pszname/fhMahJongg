@@ -2,6 +2,7 @@ package de.fhk.mps.fhMahJongg
 
 import fhLayoutType._
 import Array._
+import de.fhk.ctr.fhMahJongg._
 
 /**
  * This class provides a new layout. A layout contains multiple layers, that provides the position
@@ -167,4 +168,20 @@ class fhLayout
 	 * @return count as integer
 	 */
 	def getTileCount() = m_lpTiles.length
+	
+	/**
+	 * This method returns all Tiles with their names
+	 * @return The Field with the tile names
+	 */
+	def getAllTiles(): Array[fhTileVec]=
+	{
+		var lpRet: Array[fhTileVec] = Array()
+		
+		for (i <- 0 until m_lpTiles.length)
+		{
+			lpRet ++= Array(new fhTileVec(m_lpTiles(i).position, m_lpTiles(i).name))
+		}
+		
+		lpRet
+	}
 }

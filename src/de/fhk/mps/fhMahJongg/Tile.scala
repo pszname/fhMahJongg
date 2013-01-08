@@ -21,7 +21,7 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
   var blocked: Boolean = false
   var id:      Int 	   = iID
   var name:    String  = sName
-  var position         = Vector(X, Y, Z)
+  var position		   = Vector(X, Y, Z)
   var UpperTile        = List[Int]()
   var NeighborTile	   = List[Int]()
   
