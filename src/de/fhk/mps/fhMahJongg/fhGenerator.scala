@@ -382,7 +382,7 @@ object fhGenerator
     		if (lpLayer(z+1).getIDFromPosition(x-1, iRow+1) > 0)
     		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x-1, iRow+1))
     		if (lpLayer(z+1).getIDFromPosition(x+1, iRow-1) > 0)
-    		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x+2, iRow-1))
+    		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x+1, iRow-1))
     		if (lpLayer(z+1).getIDFromPosition(x-1, iRow-1) > 0)
     		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x-1, iRow-1))
     	}
