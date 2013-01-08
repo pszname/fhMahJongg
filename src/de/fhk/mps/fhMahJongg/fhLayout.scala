@@ -170,7 +170,8 @@ class fhLayout
 	def getTileCount() = m_lpTiles.length
 	
 	/**
-	 * This method returns all Tiles with their names
+	 * This method returns all Tiles with their names and position.
+	 * 
 	 * @return The Field with the tile names
 	 */
 	def getAllTiles(): Array[fhTileVec]=
