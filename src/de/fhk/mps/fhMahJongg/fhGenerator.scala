@@ -402,16 +402,16 @@ object fhGenerator
 	    				lpLayer(z).getIDFromPosition(x+2, iRow-1))
 	    		
 	    		// sich selbst als linken Nachbarn eintragen
-	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushNeighbor(iID)
+	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushNeighbor(iID+1)
 	    	}
 	    	// Schraeg rechts unten?
 		    if (lpLayer(z).getIDFromPosition(x+2, iRow+1) > 0)
 		    {
-		    	lpTiles.value(iID - 1).pushNeighbor(
+		    	lpTiles.value(iID).pushNeighbor(
 	    				lpLayer(z).getIDFromPosition(x+2, iRow+1))
 		    	
 		    	// sich selbst als linken Nachbarn eintragen
-	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushNeighbor(iID)
+	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushNeighbor(iID+1)
 		    }
 	    }
 	    // Nachbar rechts ---------------------------------------------------
