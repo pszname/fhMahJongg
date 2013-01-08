@@ -357,7 +357,7 @@ object fhGenerator
 	
 	private def CheckUpperFoes(lpTiles: fhMutableWrapper[List[Tile]], lpLayer: List[Layer], iRow: Int, iID: Int, z: Int, x: Int)=
 	{
-		var iUpperID = 0
+		//var iUpperID = 0
 		
 		// Direkt darüber
 		if (lpLayer.length > z+1 && lpLayer(z+1).getIDFromPosition(x, iRow) > 0)

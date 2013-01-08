@@ -1,34 +1,56 @@
-package de.fhk.testtui.fhMahjongg
+package de.fhk.tui.fhMahjongg
 
 import de.fhk.ctr.fhMahJongg._
 import org.specs2.text.AnsiColors._
+import com.sun.org.apache.xml.internal.serializer.ToStream
 
+/**
+ * This object provides a main method, that creates a text user interface.
+ * 
+ * @param commandline parameter args: <code>Array[String</code>
+ */
 object Mahjongg	{
+  
+  def openPairs(tT: Array[Array[String]], ttT: Array[Array[Int]]): Boolean = {
+	  var openPairList = List[Vector[Int]]()  	  
+  	  for (i <- 0 until tT.length; j <- 0 until ttT(0).length) if (ttT(i)(j) > 0 && !Controller.isBlockedAt(ttT(i)(j))) openPairList ++= List(Vector(i, j))
+  	  for (i <- 0 until openPairList.length; j <- 0 until openPairList.length)	{
+  	    if (i != j) if (tT(openPairList(i)(0))(openPairList(i)(1)).substring(1) == tT(openPairList(j)(0))(openPairList(j)(1)).substring(1)) return true
+  	  }
+	  false
+  }
+  
   def main(args: Array[String]) {
 	
     println("Geben Sie ein Layout-Typ ein: ")
 	Controller.generateGameBoard(Console.readInt)
 	
-	while (1 == 1)	{
+	var count = 0
+    var openPair: Boolean = true
+    
+    var tT: Array[Array[String]] = Controller.generateTopLayerWithNames
+	var ttT: Array[Array[Int]] = Controller.generateTopLayer
+	
+	while (openPair)	{
 	  
 	  //for (i <- 0 until 30) println((i+1).toString + " " + Controller.generateTopLayer(i).toList)
-	  
-	  var tT: Array[Array[String]] = Controller.generateTopLayerWithNames
-	  var ttT: Array[Array[Int]] = Controller.generateTopLayer
-	  
+	  	  	  
 	  for (j <- 0 until tT(0).length; i <- 0 until tT.length)	{		
+	    
 	    var str = ""
-	    if (Controller.getTile(ttT(i)(j)) != null && Controller.getTile(ttT(i)(j)).blocked)
-	      str = Console.RED
+	      
+	    if (Controller.isBlockedAt(ttT(i)(j))) str = Console.RED
 	    else str = Console.GREEN
+	    
 	    str = tT(i)(j) + " "
 	    print(str)
+	    
 	    if (i == tT.length-1) println
 	  }
 
 	  println
 	  println("Geben Sie den Namen einer Kachel ein, die ausgewählt werden soll: ")
-	  4
+	  
 	  var in = Console.readLine
 	  var x = 0
 	  var y = 0
@@ -41,7 +63,6 @@ object Mahjongg	{
 	  }
 	  
 	  var id = ttT(x)(y)
-	  println(id)	  
 	  var str = ""
   	  
   	  var erg = Controller.checkTile(id)
@@ -50,9 +71,16 @@ object Mahjongg	{
   	  else str = tT(x)(y) + " ist geblockt oder nicht vorhanden"
   	  if (erg.length > 3) str += " und wurde zusammen mit der letzten Kachel entfernt"
 
-  	  println(str)
-  	      	  
-  	  println(id)
+  	  println(str)      	  
+  	  
+  	  count += 1
+  	  
+  	  tT = Controller.generateTopLayerWithNames
+	  ttT= Controller.generateTopLayer
+  	  
+  	  openPair = openPairs(tT, ttT)
+  	    	  
+  	  /*println(id)
   	  if (id > 0)	{
 	  println(Controller.layout.tiles(id-1).checked)
 	  println(Controller.layout.tiles(id-1).position)
@@ -64,7 +92,13 @@ object Mahjongg	{
 	  println("neighbortile")
 	  for (i <- 0 until Controller.layout.tiles(id-1).NeighborTile.length) println(Controller.layout.tiles(Controller.layout.tiles(id-1).NeighborTile(i)-1).name)
 	  for (i <- 0 until Controller.layout.tiles(id-1).NeighborTile.length) println(Controller.layout.tiles(id-1).NeighborTile(i).toString())
-  	  }
+  	  }*/
 	}
+    
+      println
+  	  println("Keine weiteren Züge möglich!")
+  	  println
+  	  println("Sie haben erfolgreich " + count + "Paerchen gelöst.")
+  	  println  	  
   }
 }

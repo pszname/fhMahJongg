@@ -9,19 +9,16 @@ import Array._
  * In addition the layout has methods for checking and deleting tiles.
  */
 class fhLayout 
-{ 
-	// Properties =======================================================================
-  
+{   
 	def Layer = m_lpLayer											/* Gibt die Layer Zurueck */
 	def tiles = m_lpTiles
-	private def lastCheckedTileID = m_iLastCheckedTileID		// falls nötig, private entfernen!
+	private def lastCheckedTileID = m_iLastCheckedTileID
   
 	// Defs ============================================================================= 
 
 	private var m_iLastCheckedTileID: Int = 0	
 	private var m_lpLayer: List[Layer] = List()					/* Hier werden die Layer gespeichert */
 	private var m_lpTiles: List[Tile]  = List()					/* Hier werden die Referenzen auf die Kacheln gespeichert */
-
 	
 	/**
 	 * Creates a new layout.
@@ -33,37 +30,30 @@ class fhLayout
 	{
 		var fRet = false
 	  
-		// Entscheide wie das Feld erzeugt wird
-		fhLayoutType(iType) match
-		{
-		  // Erzeuge ein generiertes Feld -----------------------------------------------
-		  case fhLayoutType.LT_GENERATE =>
-		  {
-		    var pMut1 = fhMutableWrapper(this.m_lpLayer)
-		    var pMut2 = fhMutableWrapper(this.m_lpTiles)
-		    fRet 	  = fhGenerator.Generate(pMut1, pMut2, fhGenerator.MAX_TILES)
+		fhLayoutType(iType) match		{		 
+		  	case fhLayoutType.LT_GENERATE =>		  {
+				var pMut1 = fhMutableWrapper(this.m_lpLayer)
+				var pMut2 = fhMutableWrapper(this.m_lpTiles)
 		    
-		    m_lpLayer = pMut1.value
-		    m_lpTiles = pMut2.value
-		  }
-		  // Erzeuge eine Pyramide/Schildkroete -----------------------------------------
-		  case fhLayoutType.LT_TURTLE   =>
-		  {
-		    var pMut1 = fhMutableWrapper(this.m_lpLayer)
-		    var pMut2 = fhMutableWrapper(this.m_lpTiles)
-		    fRet      = fhGenerator.LoadTurtle(pMut1, pMut2)
+				fRet 	  = fhGenerator.Generate(pMut1, pMut2, fhGenerator.MAX_TILES)
 		    
-		    m_lpLayer = pMut1.value
-		    m_lpTiles = pMut2.value
-		  }
-		  // Lade ein Nutzerdefiniertes Feld --------------------------------------------
-		  case fhLayoutType.LT_USER		=>
-		  {
+				m_lpLayer = pMut1.value
+				m_lpTiles = pMut2.value
+			}
+		  	case fhLayoutType.LT_TURTLE   =>		  {
+		  		var pMut1 = fhMutableWrapper(this.m_lpLayer)
+		  		var pMut2 = fhMutableWrapper(this.m_lpTiles)
+		  		
+		  		fRet      = fhGenerator.LoadTurtle(pMut1, pMut2)
+		    
+		  		m_lpLayer = pMut1.value
+		  		m_lpTiles = pMut2.value
+		  	}
+		  	case fhLayoutType.LT_USER		=>		  {
 			fRet = fhGenerator.LoadUser(this.m_lpLayer)
-		  }
+		  	}
 		}
-		
-		 fRet
+		fRet
 	}
 		
 	/**
@@ -82,17 +72,11 @@ class fhLayout
 	  
 	  var layer: Layer = m_lpLayer(z)
 	  
-	  for(i <- 0 until tile.NeighborTile.length )	{
-	    if (tile.NeighborTile(i) > 0)	{
-	      tiles(tile.NeighborTile(i)-1).popNeighbor(id)
-	    }
-	  }
+	  for(i <- 0 until tile.NeighborTile.length ) if (tile.NeighborTile(i) > 0)	tiles(tile.NeighborTile(i)-1).popNeighbor(id)
 	  
 	  if (z > 0)	{
 	    for (i <- -1 to 1 by 1; j <- -1 to 1 by 1) if (x+i >= 0 && x+i < Layer(z).width && y+j >= 0 && y+j < Layer(z).height &&
-	        Layer(z-1).getIDFromPosition(x+i, y+j) > 0)	{  	
-	    	  tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).popUpper(id)
-	    }
+	        Layer(z-1).getIDFromPosition(x+i, y+j) > 0)	tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).popUpper(id)
 	  }
 	  
 	  if (layer.deleteTileIDFromPosition(x, y) != 0) Vector(0, 0, 0) else Vector(x+1,y+1,z+1)
@@ -129,7 +113,7 @@ class fhLayout
 	def checkTile(x: Int, y: Int): Vector[Int] = checkTile(topTile(x, y))
 	
 	/**
-	 * This method returns a field that contains all tiles on top.
+	 * This method returns a field that contains all tiles on top by id.
 	 * 
 	 * @return <code>Array[Array[Int]]</code>
 	 */
@@ -141,13 +125,15 @@ class fhLayout
 	  layer.getField
 	}
 	
+	/**
+	 * This method returns a field that contains all tiles on top by name.
+	 * 
+	 * @return <code>Array[Array[Int]]</code>
+	 */
 	def topTilesWithNames: Array[Array[String]] = {
 	  var layer = ofDim[String](Layer(0).width, Layer(0).height)
 	  var tT = topTiles
-	  for (i <- 0 until Layer(0).width; j <- 0 until Layer(0).height)	{
-	    if (tT(i)(j) > 0) layer(i)(j) = tiles(tT(i)(j)-1).name
-	    else layer(i)(j) = "   "
-	  }
+	  for (i <- 0 until Layer(0).width; j <- 0 until Layer(0).height) if (tT(i)(j) > 0) layer(i)(j) = tiles(tT(i)(j)-1).name else layer(i)(j) = "   "
 	  layer
 	}
 	

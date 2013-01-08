@@ -8,7 +8,7 @@ import de.fhk.mps.fhMahJongg._
  */
 object Controller {
   
-  var layout = new fhLayout
+  private var layout = new fhLayout
   
   /**
    * This method generates a virtual game board for the game play.
@@ -48,12 +48,12 @@ object Controller {
   def checkTile(x: Int, y: Int): Vector[Int] = layout.checkTile(x, y)
   
   /**
-   * This method returns a specified tile by id.
+   * This method returns a the blocked state for a specified tile by id.
    * 
    * @param id
-   * @return <code>Tile</code> with specified id
+   * @return <code>true</code> if the tile is blocked or null
    */
-  def getTile(id: Int): Tile = (if (id > 0) layout.tiles(id-1) else null)
+  def isBlockedAt(id: Int): Boolean = (if (id > 0) layout.tiles(id-1).blocked else true)
   
   /**
    * This method returns the tile count.
