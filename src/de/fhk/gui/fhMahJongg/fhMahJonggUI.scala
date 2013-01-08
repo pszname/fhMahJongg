@@ -64,7 +64,16 @@ class fhMahJonggUI extends JFrame
 			m_lstImages(i).setBackground(Color.RED)
 			m_lstImages(i).setVisible(true)
 			m_Container.add(m_lstImages(i))
-			m_Container.setVisible(true)
+		}
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+	
+	private class TileListener extends ActionListener
+	{
+		def actionPerformed(e: ActionEvent)=
+		{
+			
 		}
 	}
 	
