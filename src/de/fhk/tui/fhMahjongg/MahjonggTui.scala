@@ -80,7 +80,7 @@ object Mahjongg	{
   	  
   	  openPair = openPairs(tT, ttT)
   	    	  
-  	  /*println(id)
+  	  println(id)
   	  if (id > 0)	{
 	  println(Controller.layout.tiles(id-1).checked)
 	  println(Controller.layout.tiles(id-1).position)
@@ -92,7 +92,7 @@ object Mahjongg	{
 	  println("neighbortile")
 	  for (i <- 0 until Controller.layout.tiles(id-1).NeighborTile.length) println(Controller.layout.tiles(Controller.layout.tiles(id-1).NeighborTile(i)-1).name)
 	  for (i <- 0 until Controller.layout.tiles(id-1).NeighborTile.length) println(Controller.layout.tiles(id-1).NeighborTile(i).toString())
-  	  }*/
+  	  }
 	}
     
       println

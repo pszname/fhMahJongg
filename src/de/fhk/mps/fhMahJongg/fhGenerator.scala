@@ -365,7 +365,7 @@ object fhGenerator
 	    	// Merke den Darueberliegenden
 	        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow))
 	    }
-	    /*// Um einen Punkt versetzt
+	    // Um einen Punkt versetzt
 	    else if (lpLayer(z+1).getIDFromPosition(x+1, iRow) > 0)
 	    {
 	    	lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x+1, iRow))
@@ -374,7 +374,7 @@ object fhGenerator
     	else if (lpLayer(z+1).getIDFromPosition(x-1, iRow) > 0)
     	{
     		lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x-1, iRow))
-    	}*/
+    	}
     	else
     	{
     		if (lpLayer(z+1).getIDFromPosition(x+1, iRow+1) > 0)
@@ -392,7 +392,7 @@ object fhGenerator
 	
 	private def CheckNeighborFoes(lpTiles: fhMutableWrapper[List[Tile]], lpLayer: List[Layer], iRow: Int, iID: Int, z: Int, x: Int)=
 	{
-		/*// kein Nachbar rechts ----------------------------------------------
+		// kein Nachbar rechts ----------------------------------------------
 	    if (lpLayer(z).getIDFromPosition(x+2, iRow) <= 0)
 	    {
 	    	// Schraeg rechts oben?
@@ -416,7 +416,6 @@ object fhGenerator
 	    }
 	    // Nachbar rechts ---------------------------------------------------
 	    else
-	    {*/
 	    if (lpLayer(z).getIDFromPosition(x+2, iRow) > 0)	{
 	      // Merke dir den rechten Nachbarn
 	      lpTiles.value(iID).pushNeighbor(
