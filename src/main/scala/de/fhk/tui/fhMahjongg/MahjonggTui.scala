@@ -1,8 +1,7 @@
-﻿package de.fhk.tui.fhMahjongg
+package de.fhk.tui.fhMahjongg
 
 import de.fhk.ctr.fhMahJongg._
 import org.specs2.text.AnsiColors._
-import com.sun.org.apache.xml.internal.serializer.ToStream
 
 /**
  * This object provides a main method, that creates a text user interface.
@@ -48,10 +47,9 @@ object Mahjongg	{
 	    
 	    var str = ""
 	      
-	    if (Controller.isBlockedAt(ttT(i)(j))) str = Console.RED
-	    else str = Console.GREEN
-	    
-	    str = tT(i)(j) + " "
+	    if (Controller.isBlockedAt(ttT(i)(j))) str = "\033[31m" + tT(i)(j) + " \033[0m"
+	    else str = "\033[32m" + tT(i)(j) + " \033[0m"
+
 	    print(str)
 	    
 	    if (i == tT.length-1) println
@@ -89,8 +87,8 @@ object Mahjongg	{
   	  
   	  openPair = openPairs(tT, ttT)
   	    	  
-  	  /*
-  	  println(id)
+  	  
+  	  /*println(id)
   	  if (id > 0)	{
 	  println(Controller.layout.tiles(id-1).checked)
 	  println(Controller.layout.tiles(id-1).position)

@@ -58,6 +58,48 @@ class fhLayoutTest extends SpecificationWithJUnit {
       (l.Layer(l.tiles(l.topTile(15, 7, 3)-1).position(2)+1).getIDFromPosition(15, 7) == 0 && 
           l.Layer(l.tiles(l.topTile(15, 7)-1).position(2)).getIDFromPosition(15, 7) == l.topTile(15, 7)) must beTrue
     }
+    
+    "provide a vector of all tiles" in {
+    	l.getAllTiles().length > 0 must beTrue
+    }
+    "provide the count of the tile list" in{
+    	l.getTileCount > 0 must beTrue
+    }
+    "provide a id array of the uppertiles" in{
+    	l.topTiles.length > 0 must beTrue
+    }
+    "provide a name array of the " in
+    {
+    	l.topTilesWithNames.length > 0 must beTrue
+    }
   }
+  
+  "A random generated Layout" should
+  {
+	  var l = new fhLayout()
+	  "not generate" in
+	  {
+		  l.CreateLayout(0) must beFalse
+	  }
+  }
+  
+  "A not supported Layout" should
+  {
+	  var l = new fhLayout()
+	  "not generate" in
+	  {
+		  l.CreateLayout(4) must beFalse
+	  }
+  }
+  
+  "A user Generated layout" should
+  {
+	  var l = new fhLayout()
+	  "not generate" in
+	  {
+		  l.CreateLayout(2) must beFalse
+	  }
+  }
+  
   
 }

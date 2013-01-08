@@ -1,4 +1,4 @@
-﻿package de.fhk.mps.fhMahJongg
+package de.fhk.mps.fhMahJongg
 
 /**
  * Diese Klasse dient dazu Var Parameter zu uebergeben.

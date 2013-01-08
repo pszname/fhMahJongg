@@ -1,4 +1,4 @@
-﻿package de.fhk.mps.fhMahJongg
+package de.fhk.mps.fhMahJongg
 
 import scala.util.Random
 import scala.collection.immutable.Nil
@@ -398,31 +398,31 @@ object fhGenerator
 	    	// Schraeg rechts oben?
 	    	if (lpLayer(z).getIDFromPosition(x+2, iRow-1) > 0)
 	    	{
-	    		lpTiles.value(iID).pushNeighbor(
+	    		lpTiles.value(iID).pushRightNeighbor(
 	    				lpLayer(z).getIDFromPosition(x+2, iRow-1))
 	    		
 	    		// sich selbst als linken Nachbarn eintragen
-	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushNeighbor(iID+1)
+	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushLeftNeighbor(iID+1)
 	    	}
 	    	// Schraeg rechts unten?
 		    if (lpLayer(z).getIDFromPosition(x+2, iRow+1) > 0)
 		    {
-		    	lpTiles.value(iID).pushNeighbor(
+		    	lpTiles.value(iID).pushRightNeighbor(
 	    				lpLayer(z).getIDFromPosition(x+2, iRow+1))
 		    	
 		    	// sich selbst als linken Nachbarn eintragen
-	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushNeighbor(iID+1)
+	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushLeftNeighbor(iID+1)
 		    }
 	    }
 	    // Nachbar rechts ---------------------------------------------------
 	    else
 	    if (lpLayer(z).getIDFromPosition(x+2, iRow) > 0)	{
 	      // Merke dir den rechten Nachbarn
-	      lpTiles.value(iID).pushNeighbor(
+	      lpTiles.value(iID).pushRightNeighbor(
 	          lpLayer(z).getIDFromPosition(x+2, iRow))
 	      
 	      // sich selbst als linken Nachbarn eintragen
-	      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow)-1).pushNeighbor(iID+1)
+	      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow)-1).pushLeftNeighbor(iID+1)
 	    } // Out Nachbar rechts
 	  
 	  

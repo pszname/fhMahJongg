@@ -101,14 +101,16 @@ class GeneratorSpec extends SpecificationWithJUnit
 		
 		"The Tile at (0,0) should have one Neighbor" in
 		{
-			lpTiles(posEl1-1).NeighborTile.length must be_==(1)
+			lpTiles(posEl1-1).RightNeighborTile.length must be_==(1)
 		}
 		
 		var posEl2: Int = lpLayer(0).getIDFromPosition(2, 0);
 		
 		"The Tile at (2, 0) should have two Neighbors" in
 		{
-			lpTiles(posEl2-1).NeighborTile.length must be_==(2)
+			lpTiles(posEl2-1).RightNeighborTile.length + lpTiles(posEl2-1).LeftNeighborTile.length must be_==(2)
 		}
 	}
+	
+	
 }

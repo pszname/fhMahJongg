@@ -1,4 +1,4 @@
-﻿package de.fhk.mps.fhMahJongg
+package de.fhk.mps.fhMahJongg
 
 /*
  * TODO: scaladoc erzeugen --> download und in cmd ausfuehren	--> in cmd C:\Users\hendrik\scala-SDK-2.1-M2-2.9-win32.win32.x86\eclipse\scala-2.10.0\bin>s
@@ -23,7 +23,8 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
   var name:    String  = sName
   var position		   = Vector(X, Y, Z)
   var UpperTile        = List[Int]()
-  var NeighborTile	   = List[Int]()
+  var LeftNeighborTile	   = List[Int]()
+  var RightNeighborTile	   = List[Int]()
   
   /**
    * Equals two tiles.
@@ -57,7 +58,7 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
    * */
   def popUpper(id: Int)	{
     UpperTile -= id
-    if (UpperTile.length == 0 && NeighborTile.length < 2) blocked = false
+    if (UpperTile.length == 0 && (LeftNeighborTile.length == 0 || RightNeighborTile.length == 0)) blocked = false
   }
   
    /**
@@ -65,9 +66,19 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
     * 
     * @param id of the neighbor tile 
     */
-  def pushNeighbor(id: Int)	{
-    if (id != this.id) NeighborTile ++= List(id)
-    if (NeighborTile.length > 1) blocked = true
+  def pushLeftNeighbor(id: Int)	{
+    if (id != this.id) LeftNeighborTile ++= List(id)
+    if (LeftNeighborTile.length > 0 && RightNeighborTile.length > 0) blocked = true
+  }
+  
+     /**
+    * This method adds a neighbor tile.
+    * 
+    * @param id of the neighbor tile 
+    */
+  def pushRightNeighbor(id: Int)	{
+    if (id != this.id) RightNeighborTile ++= List(id)
+    if (LeftNeighborTile.length > 0 && RightNeighborTile.length > 0) blocked = true
   }
   
   /**
@@ -76,8 +87,11 @@ class Tile(sName: String, iID: Int, X: Int, Y: Int, Z: Int) {
     * @param id of the neighbor tile 
     */
   def popNeighbor(id: Int)	{
-    if (id != this.id) NeighborTile -= id
-    if (UpperTile.length == 0 && NeighborTile.length < 2) blocked = false
+    if (id != this.id)	{
+      LeftNeighborTile -= id
+      RightNeighborTile -= id
+    }
+    if (UpperTile.length == 0 && (LeftNeighborTile.length == 0 || RightNeighborTile.length == 0)) blocked = false
   }
 	
   /**

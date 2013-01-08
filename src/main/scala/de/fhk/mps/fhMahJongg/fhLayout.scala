@@ -31,6 +31,7 @@ class fhLayout
 	{
 		var fRet = false
 	  
+		if(iType < 3)
 		fhLayoutType(iType) match		{		 
 		  	case fhLayoutType.LT_GENERATE =>		  {
 				var pMut1 = fhMutableWrapper(this.m_lpLayer)
@@ -73,7 +74,8 @@ class fhLayout
 	  
 	  var layer: Layer = m_lpLayer(z)
 	  
-	  for(i <- 0 until tile.NeighborTile.length ) if (tile.NeighborTile(i) > 0)	tiles(tile.NeighborTile(i)-1).popNeighbor(id)
+	  for(i <- 0 until tile.LeftNeighborTile.length ) if (tile.LeftNeighborTile(i) > 0)	tiles(tile.LeftNeighborTile(i)-1).popNeighbor(id)
+	  for(i <- 0 until tile.RightNeighborTile.length ) if (tile.RightNeighborTile(i) > 0)	tiles(tile.RightNeighborTile(i)-1).popNeighbor(id)
 	  
 	  if (z > 0)	{
 	    for (i <- -1 to 1 by 1; j <- -1 to 1 by 1) if (x+i >= 0 && x+i < Layer(z).width && y+j >= 0 && y+j < Layer(z).height &&
