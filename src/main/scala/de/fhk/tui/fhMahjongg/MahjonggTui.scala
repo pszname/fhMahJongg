@@ -30,6 +30,8 @@ object Mahjongg	{
    */
   def main(args: Array[String]) {
 	
+    while(true)	{
+    
     println("Geben Sie ein Layout-Typ ein: ")
 	Controller.generateGameBoard(Console.readInt)
 	
@@ -58,7 +60,13 @@ object Mahjongg	{
 	  println
 	  println("Geben Sie den Namen einer Kachel ein, die ausgewaehlt werden soll: ")
 	  
-	  var in = Console.readLine
+	  var in: String = Console.readLine
+	  
+	  if (in.toLowerCase() == "exit")	{
+	    println("MahJongg wurde beendet.")
+	    return
+	  }
+	  
 	  var x = 0
 	  var y = 0
 	  
@@ -107,6 +115,8 @@ object Mahjongg	{
   	  println("Keine weiteren Zuege moeglich!")
   	  println
   	  println("Sie haben erfolgreich " + count + "Paerchen geloest.")
-  	  println  	  
+  	  println  	
+  	  
+    }
   }
 }
