@@ -41,7 +41,7 @@ object Mahjongg	{
 	  }
 	  
 	  var id = ttT(x)(y)
-	  println(id)
+	  println(id)	  
 	  var str = ""
 	    
   	  //if (id > 0) id -= 1
