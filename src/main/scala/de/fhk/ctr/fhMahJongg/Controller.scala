@@ -8,7 +8,7 @@ import de.fhk.mps.fhMahJongg._
  */
 object Controller {
   
-  var layout = new fhLayout
+  private var layout = new fhLayout
   
   /**
    * This method generates a virtual game board for the game play.

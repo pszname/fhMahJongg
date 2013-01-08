@@ -3,9 +3,7 @@ package de.fhk.mps.fhMahJongg
 /*
  * TODO: scaladoc erzeugen --> download und in cmd ausfuehren	--> in cmd C:\Users\hendrik\scala-SDK-2.1-M2-2.9-win32.win32.x86\eclipse\scala-2.10.0\bin>s
  * caladoc.bat C:\Users\hendrik\git\fhMahJongg\src\de\fhk\mps\fhMahJongg\*.scala -e
- * ncoding Cp1252 aufuehren. Doku ist dann in C:\Users\hendrik\scala-SDK-2.1-M2-2.9-win32.win32.x86\eclipse\scala-2.10.0\bin>s
- * caladoc.bat C:\Users\hendrik\git\fhMahJongg\src\de\fhk\mps\fhMahJongg\*.scala -e
- * ncoding Cp1252 
+ * ncoding Cp1252 aufuehren. 
  * Doku ist dann in C:\Users\hendrik\scala-SDK-2.1-M2-2.9-win32.win32.x86\eclipse\scala-2.10.0\bin\index.html
  * den Befehl fuer alle source-files (*.scala) ausfuehren. Zeilen, die Fehler erzeugen ggf. auskommentieren.
  */
