@@ -17,6 +17,8 @@ object fhProgram
 		frmGameUI.setSize(640, 480)
 		frmGameUI.setVisible(true)
 		frmGameUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+		
+		val frmOther = new fhMahJonggUI1
 	}
 }
 
