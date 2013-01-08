@@ -89,23 +89,11 @@ class fhLayout
 	  }
 	  
 	  if (z > 0)	{
-		  	Console.out.println(tile.name)
-	    	Console.out.println(tile.id)
-	    	Console.out.println(tile.position.toString)
 	    for (i <- -1 to 1 by 1; j <- -1 to 1 by 1) if (x+i >= 0 && x+i < Layer(z).width && y+j >= 0 && y+j < Layer(z).height &&
-	        Layer(z-1).getIDFromPosition(x+i, y+j) > 0)	{
-	    	/*Console.out.println((x+i).toString + " " + (y+j).toString + " " + (z-1).toString)
-	    	Console.out.println(Layer(z-1).getIDFromPosition(x+i, y+j).toString)
-	    	if (Layer(z-1).getIDFromPosition(x+i, y+j) > 0)	{
-	    	  Console.out.println(tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).name)
-	    	  Console.out.println(tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).id)
-	    	  Console.out.println(tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).position.toString)*/	    	
+	        Layer(z-1).getIDFromPosition(x+i, y+j) > 0)	{  	
 	    	  tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).popUpper(id)
-	    	//}	    	
 	    }
 	  }
-	  
-	  //m_lpTiles = m_lpTiles.updated(id, new Tile("dummy", 0, x, y, z))
 	  
 	  if (layer.deleteTileIDFromPosition(x, y) != 0) Vector(0, 0, 0)
 	  else Vector(x+1,y+1,z+1)
@@ -188,5 +176,10 @@ class fhLayout
 	  if (i < 0) 0 else Layer(i).getIDFromPosition(x, y)
 	}
 	
+	/**
+	 * This method returns the count of tiles in the layout.
+	 * 
+	 * @return count as integer
+	 */
 	def getTileCount() = m_lpTiles.length
 }
