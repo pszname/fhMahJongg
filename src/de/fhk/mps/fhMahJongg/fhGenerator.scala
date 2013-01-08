@@ -365,7 +365,7 @@ object fhGenerator
 	    	// Merke den Darueberliegenden
 	        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow))
 	    }
-	    /*// Um einen Punkt versetzt
+	    // Um einen Punkt versetzt
 	    else if (lpLayer(z+1).getIDFromPosition(x+1, iRow) > 0)
 	    {
 	    	lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x+1, iRow))
@@ -374,7 +374,7 @@ object fhGenerator
     	else if (lpLayer(z+1).getIDFromPosition(x-1, iRow) > 0)
     	{
     		lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x-1, iRow))
-    	}*/
+    	}
     	else
     	{
     		if (lpLayer(z+1).getIDFromPosition(x+1, iRow+1) > 0)
