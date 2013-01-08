@@ -94,11 +94,14 @@ class fhLayout
 	    	Console.out.println(tile.position.toString)
 	    for (i <- -1 to 1 by 1; j <- -1 to 1 by 1) if (x+i >= 0 && x+i < Layer(z).width && y+j >= 0 && y+j < Layer(z).height &&
 	        Layer(z-1).getIDFromPosition(x+i, y+j) > 0)	{
-	    	Console.out.println(tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).name)
-	    	Console.out.println(tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).id)
-	    	Console.out.println(tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).position.toString)
-	    	Console.out.println(x + " " + y + " " + z)
-	    	tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).popUpper(id)
+	    	/*Console.out.println((x+i).toString + " " + (y+j).toString + " " + (z-1).toString)
+	    	Console.out.println(Layer(z-1).getIDFromPosition(x+i, y+j).toString)
+	    	if (Layer(z-1).getIDFromPosition(x+i, y+j) > 0)	{
+	    	  Console.out.println(tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).name)
+	    	  Console.out.println(tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).id)
+	    	  Console.out.println(tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).position.toString)*/	    	
+	    	  tiles(Layer(z-1).getIDFromPosition(x+i, y+j)-1).popUpper(id)
+	    	//}	    	
 	    }
 	  }
 	  
