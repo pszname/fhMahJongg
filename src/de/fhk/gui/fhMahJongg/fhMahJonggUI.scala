@@ -22,7 +22,7 @@ class fhMahJonggUI extends JFrame
 	private var m_lstImages: Array[JLabel] = Array() 
 	private val m_menuListener             = new MenuListener
 	
-	m_Container.setLayout(null)
+	m_Container.setLayout(new FlowLayout)
 	
 	// Game menu
 	m_menu.setMnemonic(KeyEvent.VK_G)
@@ -63,7 +63,7 @@ class fhMahJonggUI extends JFrame
 			m_lstImages(i).setBounds(20, 20, 80, 80)
 			m_lstImages(i).setBackground(Color.RED)
 			m_lstImages(i).setVisible(true)
-			m_Container.add(m_lstImages(i))
+			getContentPane.add(m_lstImages(i))
 		}
 	}
 	
