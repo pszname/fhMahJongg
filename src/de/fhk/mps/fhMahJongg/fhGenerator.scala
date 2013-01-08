@@ -1,6 +1,7 @@
 package de.fhk.mps.fhMahJongg
 
 import scala.util.Random
+import scala.collection.immutable.Nil
 
 /////////////////////////////////////////////////////////////////////////////////////////
 /**
@@ -343,48 +344,87 @@ object fhGenerator
 			if (iID >= 0)
 			{
 				// befindet sich noch eine Kachel darueber?
-			    if (lpLayer.length > z+1 && lpLayer(z+1).getIDFromPosition(x, iRow) > 0)
-			    {
-			    	// Merke den Darueberliegenden
-			        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow))
-			    }
+				if (lpLayer.length > z+1)
+					CheckUpperFoes(lpTiles, lpLayer, iRow, iID, z, x)
 			    
-			    // kein Nachbar rechts ----------------------------------------------
-			    if (lpLayer(z).getIDFromPosition(x+2, iRow) <= 0)
-			    {
-			    	// Schraeg rechts oben?
-			    	// Hendrik: Brauchen wir das denn? Gehört das zu den Regeln, dass blockiert wird, wenn rechts, bzw. links oben ein Nachbar ist? Was wir hier benötigen ist außerdem
-			    	// 			dass die Unterliegenden Nachbarn hinzugefügt werden, um später beim unterliegenden Nachbarn den popUpperTile auszuführen
-			    	if (lpLayer(z).getIDFromPosition(x+2, iRow-1) > 0)
-			    	{
-			    		lpTiles.value(iID).pushNeighbor(
-			    				lpLayer(z).getIDFromPosition(x+2, iRow-1))
-			    		
-			    		// sich selbst als linken Nachbarn eintragen
-			    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushNeighbor(iID)
-			    	}
-			    	// Schraeg rechts unten?
-				    if (lpLayer(z).getIDFromPosition(x+2, iRow+1) > 0)
-				    {
-				    	lpTiles.value(iID - 1).pushNeighbor(
-			    				lpLayer(z).getIDFromPosition(x+2, iRow+1))
-				    	
-				    	// sich selbst als linken Nachbarn eintragen
-			    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushNeighbor(iID)
-				    }
-			    }
-			    // Nachbar rechts ---------------------------------------------------
-			    else
-			    {
-			      // Merke dir den rechten Nachbarn
-			      lpTiles.value(iID).pushNeighbor(
-			          lpLayer(z).getIDFromPosition(x+2, iRow))
-			      
-			      // sich selbst als linken Nachbarn eintragen
-			      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow) - 1).pushNeighbor(iID)
-			    } // Out Nachbar rechts
-			} // out besetzt?
-		} // z
+			    CheckNeighborFoes(lpTiles, lpLayer, iRow, iID, z, x)
+					
+			}
+		}
 	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+	
+	private def CheckUpperFoes(lpTiles: fhMutableWrapper[List[Tile]], lpLayer: List[Layer], iRow: Int, iID: Int, z: Int, x: Int)=
+	{
+		var iUpperID = 0
+		
+		// Direkt darüber
+		if (lpLayer.length > z+1 && lpLayer(z+1).getIDFromPosition(x, iRow) > 0)
+	    {
+	    	// Merke den Darueberliegenden
+	        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow))
+	    }
+	    // Um einen Punkt versetzt
+	    else if (lpLayer(z+1).getIDFromPosition(x+1, iRow) > 0)
+	    {
+	    	lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x+1, iRow))
+	    }
+		// x - 1 : iRow
+    	else if (lpLayer(z+1).getIDFromPosition(x-1, iRow) > 0)
+    	{
+    		lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x-1, iRow))
+    	}
+    	else
+    	{
+    		if (lpLayer(z+1).getIDFromPosition(x+1, iRow+1) > 0)
+    		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x+1, iRow+1))
+    		if (lpLayer(z+1).getIDFromPosition(x-1, iRow+1) > 0)
+    		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x-1, iRow+1))
+    		if (lpLayer(z+1).getIDFromPosition(x+1, iRow-1) > 0)
+    		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x+2, iRow-1))
+    		if (lpLayer(z+1).getIDFromPosition(x-1, iRow-1) > 0)
+    		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x-1, iRow-1))
+    	}
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+	
+	private def CheckNeighborFoes(lpTiles: fhMutableWrapper[List[Tile]], lpLayer: List[Layer], iRow: Int, iID: Int, z: Int, x: Int)=
+	{
+		// kein Nachbar rechts ----------------------------------------------
+	    if (lpLayer(z).getIDFromPosition(x+2, iRow) <= 0)
+	    {
+	    	// Schraeg rechts oben?
+	    	if (lpLayer(z).getIDFromPosition(x+2, iRow-1) > 0)
+	    	{
+	    		lpTiles.value(iID).pushNeighbor(
+	    				lpLayer(z).getIDFromPosition(x+2, iRow-1))
+	    		
+	    		// sich selbst als linken Nachbarn eintragen
+	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushNeighbor(iID)
+	    	}
+	    	// Schraeg rechts unten?
+		    if (lpLayer(z).getIDFromPosition(x+2, iRow+1) > 0)
+		    {
+		    	lpTiles.value(iID - 1).pushNeighbor(
+	    				lpLayer(z).getIDFromPosition(x+2, iRow+1))
+		    	
+		    	// sich selbst als linken Nachbarn eintragen
+	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushNeighbor(iID)
+		    }
+	    }
+	    // Nachbar rechts ---------------------------------------------------
+	    else
+	    {
+	      // Merke dir den rechten Nachbarn
+	      lpTiles.value(iID).pushNeighbor(
+	          lpLayer(z).getIDFromPosition(x+2, iRow))
+	      
+	      // sich selbst als linken Nachbarn eintragen
+	      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow) - 1).pushNeighbor(iID)
+	    } // Out Nachbar rechts
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////
 }
