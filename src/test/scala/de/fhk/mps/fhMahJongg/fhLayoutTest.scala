@@ -20,6 +20,10 @@ class fhLayoutTest extends SpecificationWithJUnit {
     "provide a field with all tiles on top by name" in	{
       true		//muss aufgrund von groﬂer Komplexit‰t warten
     }
+    "provide a field with all tiles as vector of position and name" in	{
+      true		//muss aufgrund von groﬂer Komplexit‰t warten
+    }
+    
   }
   "Further the layout" should	{  
     "provide to check tiles by id and return a position as vector" in	{      

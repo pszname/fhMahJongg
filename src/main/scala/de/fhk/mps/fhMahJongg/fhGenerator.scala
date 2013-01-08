@@ -1,4 +1,4 @@
-package de.fhk.mps.fhMahJongg
+ï»¿package de.fhk.mps.fhMahJongg
 
 import scala.util.Random
 import scala.collection.immutable.Nil
@@ -162,15 +162,15 @@ object fhGenerator
 		{
 		    var fOK = false
 			
-		    // Prüfe, ob Tiles des selben Typs nicht 
+		    // Pruefe, ob Tiles des selben Typs nicht 
 		    // mehr als doppelt vorkommen, da sonst unloesbar
 			while(!fOK)
 			{
 			    iTile = SelectTile(lpTmp);						// Hol per Zufall eine Kachel aus der Liste
-				fOK   = IsDouble(								// Prüft, ob schon doppelt vorhanden ist
-					lstLayer.value,								// Den Layer als Referenz zum Prüfen
-				    lpTmp(iTile).name, 							// Den Namen des gewählten Tiles
-				    TURTLE_COORD(i)								// Die Position des gewählten Tiles
+				fOK   = IsDouble(								// Prueft, ob schon doppelt vorhanden ist
+					lstLayer.value,								// Den Layer als Referenz zum Pruefen
+				    lpTmp(iTile).name, 							// Den Namen des gewuehlten Tiles
+				    TURTLE_COORD(i)								// Die Position des gewuehlten Tiles
 				    )
 			}
 			
@@ -188,7 +188,7 @@ object fhGenerator
 		
 		lpTiles.value = lpTiles.value.sortWith(_.id < _.id) 					// Sortiere die Referenzliste
 		
-		// Nachbarn prüfen
+		// Nachbarn pruefen
 		for (i <- 0 until lstLayer.value(0).height)
 		{
 			CheckFoes(lpTiles, lstLayer.value, i)
@@ -214,15 +214,15 @@ object fhGenerator
 		{
 		    var fOK = false
 			
-		    // Prüfe, ob Tiles des selben Typs nicht 
+		    // Pruefe, ob Tiles des selben Typs nicht 
 		    // mehr als doppelt vorkommen, da sonst unloesbar
 			while(!fOK)
 			{
 			    iTile = SelectTile(lpTmp);						// Hol per Zufall eine Kachel aus der Liste
-				fOK   = IsDouble(								// Prüft, ob schon doppelt vorhanden ist
-					lstLayer.value,								// Den Layer als Referenz zum Prüfen
-				    lpTmp(iTile).name, 							// Den Namen des gewählten Tiles
-				    TEST_COORD(i)								// Die Position des gewählten Tiles
+				fOK   = IsDouble(								// Prueft, ob schon doppelt vorhanden ist
+					lstLayer.value,								// Den Layer als Referenz zum Pruefen
+				    lpTmp(iTile).name, 							// Den Namen des gewuehlten Tiles
+				    TEST_COORD(i)								// Die Position des gewuehlten Tiles
 				    )
 			}
 			
@@ -238,7 +238,7 @@ object fhGenerator
 			lpTmp -= lpTmp(iTile)
 		}
 		
-		// Rest auffüllen
+		// Rest auffuellen
 		for (i <- 0 until lpTmp.length)
 		{
 			lpTiles.value ++= List(lpTmp(i))
@@ -298,8 +298,8 @@ object fhGenerator
 	}
 	/////////////////////////////////////////////////////////////////////////////////////
 	/**
-	 * Prüft, ob eine ID schon Doppelt vorkommt, so wird verhindert, dass das Spiel
-	 * unlösbar wird.
+	 * Prueft, ob eine ID schon Doppelt vorkommt, so wird verhindert, dass das Spiel
+	 * unloesbar wird.
 	 */
 	/*private*/ def IsDouble(lpLayer: List[Layer], szName: String, pPos: Vector[Int]):Boolean =
 	{
@@ -309,7 +309,7 @@ object fhGenerator
 		if (lpLayer.length < 4 || pPos(2) < 3)	 // bei maximal 3 Ebenen muss nicht getestet werden 
 		  return true
 		
-		// Prüfe an der Position x/y den z Vektor durch
+		// Pruefe an der Position x/y den z Vektor durch
 		for (i <- 0 to pPos(2))
 		{
 			var iID   = lpLayer(i).getIDFromPosition(pPos(0), pPos(1))
@@ -359,7 +359,7 @@ object fhGenerator
 	{
 		//var iUpperID = 0
 		
-		// Direkt darüber
+		// Direkt darueber
 		if (lpLayer.length > z+1 && lpLayer(z+1).getIDFromPosition(x, iRow) > 0)
 	    {
 	    	// Merke den Darueberliegenden

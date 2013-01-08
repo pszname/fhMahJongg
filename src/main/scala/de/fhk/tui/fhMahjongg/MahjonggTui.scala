@@ -1,4 +1,4 @@
-package de.fhk.tui.fhMahjongg
+ï»¿package de.fhk.tui.fhMahjongg
 
 import de.fhk.ctr.fhMahJongg._
 import org.specs2.text.AnsiColors._
@@ -58,7 +58,7 @@ object Mahjongg	{
 	  }
 
 	  println
-	  println("Geben Sie den Namen einer Kachel ein, die ausgewählt werden soll: ")
+	  println("Geben Sie den Namen einer Kachel ein, die ausgewaehlt werden soll: ")
 	  
 	  var in = Console.readLine
 	  var x = 0
@@ -76,7 +76,7 @@ object Mahjongg	{
   	  
   	  var erg = Controller.checkTile(id)
   	  
-  	  if (erg.length > 1) str = tT(x)(y) + " wurde ausgewählt"
+  	  if (erg.length > 1) str = tT(x)(y) + " wurde ausgewaehlt"
   	  else str = tT(x)(y) + " ist geblockt oder nicht vorhanden"
   	  if (erg.length > 3) str += " und wurde zusammen mit der letzten Kachel entfernt"
 
@@ -89,6 +89,7 @@ object Mahjongg	{
   	  
   	  openPair = openPairs(tT, ttT)
   	    	  
+  	  /*
   	  println(id)
   	  if (id > 0)	{
 	  println(Controller.layout.tiles(id-1).checked)
@@ -101,13 +102,13 @@ object Mahjongg	{
 	  println("neighbortile")
 	  for (i <- 0 until Controller.layout.tiles(id-1).NeighborTile.length) println(Controller.layout.tiles(Controller.layout.tiles(id-1).NeighborTile(i)-1).name)
 	  for (i <- 0 until Controller.layout.tiles(id-1).NeighborTile.length) println(Controller.layout.tiles(id-1).NeighborTile(i).toString())
-  	  }
+  	  }*/
 	}
     
       println
-  	  println("Keine weiteren Züge möglich!")
+  	  println("Keine weiteren Zuege moeglich!")
   	  println
-  	  println("Sie haben erfolgreich " + count + "Paerchen gelöst.")
+  	  println("Sie haben erfolgreich " + count + "Paerchen geloest.")
   	  println  	  
   }
 }
