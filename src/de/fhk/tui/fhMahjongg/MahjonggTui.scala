@@ -6,11 +6,15 @@ import com.sun.org.apache.xml.internal.serializer.ToStream
 
 /**
  * This object provides a main method, that creates a text user interface.
- * 
- * @param commandline parameter args: <code>Array[String</code>
  */
 object Mahjongg	{
   
+  /**
+   * This method calculates, if there are any more pairs of tiles left in the game.
+   * 
+   * @param top layer with names and top layer as <code>Array[Array[Int]]</code>
+   * @return <code>true</code>, if at least one pair was found
+   */
   def openPairs(tT: Array[Array[String]], ttT: Array[Array[Int]]): Boolean = {
 	  var openPairList = List[Vector[Int]]()  	  
   	  for (i <- 0 until tT.length; j <- 0 until ttT(0).length) if (ttT(i)(j) > 0 && !Controller.isBlockedAt(ttT(i)(j))) openPairList ++= List(Vector(i, j))
@@ -20,6 +24,11 @@ object Mahjongg	{
 	  false
   }
   
+  /**
+   * This is the main program of the text user interface.
+   * 
+   * @param commandline parameter args: <code>Array[String</code>
+   */
   def main(args: Array[String]) {
 	
     println("Geben Sie ein Layout-Typ ein: ")

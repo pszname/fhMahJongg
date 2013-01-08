@@ -90,7 +90,7 @@ object fhGenerator
 			// Reihe 4, Ebene 3 ---------------------------------------------------------
 			Vector(11, 7, 2), Vector(13, 7, 3), Vector(15, 7, 3), Vector(17, 7, 2),												// 68
 			// Reihe 4, Ebene 4 ---------------------------------------------------------
-			Vector(13, 7, 3), Vector(15, 7, 3),																					// 70
+			Vector(13, 7, 2), Vector(15, 7, 2),																					// 70
 			// Reihe 5, Ebene 1 ---------------------------------------------------------
 			Vector( 3, 9, 0), Vector( 5, 9, 0), Vector( 7, 9, 0), Vector( 9, 9, 0), Vector(11, 9, 0), Vector(13, 9, 0),			// 76
 			Vector(15, 9, 0), Vector(17, 9, 0), Vector(19, 9, 0), Vector(21, 9, 0), Vector(23, 9, 0), Vector(25, 9, 0),			// 82
@@ -402,16 +402,16 @@ object fhGenerator
 	    				lpLayer(z).getIDFromPosition(x+2, iRow-1))
 	    		
 	    		// sich selbst als linken Nachbarn eintragen
-	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushNeighbor(iID)
+	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow-1) - 1).pushNeighbor(iID+1)
 	    	}
 	    	// Schraeg rechts unten?
 		    if (lpLayer(z).getIDFromPosition(x+2, iRow+1) > 0)
 		    {
-		    	lpTiles.value(iID - 1).pushNeighbor(
+		    	lpTiles.value(iID).pushNeighbor(
 	    				lpLayer(z).getIDFromPosition(x+2, iRow+1))
 		    	
 		    	// sich selbst als linken Nachbarn eintragen
-	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushNeighbor(iID)
+	    		lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow+1) - 1).pushNeighbor(iID+1)
 		    }
 	    }
 	    // Nachbar rechts ---------------------------------------------------
