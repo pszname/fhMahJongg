@@ -61,4 +61,11 @@ object Controller {
    * @return the tile count
    */
   def getTileCount() = layout.getTileCount
+  
+  /**
+   * This method get the names and Positions of all Tiles
+   * 
+   * @return a map with all tiles
+   */
+  def getTileVectors(): Array[fhTileVec] = layout.getAllTiles
 }  
