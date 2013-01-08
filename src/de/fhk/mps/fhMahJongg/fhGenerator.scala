@@ -88,7 +88,7 @@ object fhGenerator
 			// Reihe 4, Ebene 2 ---------------------------------------------------------
 			Vector( 9, 7, 1), Vector(11, 7, 1), Vector(13, 7, 1), Vector(15, 7, 1), Vector(17, 7, 1), Vector(19, 7, 1),			// 64	
 			// Reihe 4, Ebene 3 ---------------------------------------------------------
-			Vector(11, 7, 2), Vector(13, 7, 2), Vector(15, 7, 2), Vector(17, 7, 2),												// 68
+			Vector(11, 7, 2), Vector(13, 7, 3), Vector(15, 7, 3), Vector(17, 7, 2),												// 68
 			// Reihe 4, Ebene 4 ---------------------------------------------------------
 			Vector(13, 7, 2), Vector(15, 7, 2),																					// 70
 			// Reihe 5, Ebene 1 ---------------------------------------------------------
@@ -99,7 +99,7 @@ object fhGenerator
 			// Reihe 5, Ebene 3 ---------------------------------------------------------
 			Vector(11, 9, 2), Vector(13, 9, 2), Vector(15, 9, 2), Vector(17, 9, 2),												// 92
 			// Reihe 5, Ebene 4 ---------------------------------------------------------
-			Vector(13, 9, 2), Vector(15, 9, 2),																					// 94
+			Vector(13, 9, 3), Vector(15, 9, 3),																					// 94
 			// Zwischen Reihe 4 und Reihe 5 ---------------------------------------------
 			Vector(1, 8, 0), Vector(14, 8, 4), Vector(27, 8, 0), Vector(29, 8, 0),												// 97
 			// Reihe 6, Ebene 1 ---------------------------------------------------------
@@ -365,7 +365,7 @@ object fhGenerator
 	    	// Merke den Darueberliegenden
 	        lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x, iRow))
 	    }
-	    // Um einen Punkt versetzt
+	    /*// Um einen Punkt versetzt
 	    else if (lpLayer(z+1).getIDFromPosition(x+1, iRow) > 0)
 	    {
 	    	lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x+1, iRow))
@@ -374,7 +374,7 @@ object fhGenerator
     	else if (lpLayer(z+1).getIDFromPosition(x-1, iRow) > 0)
     	{
     		lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x-1, iRow))
-    	}
+    	}*/
     	else
     	{
     		if (lpLayer(z+1).getIDFromPosition(x+1, iRow+1) > 0)
@@ -382,7 +382,7 @@ object fhGenerator
     		if (lpLayer(z+1).getIDFromPosition(x-1, iRow+1) > 0)
     		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x-1, iRow+1))
     		if (lpLayer(z+1).getIDFromPosition(x+1, iRow-1) > 0)
-    		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x+2, iRow-1))
+    		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x+1, iRow-1))
     		if (lpLayer(z+1).getIDFromPosition(x-1, iRow-1) > 0)
     		  lpTiles.value(iID).pushUpper(lpLayer(z+1).getIDFromPosition(x-1, iRow-1))
     	}
@@ -392,7 +392,7 @@ object fhGenerator
 	
 	private def CheckNeighborFoes(lpTiles: fhMutableWrapper[List[Tile]], lpLayer: List[Layer], iRow: Int, iID: Int, z: Int, x: Int)=
 	{
-		// kein Nachbar rechts ----------------------------------------------
+		/*// kein Nachbar rechts ----------------------------------------------
 	    if (lpLayer(z).getIDFromPosition(x+2, iRow) <= 0)
 	    {
 	    	// Schraeg rechts oben?
@@ -416,14 +416,17 @@ object fhGenerator
 	    }
 	    // Nachbar rechts ---------------------------------------------------
 	    else
-	    {
+	    {*/
+	    if (lpLayer(z).getIDFromPosition(x+2, iRow) > 0)	{
 	      // Merke dir den rechten Nachbarn
 	      lpTiles.value(iID).pushNeighbor(
 	          lpLayer(z).getIDFromPosition(x+2, iRow))
 	      
 	      // sich selbst als linken Nachbarn eintragen
-	      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow) - 1).pushNeighbor(iID)
+	      lpTiles.value(lpLayer(z).getIDFromPosition(x+2, iRow)-1).pushNeighbor(iID+1)
 	    } // Out Nachbar rechts
+	  
+	  
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////

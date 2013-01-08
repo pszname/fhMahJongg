@@ -95,8 +95,7 @@ class fhLayout
 	    }
 	  }
 	  
-	  if (layer.deleteTileIDFromPosition(x, y) != 0) Vector(0, 0, 0)
-	  else Vector(x+1,y+1,z+1)
+	  if (layer.deleteTileIDFromPosition(x, y) != 0) Vector(0, 0, 0) else Vector(x+1,y+1,z+1)
 	}
 		
 	/**

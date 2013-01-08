@@ -43,8 +43,6 @@ object Mahjongg	{
 	  var id = ttT(x)(y)
 	  println(id)	  
 	  var str = ""
-	    
-  	  //if (id > 0) id -= 1
   	  
   	  var erg = Controller.checkTile(id)
   	  
@@ -52,14 +50,21 @@ object Mahjongg	{
   	  else str = tT(x)(y) + " ist geblockt oder nicht vorhanden"
   	  if (erg.length > 3) str += " und wurde zusammen mit der letzten Kachel entfernt"
 
-  	  //System.out.printf("\033[31m" + str + "\033[0m\n")
   	  println(str)
   	      	  
-  	  /*println(id)
+  	  println(id)
+  	  if (id > 0)	{
 	  println(Controller.layout.tiles(id-1).checked)
 	  println(Controller.layout.tiles(id-1).position)
 	  println(Controller.layout.tiles(id-1).id)
-	  println(Controller.layout.tiles(id-1).name)*/
+	  println(Controller.layout.tiles(id-1).name)
+	  println("uppertile")
+	  for (i <- 0 until Controller.layout.tiles(id-1).UpperTile.length) println(Controller.layout.tiles(Controller.layout.tiles(id-1).UpperTile(i)-1).name)
+	  for (i <- 0 until Controller.layout.tiles(id-1).UpperTile.length) println(Controller.layout.tiles(id-1).UpperTile(i).toString())
+	  println("neighbortile")
+	  for (i <- 0 until Controller.layout.tiles(id-1).NeighborTile.length) println(Controller.layout.tiles(Controller.layout.tiles(id-1).NeighborTile(i)-1).name)
+	  for (i <- 0 until Controller.layout.tiles(id-1).NeighborTile.length) println(Controller.layout.tiles(id-1).NeighborTile(i).toString())
+  	  }
 	}
   }
 }

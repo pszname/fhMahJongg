@@ -56,7 +56,7 @@ object Controller {
   def getTile(id: Int): Tile = (if (id > 0) layout.tiles(id-1) else null)
   
   /**
-   * This method returns the tile count
+   * This method returns the tile count.
    * 
    * @return the tile count
    */
